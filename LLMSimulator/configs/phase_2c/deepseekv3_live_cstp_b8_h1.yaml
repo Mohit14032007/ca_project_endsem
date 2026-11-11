@@ -1,0 +1,70 @@
+# DeepSeek-V3 Live Prediction-Only Configuration - CSTP (B=4, H=1)
+model:
+  model_name: deepseekV3
+
+system:
+  gpu_gen: A100
+  nvlink_gen: 3
+  infiniband_gen: 800
+  num_node: 1
+  num_device: 1
+  processor_type: GPU
+  distribution:
+    none_expert_tensor_degree: 1
+    expert_tensor_degree: 1
+  optimization:
+    parallel_execution: 'off'
+    hetero_subbatch: false
+    disagg_system: false
+    use_low_unit_moe_only: false
+    use_ramulator: 'on'
+    offchip_dram_cfg_path: reproduction_A100/with_off_chip_dram/deepseekv3/experiments/deepseekv3_mixtral_style_20261011/config_snapshot/dram_config_DDR5_retry.yaml
+    hbm_dram_cfg_path: reproduction_A100/with_off_chip_dram/deepseekv3/experiments/deepseekv3_mixtral_style_20261011/config_snapshot/dram_config_HBM3_80GB.yaml
+    expert_cache_capacity_bytes: 80000000000
+    compressed_kv: true
+    use_absorb: true
+    use_flash_mla: true
+    use_flash_attention: true
+    reuse_kv_cache: true
+    kv_cache_reuse_rate: 0.0
+    prefill_mode: false
+    decode_mode: true
+    use_hitting_queue: false
+
+serving:
+  max_batch_size: 1
+  max_process_token: 0
+
+simulation:
+  data: synthesis
+  input_len: 2048
+  output_len: 10
+  precision_byte: 2
+  skewness: 0.0
+  iter: 5
+  injection_rate: 0
+  exit_out_of_memory: false
+  mem_cap_limit: false
+
+  prefetching:
+    enabled: true
+    mode: "prediction_only"
+    predictor:
+      type: "cstp"
+      alpha: 0.5
+      smoothing_lambda: 1.0
+      online_adaptation: true
+    candidate_selection:
+      policy: "top_k"
+      budget: 8
+    scheduling:
+      prediction_horizon: 1
+      lookahead_tokens: 0
+      demand_priority: true
+
+log:
+  print_log: false
+  export_gantt: false
+  output_directory: results/phase_2c_prediction_only/raw_logs/csv/
+  gantt_directory: results/phase_2c_prediction_only/raw_logs/raw/
+  traces_directory: results/phase_2c_prediction_only/raw_logs/traces/

@@ -1,0 +1,17 @@
+metric_name,metric_value,unit,configuration,workload,source_campaign,source_run_id,exact_source_file,measurement_type
+macro_recall,47.91,percent,ST-MoE (h=1),MoE-Anywhere Sage-A1.5,Point 1,p1_stmoe_h1,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_recall,45.51,percent,CSTP (h=1),MoE-Anywhere Sage-A1.5,Point 1,p1_cstp_h1,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_precision,47.91,percent,ST-MoE (h=1),MoE-Anywhere Sage-A1.5,Point 1,p1_stmoe_h1,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_precision,45.51,percent,CSTP (h=1),MoE-Anywhere Sage-A1.5,Point 1,p1_cstp_h1,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_f1,47.91,percent,ST-MoE (h=1),MoE-Anywhere Sage-A1.5,Point 1,p1_stmoe_h1,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_f1,45.51,percent,CSTP (h=1),MoE-Anywhere Sage-A1.5,Point 1,p1_cstp_h1,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_top_k_hit_rate,96.94,percent,ST-MoE (h=1),MoE-Anywhere Sage-A1.5,Point 1,p1_stmoe_h1,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_top_k_hit_rate,96.67,percent,CSTP (h=1),MoE-Anywhere Sage-A1.5,Point 1,p1_cstp_h1,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_recall,46.2,percent,ST-MoE (h=2),MoE-Anywhere Sage-A1.5,Point 1,p1_stmoe_h2,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_recall,44.18,percent,CSTP (h=2),MoE-Anywhere Sage-A1.5,Point 1,p1_cstp_h2,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_precision,46.2,percent,ST-MoE (h=2),MoE-Anywhere Sage-A1.5,Point 1,p1_stmoe_h2,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_precision,44.18,percent,CSTP (h=2),MoE-Anywhere Sage-A1.5,Point 1,p1_cstp_h2,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_f1,46.2,percent,ST-MoE (h=2),MoE-Anywhere Sage-A1.5,Point 1,p1_stmoe_h2,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_f1,44.18,percent,CSTP (h=2),MoE-Anywhere Sage-A1.5,Point 1,p1_cstp_h2,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_top_k_hit_rate,95.85,percent,ST-MoE (h=2),MoE-Anywhere Sage-A1.5,Point 1,p1_stmoe_h2,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured
+macro_top_k_hit_rate,96.14,percent,CSTP (h=2),MoE-Anywhere Sage-A1.5,Point 1,p1_cstp_h2,mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,measured

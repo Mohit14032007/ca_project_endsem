@@ -1,0 +1,37 @@
+REPOSITORY: /home/mohman/ca_project
+SUBDIRECTORY: LLMSimulator
+DATE: 2026-11-01T11:08:00Z
+CURRENT_BRANCH: main
+HEAD_COMMIT: d5bf61ff0c066c06f72173189f9924329f613a88
+HEAD_MESSAGE: Finalize LLMSimulator: Add Group 13 master reference documentation and code changes guide, clean up intermediate manifests and experimental runs
+
+TRACKED MODIFIED FILES (Phase 2A off-chip cache changes):
+- LLMSimulator/config.yaml
+- LLMSimulator/eval/CMakeLists.txt
+- LLMSimulator/eval/test.cpp
+- LLMSimulator/eval/test_deepseekv3_mixtral_style.cpp
+- LLMSimulator/src/hardware/hardware_config.h
+- LLMSimulator/src/hardware/layer_impl.cpp
+
+UNTRACKED FILES / DIRECTORIES:
+- LLMSimulator.zip
+- LLMSimulator/eval/test_configurable_execution_cache.cpp
+- LLMSimulator/results/
+- LLMSimulator/scripts/
+- LLMSimulator/src/predictor/
+- LLMSimulator/tests/
+
+EXISTING PREDICTOR SOURCE FILES:
+- LLMSimulator/src/predictor/__init__.py
+- LLMSimulator/src/predictor/cstp_predictor.py
+- LLMSimulator/src/predictor/evaluation.py
+- LLMSimulator/src/predictor/st_moe_predictor.py
+- LLMSimulator/src/predictor/trace_parser.py
+
+EXISTING TESTS:
+- LLMSimulator/tests/test_cstp.py
+- LLMSimulator/tests/test_evaluation.py
+- LLMSimulator/tests/test_st_moe.py
+- LLMSimulator/tests/test_trace_parser.py
+- LLMSimulator/build/test_configurable_execution_cache
+

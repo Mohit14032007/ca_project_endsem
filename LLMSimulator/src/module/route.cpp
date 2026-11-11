@@ -157,6 +157,9 @@ void GateUpdate::aggregate_expert(BatchedSequence::Ptr sequences_metadata) {
     if (scheduler == nullptr) {
       return;
     }
+    if (scheduler->get_device() == nullptr && device != nullptr) {
+      scheduler->set_device(device);
+    }
     int num_batch = scheduler->running_queue.size();
     for (int i = 0; i < num_batch; i++) {
       scheduler->running_queue[i]->update_expert(num_expert, top_k, true);

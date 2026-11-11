@@ -1,0 +1,16 @@
+config_id,table,dataset,sequence_length_T,batch_size_B,input_len,output_len,iter,moe_stages,total_layers,scope,bypass_cache,trace_file,status
+A1,A,MoE Suite,128,1,128,128,128,75,78,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ms_task12_t128_l75.csv,COMPLETED
+A5,A,MoE Anywhere,128,1,128,128,128,40,43,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ma_p60_t128_l40.csv,COMPLETED
+A6,A,MoE Anywhere,256,1,128,256,256,40,43,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ma_p60_t256_l40.csv,COMPLETED
+A7,A,DeepSeek-style synthetic,128,1,128,128,128,57,60,full_depth,False,,COMPLETED
+B1,B,MoE Anywhere,128,2,128,128,128,40,43,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ma_b2_t128_l40.csv,COMPLETED
+B2,B,MoE Anywhere,128,4,128,128,128,40,43,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ma_b4_t128_l40.csv,COMPLETED
+B3,B,MoE Anywhere,256,2,128,256,256,40,43,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ma_b2_t256_l40.csv,COMPLETED
+B4,B,MoE Anywhere,256,4,128,256,256,40,43,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ma_b4_t256_l40.csv,COMPLETED
+C1,C,MoE Suite,128,1,512,128,128,75,78,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ms_task12_t128_l75.csv,COMPLETED
+C2,C,MoE Suite,128,1,1024,128,128,75,78,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ms_task12_t128_l75.csv,COMPLETED
+C3,C,MoE Suite,128,1,2048,128,128,75,78,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ms_task12_t128_l75.csv,COMPLETED
+A2,A,MoE Suite,512,1,128,512,512,75,78,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ms_task12_t512_l75.csv,COMPLETED
+A3,A,MoE Suite,1024,1,128,1024,1024,75,78,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ms_task12_t1024_l75.csv,COMPLETED
+A4,A,MoE Suite,2048,1,128,2048,2048,75,78,full_depth,False,/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ms_task12_t2048_l75.csv,COMPLETED
+A8,A,DeepSeek-style synthetic,512,1,128,512,512,57,60,full_depth,False,,COMPLETED

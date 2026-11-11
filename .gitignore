@@ -1,3 +1,4 @@
+# Simulator build artifacts & scratch
 LLMSimulator/build/
 LLMSimulator/log/
 LLMSimulator/scratch/
@@ -5,7 +6,6 @@ LLMSimulator/reproduction_A100/results/build/
 LLMSimulator/test.log
 LLMSimulator/check_md5.txt
 LLMSimulator/sim_queue.py
-
 LLMSimulator/.git_backup/
 SSD-offloading/
 __pycache__/
@@ -13,3 +13,50 @@ __pycache__/
 *.pyo
 *.pyd
 .venv/
+
+# Archives and compressed dumps
+*.zip
+*.tar.gz
+*.tgz
+*.7z
+
+# Symlinks and duplicate references
+LLMSimulator/mohman
+
+# Logs and channel traces
+log/
+*.log
+*.log.*
+*.ch0
+*.ch1
+
+# Build and binary artifacts
+build/
+*.o
+*.so
+*.a
+bin/
+
+# Root-level transient CSV dumps
+/expert_cache.csv
+/expert_load.csv
+/expert_routing.csv
+LLMSimulator/expert_cache.csv
+LLMSimulator/expert_load.csv
+LLMSimulator/expert_routing.csv
+
+# Large raw simulation results directories (multi-GB tick-by-tick outputs)
+results/
+LLMSimulator/results/
+
+# Raw event trace directories everywhere in the repository
+traces/
+raw_results/
+raw/
+
+# Specific large trace paths
+mohman/point_4/big_exp/results/
+mohman/point_4/big_exp/traces/
+
+# Giant per-event metric CSVs (>100MB)
+*corrected_per_event_metrics.csv

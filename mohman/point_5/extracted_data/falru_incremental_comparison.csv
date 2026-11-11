@@ -1,0 +1,14 @@
+metric_name,metric_value,unit,configuration,workload,source_campaign,source_run_id,exact_source_file,measurement_type
+coalesced_resident_hits_lru,1657.0,count,CSTP + LRU,"W3 (B=14, T=128)",Point 4 Big Experiment,w3_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_resident_hits_falru,1643.0,count,CSTP + FA-LRU (W=64),"W3 (B=14, T=128)",Point 4 Big Experiment,w3_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+delta_resident_hits,-14.0,count,FA-LRU vs LRU,"W3 (B=14, T=128)",Point 4 Big Experiment,paired_w3_c4_c3,mohman/point_4/big_exp/results/paired_comparisons.csv,measured_delta
+coalesced_resident_hits_lru,1417.0,count,CSTP + LRU,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_resident_hits_falru,1432.0,count,CSTP + FA-LRU (W=64),"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+delta_resident_hits,15.0,count,FA-LRU vs LRU,"W4 (B=32, T=128)",Point 4 Big Experiment,paired_w4_c4_c3,mohman/point_4/big_exp/results/paired_comparisons.csv,measured_delta
+ddr5_traffic_saved,2.0258,decimal_GB,FA-LRU vs LRU,"W4 (B=32, T=128)",Point 4 Big Experiment,paired_w4_c4_c3,mohman/point_4/big_exp/results/paired_comparisons.csv,calculated_delta
+exposed_gpu_stall_saved,31.82,milliseconds,FA-LRU vs LRU,"W4 (B=32, T=128)",Point 4 Big Experiment,paired_w4_c4_c3,mohman/point_4/big_exp/results/paired_comparisons.csv,measured_delta
+execution_time_saved,31.82,milliseconds,FA-LRU vs LRU,"W4 (B=32, T=128)",Point 4 Big Experiment,paired_w4_c4_c3,mohman/point_4/big_exp/results/paired_comparisons.csv,measured_delta
+expert_reloads_avoided,15.0,count,FA-LRU vs LRU,"W4 (B=32, T=128)",Point 4 Big Experiment,paired_w4_c4_c3,mohman/point_4/big_exp/results/paired_comparisons.csv,measured_delta
+protected_lines_reused,36.0,count,FA-LRU Diagnostics,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured_diagnostic
+speculative_prefetches_evicted,5999.0,count,FA-LRU Diagnostics,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured_diagnostic
+fa_lru_divergent_decisions,431909.0,count,FA-LRU Diagnostics,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured_diagnostic

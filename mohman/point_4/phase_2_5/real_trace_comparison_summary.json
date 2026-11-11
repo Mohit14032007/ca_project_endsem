@@ -1,0 +1,28 @@
+{
+  "workload": "Prompt 60 (B=1, T=16, L=5, K=8)",
+  "capacity_bytes": 4000000000,
+  "lru": {
+    "hits": 189,
+    "misses": 451,
+    "hit_rate_pct": 29.531200000000002,
+    "evictions": 406,
+    "reloads": 157,
+    "traffic_gb": 39.724253184,
+    "traffic_gib": 36.99609375,
+    "stall_ms": 620.691456,
+    "token_lat_ms": 42.080539619999996,
+    "host_time_s": 2.952288866043091
+  },
+  "fa_lru": {
+    "hits": 189,
+    "misses": 451,
+    "hit_rate_pct": 29.531200000000002,
+    "evictions": 406,
+    "reloads": 157,
+    "traffic_gb": 39.724253184,
+    "traffic_gib": 36.99609375,
+    "stall_ms": 620.691456,
+    "token_lat_ms": 42.080539619999996,
+    "host_time_s": 3.0065882205963135
+  }
+}

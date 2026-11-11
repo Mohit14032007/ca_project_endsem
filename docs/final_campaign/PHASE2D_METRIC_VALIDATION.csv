@@ -1,0 +1,30 @@
+metric_name,category,formula,denominator,source_code_reference,output_file,status,audit_notes
+precision_at_budget,Predictor_Accuracy,"Hits / min(B, actual_experts)","min(B, actual_experts)",src/prefetch/live_prediction_engine.cpp:351-355,live_predictions.csv,VERIFIED,Measures top-B ranking accuracy of predictor
+recall_at_budget,Predictor_Accuracy,"Hits / actual_experts",actual_experts,src/prefetch/live_prediction_engine.cpp:357-361,live_predictions.csv,VERIFIED,Fraction of ground-truth routed experts predicted
+f1_at_budget,Predictor_Accuracy,"2 * Precision * Recall / (Precision + Recall)",N/A (harmonic mean),src/prefetch/live_prediction_engine.cpp:363-367,live_predictions.csv,VERIFIED,Composite predictor fidelity score
+mrr,Predictor_Accuracy,"1.0 / first_hit_rank",1 (reciprocal rank),src/prefetch/live_prediction_engine.cpp:375-379,live_predictions.csv,VERIFIED,Mean reciprocal rank of first true expert
+ndcg_at_budget,Predictor_Accuracy,"DCG / IDCG",IDCG,src/prefetch/live_prediction_engine.cpp:381-406,live_predictions.csv,VERIFIED,Rank-discounted cumulative gain
+prediction_latency_ns,Predictor_Overhead,high_resolution_clock duration,1 event,src/prefetch/live_prediction_engine.cpp:276-281,live_predictions.csv,VERIFIED,CPU execution latency per predict invocation
+update_latency_ns,Predictor_Overhead,high_resolution_clock duration,1 event,src/prefetch/live_prediction_engine.cpp:163-173,live_predictions.csv,VERIFIED,CPU execution latency per online table update
+host_overhead_pct,Predictor_Overhead,"(Sum Pred + Sum Upd Latency) / Total Host Time * 100",Total Host Execution Time,src/prefetch/live_prediction_engine.cpp:426-430,live_prediction_summary.json,VERIFIED,Percentage of wall-clock time spent in predictor
+timely_prefetch_rate,Prefetch_Effectiveness,timely_resident_hits / total_demands,total_demands,src/hardware/device.cpp:633,prefetch_effectiveness.csv,VERIFIED,Transfers completing prior to demand arrival (0 ns stall)
+late_attachment_rate,Prefetch_Effectiveness,late_inflight_attachments / total_demands,total_demands,src/hardware/device.cpp:1127,prefetch_effectiveness.csv,VERIFIED,Transfers in-flight at demand arrival (partial stall reduction)
+not_prefetched_miss_rate,Prefetch_Effectiveness,not_prefetched_misses / total_demands,total_demands,src/hardware/device.cpp:1169,prefetch_effectiveness.csv,VERIFIED,Demands requiring full DDR5 transfer from scratch
+natural_hit_rate,Prefetch_Effectiveness,natural_hits / total_demands,total_demands,src/hardware/device.cpp:686-704,expert_cache.csv,ISSUE,Natural hits logged to expert_cache.csv but omitted from prefetch_effectiveness.csv
+prefetch_coverage,Prefetch_Effectiveness,"(timely_resident_hits + late_inflight_attachments) / total_demands",total_demands,src/hardware/device.h:55-58,Derived,VERIFIED,Fraction of demand accesses benefiting from prefetching
+demanded_transfer_rate,Prefetch_Lifecycle,demanded_transfers / total_prefetches_submitted,total_prefetches_submitted,src/hardware/device.cpp:634,prefetch_effectiveness.csv,VERIFIED,Prefetches that converted into timely hits or attached demands
+unused_transfer_rate,Prefetch_Lifecycle,unused_transfers / total_prefetches_submitted,total_prefetches_submitted,src/hardware/device.cpp:1490-1492,prefetch_effectiveness.csv,VERIFIED,Prefetches completed into HBM that expired without demand
+evicted_before_demand_rate,Prefetch_Lifecycle,evicted_before_demand / total_prefetches_submitted,total_prefetches_submitted,src/hardware/device.cpp:805,prefetch_effectiveness.csv,VERIFIED,Speculative transfers evicted under buffer pressure
+still_inflight_at_end_rate,Prefetch_Lifecycle,still_inflight_at_end / total_prefetches_submitted,total_prefetches_submitted,src/hardware/device.cpp:1493-1495,prefetch_effectiveness.csv,VERIFIED,Prefetches remaining active/queued when simulation terminates
+cancelled_transfer_rate,Prefetch_Lifecycle,cancelled_transfers / total_prefetches_submitted,total_prefetches_submitted,src/hardware/device.cpp:1487-1489,prefetch_effectiveness.csv,VERIFIED,Prefetches cancelled before completion
+hbm_hit_rate,Cache_Performance,"(natural_hits + timely_resident_hits) / total_demands",total_demands,src/hardware/linear_impl.cpp:350-365,expert_cache.csv,VERIFIED,Overall HBM resident hit rate
+ddr5_total_traffic_bytes,Memory_Traffic,Sum of bytes transferred over DDR5,1 (absolute bytes),src/prefetch/ddr5_transfer_engine.cpp:134,summary.csv,VERIFIED,Total DDR5 byte volume (demands + prefetches)
+additional_ddr5_traffic_bytes,Memory_Traffic,total_traffic(prefetch) - total_traffic(baseline),baseline_traffic,Derived,summary.csv,VERIFIED,Overhead byte volume caused by speculative transfers
+ddr5_queue_waiting_time_ns,Memory_Timing,service_start_time_ns - arrival_time_ns,total_transfers,src/prefetch/ddr5_transfer_engine.h:65-67,Derived,VERIFIED,Time spent waiting behind serialized transfers
+exposed_memory_stall_ns,Memory_Timing,Sum of active GPU stall waiting for transfers,1 (total ns),src/hardware/linear_impl.cpp:360-375,expert_load.csv,VERIFIED,Exposed execution delay directly delaying GPU compute
+expert_load_latency_ns,Memory_Timing,demand_arrival_to_ready_ns,total_demands,src/hardware/device.cpp:1145,prefetch_effectiveness.csv,VERIFIED,Time from demand arrival until expert ready in HBM
+end_to_end_latency_ns,System_Timing,total_simulated_time_ns,total_tokens,src/scheduler/scheduler.cpp:140-160,summary.csv,VERIFIED,Overall wall-clock token decoding latency
+hbm_energy_nj,Energy_Consumption,Total HBM DRAM activation/read/write energy,total_tokens,src/hardware/cluster.cpp:349-360,summary.csv,VERIFIED,HBM3 DRAM operational energy
+ddr5_energy_nj,Energy_Consumption,DDR5 bus transfer energy,total_tokens,N/A,N/A,NOT IMPLEMENTED,Simulator lacks physical DDR5 bus pJ/bit model
+predictor_energy_nj,Energy_Consumption,CPU host energy for prediction calculation,total_tokens,N/A,N/A,NOT IMPLEMENTED,Simulator lacks host CPU power/energy model
+

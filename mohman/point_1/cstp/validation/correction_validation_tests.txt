@@ -1,0 +1,27 @@
+test_01_mohman_directory_untouched (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_01_mohman_directory_untouched)
+Verifies that mohman/ directory has not been modified or written to. ... ok
+test_02_original_artifacts_preserved (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_02_original_artifacts_preserved)
+Verifies that all 7 original CSV artifacts remain present and intact. ... ok
+test_03_certified_files_exist_and_nonempty (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_03_certified_files_exist_and_nonempty)
+Verifies all 7 certified CSV files exist and have content. ... ok
+test_04_aggregate_row_count_and_schema (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_04_aggregate_row_count_and_schema)
+Verifies corrected_aggregate_metrics.csv has exactly 192 configurations. ... ok
+test_05_multi_seed_coverage (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_05_multi_seed_coverage)
+Verifies that all three seeds (42, 123, 999) are present across all outputs. ... ok
+test_06_non_hardcoded_denominators (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_06_non_hardcoded_denominators)
+Verifies that metric calculations use actual predicted and actual set sizes. ... ok
+test_07_precision_recall_equality_on_balanced_budget (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_07_precision_recall_equality_on_balanced_budget)
+Verifies Precision@8 == Recall@8 holds empirically when |P| = |A| = 8. ... ok
+test_08_hierarchical_bootstrap_and_statistical_validity (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_08_hierarchical_bootstrap_and_statistical_validity)
+Verifies bootstrap analysis incorporates seeds and properly flags MoE Suite N=2. ... ok
+test_09_sufficient_statistics_reconstruction (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_09_sufficient_statistics_reconstruction)
+Verifies that aggregate TP equals sum of prompt/task TPs. ... ok
+test_10_publication_plots_exist (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_10_publication_plots_exist)
+Verifies all 9 publication figures exist in both PNG and PDF formats. ... ok
+test_11_zero_ternary_operators (tests.test_phase1a_certified_correction.TestPhase1ACertifiedCorrection.test_11_zero_ternary_operators)
+Verifies ZERO ternary operators across newly written scripts and tests. ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.067s
+
+OK

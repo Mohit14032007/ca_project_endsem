@@ -1,0 +1,65 @@
+# Packaging Manifest: CSTP vs. ST-MoE Comparative Study
+
+**Package Root:** [`mohman/point_1/stmoe_cstp/`](file:///home/mohman/ca_project/mohman/point_1/stmoe_cstp)  
+**Total Tracked Files:** 44  
+**Total Archive Size:** 3.38 MB (3,544,503 bytes)  
+**Verification Status:** Cryptographically Certified (SHA-256)  
+
+---
+
+## File Inventory and Cryptographic Signatures
+
+| Relative Path | Size | SHA-256 Checksum | Source Origin | Integrity Status |
+| :--- | :---: | :--- | :--- | :---: |
+| [`COMPARATIVE_INTEGRITY_REPORT.md`](file://mohman/point_1/stmoe_cstp/COMPARATIVE_INTEGRITY_REPORT.md) | 652 B | `10d20349799de103248cd173c34d5aefbb33d05386e4792f5c8f86fbd2c0e30a` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`README.md`](file://mohman/point_1/stmoe_cstp/README.md) | 11.22 KB | `4fb1ade7fd362e37cfa4f14c7a0d5d0fc2ae558ea75664e3b22d0807a87c7831` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`analysis/cstp_vs_st_moe.md`](file://mohman/point_1/stmoe_cstp/analysis/cstp_vs_st_moe.md) | 3.82 KB | `af4f4de2bf3490dc37acbee42635fb4136570929e5930172195be7c95c15d383` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`analysis/horizon_comparison.md`](file://mohman/point_1/stmoe_cstp/analysis/horizon_comparison.md) | 2.24 KB | `dbb28552a1a0330b4b3e266f67a2c9089497ea603eeaa00a06da935611897499` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`analysis/online_adaptation_analysis.md`](file://mohman/point_1/stmoe_cstp/analysis/online_adaptation_analysis.md) | 2.94 KB | `f568991749b430be9f32be8ae35faa8f0512a217cfe079d98cf6c1e38dbec018` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`analysis/profiling_sensitivity_analysis.md`](file://mohman/point_1/stmoe_cstp/analysis/profiling_sensitivity_analysis.md) | 2.13 KB | `00919ae0690ec6c744f338586cdb679fd4bed974f63888a271506204ee52dd59` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`analysis/workload_comparison.md`](file://mohman/point_1/stmoe_cstp/analysis/workload_comparison.md) | 2.77 KB | `6b6d3b6c2ab4f025e47a00312d783937bee857b8c33811630c75f62227d2ded3` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`methodology/evaluation_protocol.md`](file://mohman/point_1/stmoe_cstp/methodology/evaluation_protocol.md) | 2.24 KB | `6570c29a8413e9424d1a83814a35ab7d14a04477901723473da312a8fe84d03a` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`methodology/experimental_design.md`](file://mohman/point_1/stmoe_cstp/methodology/experimental_design.md) | 2.61 KB | `389ab4bc1188b4e8eabc045f666d8503d770629d9c243c3e1d5b0a5777e86c37` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`methodology/metrics_definitions.md`](file://mohman/point_1/stmoe_cstp/methodology/metrics_definitions.md) | 2.57 KB | `cfd22965409e5906f163aa881763679183d230a6fb57c27b0aa8fb4adc317413` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/README.md`](file://mohman/point_1/stmoe_cstp/results/csv/README.md) | 3.03 KB | `e17452b3b73d98cce2de7469ce31def8d8d8e12455b4f7754c2395bd54057a8d` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/aggregate_metrics.csv`](file://mohman/point_1/stmoe_cstp/results/csv/aggregate_metrics.csv) | 32.23 KB | `7b8fcf90d349fe916de05bcc4c48c29891af45d1f791b49f779bf7a4ded5c51c` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/corrected_aggregate_metrics.csv`](file://mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv) | 32.23 KB | `7b8fcf90d349fe916de05bcc4c48c29891af45d1f791b49f779bf7a4ded5c51c` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/corrected_profiling_count_statistics.csv`](file://mohman/point_1/stmoe_cstp/results/csv/corrected_profiling_count_statistics.csv) | 7.40 KB | `83b12e345b957f0a781eb547b97776f2e10a9350357360a1827b4441216d8c98` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/corrected_st_moe_head_to_head.csv`](file://mohman/point_1/stmoe_cstp/results/csv/corrected_st_moe_head_to_head.csv) | 7.17 KB | `0a80b71410c8b314dc380acb958e97526e2a4234a1a430c945c6d75a3c8678c3` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/corrected_statistical_analysis.csv`](file://mohman/point_1/stmoe_cstp/results/csv/corrected_statistical_analysis.csv) | 33.87 KB | `bf7520b7d5fb7bfa7c7b69cf9a25a33b7f69118b828e28886977d09020fe70c2` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/count_statistics.csv`](file://mohman/point_1/stmoe_cstp/results/csv/count_statistics.csv) | 7.40 KB | `83b12e345b957f0a781eb547b97776f2e10a9350357360a1827b4441216d8c98` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/matched_comparisons.csv`](file://mohman/point_1/stmoe_cstp/results/csv/matched_comparisons.csv) | 7.17 KB | `0a80b71410c8b314dc380acb958e97526e2a4234a1a430c945c6d75a3c8678c3` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/per_prompt_metrics.csv`](file://mohman/point_1/stmoe_cstp/results/csv/per_prompt_metrics.csv) | 179.73 KB | `85f9dffd12045998c1d101311bc3344f28885d4c0bfa9d7aff6f03f9bf1e747e` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/per_task_metrics.csv`](file://mohman/point_1/stmoe_cstp/results/csv/per_task_metrics.csv) | 25.71 KB | `8ffe4f6d359512e44079f9ce390b014cfbcf3da4583fde13edecabee96a82665` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/csv/statistical_analysis.csv`](file://mohman/point_1/stmoe_cstp/results/csv/statistical_analysis.csv) | 33.87 KB | `bf7520b7d5fb7bfa7c7b69cf9a25a33b7f69118b828e28886977d09020fe70c2` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/README.md`](file://mohman/point_1/stmoe_cstp/results/plots/README.md) | 4.26 KB | `2a0b7a56633f72ce792c935d6855dec573d3896201d2dba64adade0e38972fdd` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig1_certified_frozen_recall_vs_profiling.pdf`](file://mohman/point_1/stmoe_cstp/results/plots/fig1_certified_frozen_recall_vs_profiling.pdf) | 24.66 KB | `07aae1f3ebbef5307a6bee506d2cf114b9739738db3474f450d7ea6e8dfde2ff` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig1_certified_frozen_recall_vs_profiling.png`](file://mohman/point_1/stmoe_cstp/results/plots/fig1_certified_frozen_recall_vs_profiling.png) | 393.64 KB | `d1e84457e2aa1129edaa9e52d7cf7846cc4190d82398d7542d836984d7a75af0` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig2_certified_online_recall_vs_profiling.pdf`](file://mohman/point_1/stmoe_cstp/results/plots/fig2_certified_online_recall_vs_profiling.pdf) | 23.98 KB | `785ee8f37ba3ca545cb21b6b1cebdbdd33af268438cd2553a439f90d268a0bb6` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig2_certified_online_recall_vs_profiling.png`](file://mohman/point_1/stmoe_cstp/results/plots/fig2_certified_online_recall_vs_profiling.png) | 348.30 KB | `9b542b92fe190427cec3fffd935b0f31c0a54358c64b6659be877776456469a9` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig3_certified_online_adaptation_gain.pdf`](file://mohman/point_1/stmoe_cstp/results/plots/fig3_certified_online_adaptation_gain.pdf) | 24.21 KB | `8cb03ae316e1db5ef5424a3d2e722cccf29da41eb990298a132b713c7b9a37d9` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig3_certified_online_adaptation_gain.png`](file://mohman/point_1/stmoe_cstp/results/plots/fig3_certified_online_adaptation_gain.png) | 313.10 KB | `4cd4d90b3a09ae9afa491ed60e556986adf0f8323f8ba9170a24298cb9731191` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig4_certified_stmoe_vs_cstp_head_to_head.pdf`](file://mohman/point_1/stmoe_cstp/results/plots/fig4_certified_stmoe_vs_cstp_head_to_head.pdf) | 24.34 KB | `6fb89d59f2ec3f5e55655474f1954a38f1b8ad81a35a4ff3fcbab0b1778ccfb8` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig4_certified_stmoe_vs_cstp_head_to_head.png`](file://mohman/point_1/stmoe_cstp/results/plots/fig4_certified_stmoe_vs_cstp_head_to_head.png) | 359.58 KB | `ad0b7a05a45beb777ddb87521a71317ffa70c50ab1c118472a4fc71337e80ab8` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig5_certified_horizon1_vs_horizon2.pdf`](file://mohman/point_1/stmoe_cstp/results/plots/fig5_certified_horizon1_vs_horizon2.pdf) | 23.31 KB | `a64ffb162d0fa9292aee1e76541b51be82e84c6bff5a48cbea393ce6d793ab5b` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig5_certified_horizon1_vs_horizon2.png`](file://mohman/point_1/stmoe_cstp/results/plots/fig5_certified_horizon1_vs_horizon2.png) | 292.92 KB | `f89140326956f68e64fb7d23656dbd458647907017692b1d74b4f5d84aaa74e8` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig6_certified_seed_variability.pdf`](file://mohman/point_1/stmoe_cstp/results/plots/fig6_certified_seed_variability.pdf) | 25.27 KB | `41423769df338dc9fa10be1a4f1a10a808615450b0d0ec6c90d7170f35b41701` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig6_certified_seed_variability.png`](file://mohman/point_1/stmoe_cstp/results/plots/fig6_certified_seed_variability.png) | 323.93 KB | `95a795b32e6f74ac8be1ca5cef0ab639d7a66207be9ca1c3a5c149ac260d11a0` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig7_certified_moe_suite_task_level.pdf`](file://mohman/point_1/stmoe_cstp/results/plots/fig7_certified_moe_suite_task_level.pdf) | 21.12 KB | `efe79b5fc23a67e6e83c568ca5f5eb90243128a2c6e740b4b21a755036e3e944` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig7_certified_moe_suite_task_level.png`](file://mohman/point_1/stmoe_cstp/results/plots/fig7_certified_moe_suite_task_level.png) | 163.21 KB | `124064844831c31afbad01260597ad5d6018b2847efa44d254a21a30779f96f8` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig8_certified_transition_count_growth.pdf`](file://mohman/point_1/stmoe_cstp/results/plots/fig8_certified_transition_count_growth.pdf) | 21.88 KB | `a4826ea8f1b887ea09b9ba6cc3351aff561be676e5978b6cdb66c12d058505a8` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig8_certified_transition_count_growth.png`](file://mohman/point_1/stmoe_cstp/results/plots/fig8_certified_transition_count_growth.png) | 344.45 KB | `7628e1a514902d48ff349a087fd19ff4e9320682f4c8faf86b2c79247784f55e` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig9_certified_confidence_intervals.pdf`](file://mohman/point_1/stmoe_cstp/results/plots/fig9_certified_confidence_intervals.pdf) | 24.85 KB | `6968bd5c3fc68da34cc428a4111f7676d3bb8a2b00e33f3d7e2702197319bfee` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`results/plots/fig9_certified_confidence_intervals.png`](file://mohman/point_1/stmoe_cstp/results/plots/fig9_certified_confidence_intervals.png) | 288.08 KB | `505cbd9b2846092f642f5392671345bd69bdfbd14a64de71aee3e3e5e460168c` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`source_references/CSTP_source_reference.md`](file://mohman/point_1/stmoe_cstp/source_references/CSTP_source_reference.md) | 3.42 KB | `882acacae671a09d285d03504e7b62ca23ad6bbeb4ce6a2851c0e50ba724c18e` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`source_references/ST_MoE_source_reference.md`](file://mohman/point_1/stmoe_cstp/source_references/ST_MoE_source_reference.md) | 3.07 KB | `4768accdb2f3f43cd120e3fdaf6cee8ae5ad8704b6c4b581dd5fe71cea2f62cc` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`validation/comparative_integrity_report.md`](file://mohman/point_1/stmoe_cstp/validation/comparative_integrity_report.md) | 4.28 KB | `e347fab60dfd780740ef18f796041a987447072d284ed12dfade0ccd07f2bdd5` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+| [`validation/correction_validation_tests.txt`](file://mohman/point_1/stmoe_cstp/validation/correction_validation_tests.txt) | 2.56 KB | `73fc0099332445ed7d662b62e8f40883ebb26f76e18643627936c58c24835fca` | `N/A (Authored Package Deliverable)` | **AUTHORED_DELIVERABLE** |
+
+---
+
+## Integrity Attestation
+
+1. **Zero Data Modification:** All copied source artifacts match bit-for-bit with their originals.
+2. **Zero Inventions:** Every copied artifact exists in the source repository; authored deliverables provide transparent analysis.
+3. **Zero Reruns:** Zero experimental runs or predictor evaluations were launched during the generation of this deliverable package.

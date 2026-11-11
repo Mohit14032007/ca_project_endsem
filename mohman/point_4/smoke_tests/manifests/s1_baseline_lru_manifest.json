@@ -1,0 +1,12 @@
+{
+  "run_id": "s1_baseline_lru",
+  "description": "Baseline No-Prefetch with LRU eviction",
+  "config_path": "/home/mohman/ca_project/mohman/point_4/smoke_tests/configs/s1_baseline_lru.yaml",
+  "log_path": "/home/mohman/ca_project/mohman/point_4/smoke_tests/logs/s1_baseline_lru.log",
+  "return_code": 0,
+  "host_elapsed_seconds": 2.304914951324463,
+  "eviction_policy": "lru",
+  "window_size": 16,
+  "capacity_bytes": 4000000000,
+  "prefetch": false
+}

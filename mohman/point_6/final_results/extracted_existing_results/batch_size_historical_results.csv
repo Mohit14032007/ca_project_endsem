@@ -1,0 +1,25 @@
+metric_name,metric_value,unit,configuration,workload,source_campaign,source_run_id,exact_source_file,measurement_type
+exposed_gpu_stall_ms,18117.03,milliseconds,Baseline,"W2 (B=14, T=16)",Point 3 Large Workload,w2_baseline,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,18067.89,milliseconds,ST-MoE + LRU,"W2 (B=14, T=16)",Point 3 Large Workload,w2_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,18055.42,milliseconds,CSTP + LRU,"W2 (B=14, T=16)",Point 3 Large Workload,w2_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,33639.29,milliseconds,Baseline,"W3 (B=32, T=16)",Point 3 Large Workload,w3_baseline,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,33556.78,milliseconds,ST-MoE + LRU,"W3 (B=32, T=16)",Point 3 Large Workload,w3_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,33529.28,milliseconds,CSTP + LRU,"W3 (B=32, T=16)",Point 3 Large Workload,w3_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,50768.71,milliseconds,Baseline,"W4 (B=48, T=16)",Point 3 Large Workload,w4_baseline,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,50668.16,milliseconds,ST-MoE + LRU,"W4 (B=48, T=16)",Point 3 Large Workload,w4_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,50566.14,milliseconds,CSTP + LRU,"W4 (B=48, T=16)",Point 3 Large Workload,w4_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,62304.49,milliseconds,Baseline,"W5 (B=70, T=16)",Point 3 Large Workload,w5_baseline,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,62043.92,milliseconds,ST-MoE + LRU,"W5 (B=70, T=16)",Point 3 Large Workload,w5_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+exposed_gpu_stall_ms,61794.55,milliseconds,CSTP + LRU,"W5 (B=70, T=16)",Point 3 Large Workload,w5_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+mean_token_latency_ms,3586.18,milliseconds,Config A: Baseline,"W3 (B=14, T=128)",Point 4 Big Experiment,w3_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+mean_token_latency_ms,3565.37,milliseconds,Config C2: CSTP + LRU,"W3 (B=14, T=128)",Point 4 Big Experiment,w3_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+mean_token_latency_ms,3565.49,milliseconds,Config D: Complete System,"W3 (B=14, T=128)",Point 4 Big Experiment,w3_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+mean_token_latency_ms,7876.59,milliseconds,Config A: Baseline,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+mean_token_latency_ms,5950.06,milliseconds,Config C2: CSTP + LRU,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+mean_token_latency_ms,5949.81,milliseconds,Config D: Complete System,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+simulated_execution_time_s,459.031,seconds,Config A: Baseline,"W3 (B=14, T=128)",Point 4 Big Experiment,w3_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+simulated_execution_time_s,456.368,seconds,Config C2: CSTP + LRU,"W3 (B=14, T=128)",Point 4 Big Experiment,w3_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+simulated_execution_time_s,456.383,seconds,Config D: Complete System,"W3 (B=14, T=128)",Point 4 Big Experiment,w3_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+simulated_execution_time_s,1008.204,seconds,Config A: Baseline,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+simulated_execution_time_s,761.608,seconds,Config C2: CSTP + LRU,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+simulated_execution_time_s,761.576,seconds,Config D: Complete System,"W4 (B=32, T=128)",Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured

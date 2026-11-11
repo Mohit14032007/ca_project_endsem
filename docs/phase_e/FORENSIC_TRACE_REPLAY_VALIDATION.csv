@@ -1,0 +1,16 @@
+config_id,table,dataset,T,B,moe_stages,expected_source_decisions,generated_decisions,audited_replayed_decisions,exact_set_matches,exact_ordered_matches,match_pct,expert_set_mismatches,ordered_mismatches,invalid_expert_ids,token_mapping_errors,layer_mapping_errors,sequence_mapping_errors,fallback_dummy_records,fallback_dummy_tokens
+A1,A,MoE Suite,128,1,75,9600,9600,9525,9525,9525,100.0,0,0,0,0,0,0,600,1
+A2,A,MoE Suite,512,1,75,38400,38400,38325,38325,38325,100.0,0,0,0,0,0,0,600,1
+A3,A,MoE Suite,1024,1,75,76800,76800,76725,76725,76725,100.0,0,0,0,0,0,0,600,1
+A4,A,MoE Suite,2048,1,75,153600,153600,153525,153525,153525,100.0,0,0,0,0,0,0,600,1
+A5,A,MoE Anywhere,128,1,40,5120,5120,5080,5080,5080,100.0,0,0,0,0,0,0,320,1
+A6,A,MoE Anywhere,256,1,40,10240,10240,10200,10200,10200,100.0,0,0,0,0,0,0,320,1
+A7,A,DeepSeek-style synthetic,128,1,57,7296,7296,7239,7239,7239,100.0,0,0,0,0,0,0,456,1
+A8,A,DeepSeek-style synthetic,512,1,57,29184,29184,29127,29127,29127,100.0,0,0,0,0,0,0,456,1
+B1,B,MoE Anywhere,128,2,40,10240,10240,10160,10160,10160,100.0,0,0,0,0,0,0,640,1
+B2,B,MoE Anywhere,128,4,40,20480,20480,20320,20320,20320,100.0,0,0,0,0,0,0,1280,1
+B3,B,MoE Anywhere,256,2,40,20480,20480,20400,20400,20400,100.0,0,0,0,0,0,0,640,1
+B4,B,MoE Anywhere,256,4,40,40960,40960,40800,40800,40800,100.0,0,0,0,0,0,0,1280,1
+C1,C,MoE Suite,128,1,75,9600,9600,9525,9525,9525,100.0,0,0,0,0,0,0,600,1
+C2,C,MoE Suite,128,1,75,9600,9600,9525,9525,9525,100.0,0,0,0,0,0,0,600,1
+C3,C,MoE Suite,128,1,75,9600,9600,9525,9525,9525,100.0,0,0,0,0,0,0,600,1

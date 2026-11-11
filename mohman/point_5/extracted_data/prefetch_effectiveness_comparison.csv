@@ -1,0 +1,15 @@
+metric_name,metric_value,unit,configuration,workload,source_campaign,source_run_id,exact_source_file,measurement_type
+dispatched_prefetches,35272.0,count,ST-MoE Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+dispatched_prefetches,17659.0,count,CSTP Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+late_inflight_attachments,32817.0,count,ST-MoE Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+late_inflight_attachments,16002.0,count,CSTP Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+unused_completed_prefetches,2388.0,count,ST-MoE Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+unused_completed_prefetches,1656.0,count,CSTP Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+unused_prefetch_rate_pct,6.78,percent,ST-MoE Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,calculated
+unused_prefetch_rate_pct,9.38,percent,CSTP Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,calculated
+total_evictions,136898.0,count,ST-MoE Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+total_evictions,135713.0,count,CSTP Prefetch (h=2),"W6 (B=70, T=32)",Point 3 Large Workload,w6_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+dispatched_prefetches,102737.0,count,ST-MoE Prefetch (h=2),"W7 (B=70, T=64)",Point 3 Large Workload,w7_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+dispatched_prefetches,54076.0,count,CSTP Prefetch (h=2),"W7 (B=70, T=64)",Point 3 Large Workload,w7_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+unused_completed_prefetches,6022.0,count,ST-MoE Prefetch (h=2),"W7 (B=70, T=64)",Point 3 Large Workload,w7_stmoe_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured
+unused_completed_prefetches,3812.0,count,CSTP Prefetch (h=2),"W7 (B=70, T=64)",Point 3 Large Workload,w7_cstp_h2,mohman/point_3/phase2/large_workload/results/predictor_comparison.csv,measured

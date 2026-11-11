@@ -25,6 +25,7 @@ system:
     kv_cache_reuse_rate: 0.0
     prefill_mode: off
     decode_mode: on
+    bypass_offchip_execution_cache: false
 
 serving:
   max_batch_size: 32

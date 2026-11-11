@@ -44,8 +44,17 @@ void Cluster::set_dependency() {
 void Cluster::restartModuleGraph() {
   for (int device_rank = 0; device_rank < num_total_device; device_rank++) {
     Device::Ptr device = get_device(device_rank);
+    time_ns prev_time = 0;
+    if (device->config.clock_continuity) {
+      prev_time = device->status.device_time;
+    }
     device->restartGraph();
     device->reset_status();
+    if (device->config.clock_continuity) {
+      device->status.device_time = prev_time;
+      device->status.low_time = prev_time;
+      device->status.high_time = prev_time;
+    }
     device->reset_timeboard();
   }
 }
@@ -683,16 +692,22 @@ void Cluster::setStat(Stat &stat) {
 
   if (!config.disagg_system) {
     if (scheduler->hasSumSeq()) {
-      stat.latency = time;
+      if (!get_device(0)->config.clock_continuity) {
+        stat.latency = time;
+      }
       stat.is_mixed = 1;
 
     } else {
-      stat.latency = time;
+      if (!get_device(0)->config.clock_continuity) {
+        stat.latency = time;
+      }
       stat.is_mixed = 0;
     }
   } else {
     if (!scheduler->hasSumSeq()) {
-      stat.latency = time;
+      if (!get_device(0)->config.clock_continuity) {
+        stat.latency = time;
+      }
       stat.is_mixed = 0;
     }
   }

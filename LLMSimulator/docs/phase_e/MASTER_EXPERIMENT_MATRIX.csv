@@ -1,0 +1,493 @@
+experiment_id,phase,category,routing_source,batch_size,input_len,seq_len_tokens,iter_steps,total_layers,moe_stages,hbm_state,hbm_capacity_gb,predictor,prefetch_enabled,prefetch_budget_kp,lookahead_h,hbm_policy,execution_cache_bypass,feasibility
+P1_ds_syn_t128_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,128,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t128_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,128,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t256_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,256,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t256_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,256,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t512_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,512,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t512_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,512,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t1024_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,1024,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t1024_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,1024,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t2048_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,2048,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t2048_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,2048,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t4096_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,4096,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t4096_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,4096,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t5048_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,5048,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t5048_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,deepseek_synthetic,1,128,5048,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t128_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,128,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t128_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,128,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t256_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,256,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t256_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,256,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t512_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,512,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t512_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,512,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t1024_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,1024,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t1024_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,1024,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t2048_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,2048,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t2048_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,2048,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t4096_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,4096,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t4096_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,4096,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t5048_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,5048,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t5048_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_suite_task12,1,128,5048,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ma_t128_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,128,1,43,40,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ma_t128_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,128,2,43,40,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ma_t256_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,256,1,43,40,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ma_t256_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,256,2,43,40,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ma_t512_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,512,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ma_t512_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,512,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ma_t1024_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,1024,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ma_t1024_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,1024,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ma_t2048_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,2048,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ma_t2048_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,2048,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ma_t4096_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,4096,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ma_t4096_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,4096,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ma_t5048_cold,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,5048,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ma_t5048_lru,Phase 1 - Baseline,Primary Full-Depth Baseline,moe_anywhere_p60,1,128,5048,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_ds_syn_t128_warm,Phase 1 - Baseline,Warm Reference,deepseek_synthetic,1,128,128,1,60,57,warm,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ds_syn_t5048_warm,Phase 1 - Baseline,Warm Reference,deepseek_synthetic,1,128,5048,1,60,57,warm,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t128_warm,Phase 1 - Baseline,Warm Reference,moe_suite_task12,1,128,128,1,78,75,warm,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ms_t5048_warm,Phase 1 - Baseline,Warm Reference,moe_suite_task12,1,128,5048,1,78,75,warm,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ma_t128_warm,Phase 1 - Baseline,Warm Reference,moe_anywhere_p60,1,128,128,1,43,40,warm,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_ma_t5048_warm,Phase 1 - Baseline,Warm Reference,moe_anywhere_p60,1,128,5048,1,43,40,warm,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ds_syn_b2_t512_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,2,128,512,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b2_t512_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,2,128,512,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b2_t5048_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,2,128,5048,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b2_t5048_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,2,128,5048,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b4_t512_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,4,128,512,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b4_t512_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,4,128,512,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b4_t5048_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,4,128,5048,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b4_t5048_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,4,128,5048,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b8_t512_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,8,128,512,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b8_t512_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,8,128,512,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b8_t5048_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,8,128,5048,1,60,57,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ds_syn_b8_t5048_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,deepseek_synthetic,8,128,5048,2,60,57,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b2_t512_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,2,128,512,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b2_t512_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,2,128,512,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b2_t5048_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,2,128,5048,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b2_t5048_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,2,128,5048,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b4_t512_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,4,128,512,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b4_t512_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,4,128,512,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b4_t5048_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,4,128,5048,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b4_t5048_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,4,128,5048,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b8_t512_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,8,128,512,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b8_t512_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,8,128,512,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b8_t5048_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,8,128,5048,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ms_b8_t5048_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_suite_task12,8,128,5048,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_batch_ma_b2_t512_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,2,128,512,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b2_t512_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,2,128,512,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b2_t5048_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,2,128,5048,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b2_t5048_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,2,128,5048,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b4_t512_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,4,128,512,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b4_t512_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,4,128,512,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b4_t5048_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,4,128,5048,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b4_t5048_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,4,128,5048,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b8_t512_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,8,128,512,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b8_t512_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,8,128,512,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b8_t5048_cold,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,8,128,5048,1,43,40,cold,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_batch_ma_b8_t5048_lru,Phase 1 - Baseline,Batch Scaling Sensitivity,moe_anywhere_p60,8,128,5048,2,43,40,lru,80.0,none,False,0,0,LRU,True,INFEASIBLE_EXCEEDS_MAX_T257
+P1_context_ms_in128_cold,Phase 1 - Baseline,Context Length Sensitivity,moe_suite_task12,1,128,128,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_context_ma_in128_cold,Phase 1 - Baseline,Context Length Sensitivity,moe_anywhere_p60,1,128,128,1,43,40,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_context_ms_in512_cold,Phase 1 - Baseline,Context Length Sensitivity,moe_suite_task12,1,512,128,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_context_ma_in512_cold,Phase 1 - Baseline,Context Length Sensitivity,moe_anywhere_p60,1,512,128,1,43,40,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_context_ms_in1024_cold,Phase 1 - Baseline,Context Length Sensitivity,moe_suite_task12,1,1024,128,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_context_ma_in1024_cold,Phase 1 - Baseline,Context Length Sensitivity,moe_anywhere_p60,1,1024,128,1,43,40,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_context_ms_in2048_cold,Phase 1 - Baseline,Context Length Sensitivity,moe_suite_task12,1,2048,128,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P1_context_ma_in2048_cold,Phase 1 - Baseline,Context Length Sensitivity,moe_anywhere_p60,1,2048,128,1,43,40,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P2_offline_random_moe_suite_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,2,1,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,4,1,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,8,1,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,16,1,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,2,2,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,4,2,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,8,2,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,16,2,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,2,3,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,4,3,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,8,3,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,16,3,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,2,4,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,4,4,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,8,4,N/A,False,FEASIBLE
+P2_offline_random_moe_suite_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Random,False,16,4,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,2,1,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,4,1,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,8,1,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,16,1,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,2,2,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,4,2,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,8,2,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,16,2,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,2,3,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,4,3,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,8,3,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,16,3,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,2,4,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,4,4,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,8,4,N/A,False,FEASIBLE
+P2_offline_random_moe_anywhere_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Random,False,16,4,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,2,1,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,4,1,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,8,1,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,16,1,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,2,2,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,4,2,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,8,2,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,16,2,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,2,3,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,4,3,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,8,3,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,16,3,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,2,4,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,4,4,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,8,4,N/A,False,FEASIBLE
+P2_offline_frequency_moe_suite_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Frequency,False,16,4,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,2,1,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,4,1,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,8,1,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,16,1,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,2,2,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,4,2,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,8,2,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,16,2,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,2,3,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,4,3,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,8,3,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,16,3,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,2,4,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,4,4,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,8,4,N/A,False,FEASIBLE
+P2_offline_frequency_moe_anywhere_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Frequency,False,16,4,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,2,1,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,4,1,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,8,1,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,16,1,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,2,2,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,4,2,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,8,2,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,16,2,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,2,3,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,4,3,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,8,3,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,16,3,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,2,4,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,4,4,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,8,4,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_suite_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Temporal_Only,False,16,4,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,2,1,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,4,1,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,8,1,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,16,1,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,2,2,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,4,2,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,8,2,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,16,2,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,2,3,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,4,3,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,8,3,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,16,3,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,2,4,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,4,4,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,8,4,N/A,False,FEASIBLE
+P2_offline_temporal_only_moe_anywhere_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Temporal_Only,False,16,4,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,2,1,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,4,1,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,8,1,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,16,1,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,2,2,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,4,2,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,8,2,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,16,2,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,2,3,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,4,3,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,8,3,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,16,3,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,2,4,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,4,4,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,8,4,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_suite_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Spatial_Only,False,16,4,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,2,1,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,4,1,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,8,1,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,16,1,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,2,2,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,4,2,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,8,2,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,16,2,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,2,3,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,4,3,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,8,3,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,16,3,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,2,4,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,4,4,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,8,4,N/A,False,FEASIBLE
+P2_offline_spatial_only_moe_anywhere_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Spatial_Only,False,16,4,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,2,1,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,4,1,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,8,1,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,16,1,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,2,2,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,4,2,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,8,2,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,16,2,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,2,3,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,4,3,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,8,3,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,16,3,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,2,4,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,4,4,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,8,4,N/A,False,FEASIBLE
+P2_offline_cstp_moe_suite_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,CSTP,False,16,4,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,2,1,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,4,1,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,8,1,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,16,1,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,2,2,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,4,2,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,8,2,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,16,2,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,2,3,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,4,3,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,8,3,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,16,3,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,2,4,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,4,4,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,8,4,N/A,False,FEASIBLE
+P2_offline_cstp_moe_anywhere_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,CSTP,False,16,4,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,2,1,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,4,1,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,8,1,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,16,1,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,2,2,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,4,2,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,8,2,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,16,2,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,2,3,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,4,3,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,8,3,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,16,3,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,2,4,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,4,4,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,8,4,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_suite_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ST_MoE_Paper,False,16,4,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,2,1,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,4,1,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,8,1,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,16,1,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,2,2,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,4,2,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,8,2,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,16,2,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,2,3,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,4,3,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,8,3,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,16,3,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,2,4,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,4,4,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,8,4,N/A,False,FEASIBLE
+P2_offline_st_moe_paper_moe_anywhere_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ST_MoE_Paper,False,16,4,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,2,1,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,4,1,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,8,1,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,16,1,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,2,2,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,4,2,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,8,2,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,16,2,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,2,3,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,4,3,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,8,3,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,16,3,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,2,4,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,4,4,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,8,4,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_suite_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,Fixed_Hybrid,False,16,4,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,2,1,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,4,1,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,8,1,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,16,1,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,2,2,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,4,2,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,8,2,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,16,2,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,2,3,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,4,3,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,8,3,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,16,3,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,2,4,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,4,4,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,8,4,N/A,False,FEASIBLE
+P2_offline_fixed_hybrid_moe_anywhere_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,Fixed_Hybrid,False,16,4,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,2,1,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,4,1,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,8,1,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,16,1,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,2,2,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,4,2,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,8,2,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,16,2,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,2,3,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,4,3,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,8,3,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,16,3,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,2,4,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,4,4,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,8,4,N/A,False,FEASIBLE
+P2_offline_acsh_moe_suite_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_suite,1,128,512,0,75,75,N/A_Offline,0.0,ACSH,False,16,4,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h1_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,2,1,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h1_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,4,1,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h1_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,8,1,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h1_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,16,1,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h2_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,2,2,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h2_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,4,2,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h2_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,8,2,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h2_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,16,2,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h3_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,2,3,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h3_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,4,3,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h3_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,8,3,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h3_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,16,3,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h4_kp2,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,2,4,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h4_kp4,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,4,4,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h4_kp8,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,8,4,N/A,False,FEASIBLE
+P2_offline_acsh_moe_anywhere_h4_kp16,Phase 2 - Offline Predictors,Algorithm Accuracy & Horizon Sweep,moe_anywhere,1,128,256,0,40,40,N/A_Offline,0.0,ACSH,False,16,4,N/A,False,FEASIBLE
+P3_in_sim_overhead_none_moe_suite,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_suite,1,128,512,1,78,75,cold,80.0,none,False,8,2,LRU,True,FEASIBLE
+P3_in_sim_overhead_none_moe_anywhere,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_anywhere,1,128,256,1,43,40,cold,80.0,none,False,8,2,LRU,True,FEASIBLE
+P3_in_sim_overhead_cstp_moe_suite,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,False,8,2,LRU,True,FEASIBLE
+P3_in_sim_overhead_cstp_moe_anywhere,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,False,8,2,LRU,True,FEASIBLE
+P3_in_sim_overhead_st_moe_paper_moe_suite,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,False,8,2,LRU,True,FEASIBLE
+P3_in_sim_overhead_st_moe_paper_moe_anywhere,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,False,8,2,LRU,True,FEASIBLE
+P3_in_sim_overhead_acsh_moe_suite,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,False,8,2,LRU,True,FEASIBLE
+P3_in_sim_overhead_acsh_moe_anywhere,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,False,8,2,LRU,True,FEASIBLE
+P3_in_sim_overhead_frequency_moe_suite,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,False,8,2,LRU,True,FEASIBLE
+P3_in_sim_overhead_frequency_moe_anywhere,Phase 3 - Predictor In-Sim Validation,Causal Prediction & Runtime Overhead,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,False,8,2,LRU,True,FEASIBLE
+P4_prefetch_none_moe_suite_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P4_prefetch_none_moe_anywhere_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P4_prefetch_random_moe_suite_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Random,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_random_moe_suite_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Random,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_random_moe_suite_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Random,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_random_moe_suite_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Random,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_random_moe_suite_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Random,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_random_moe_suite_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Random,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_random_moe_suite_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Random,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_random_moe_suite_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Random,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_random_moe_suite_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Random,True,8,4,LRU,True,FEASIBLE
+P4_prefetch_random_moe_anywhere_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Random,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_random_moe_anywhere_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Random,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_random_moe_anywhere_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Random,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_random_moe_anywhere_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Random,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_random_moe_anywhere_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Random,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_random_moe_anywhere_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Random,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_random_moe_anywhere_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Random,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_random_moe_anywhere_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Random,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_random_moe_anywhere_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Random,True,8,4,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_suite_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_suite_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_suite_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_suite_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_suite_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_suite_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_suite_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_suite_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_suite_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,Frequency,True,8,4,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_anywhere_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_anywhere_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_anywhere_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_anywhere_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_anywhere_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_anywhere_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_anywhere_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_anywhere_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_frequency_moe_anywhere_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,Frequency,True,8,4,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_suite_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_suite_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_suite_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_suite_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_suite_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_suite_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_suite_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_suite_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_suite_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,8,4,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_anywhere_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_anywhere_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_anywhere_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_anywhere_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_anywhere_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_anywhere_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_anywhere_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_anywhere_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_cstp_moe_anywhere_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,CSTP,True,8,4,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_suite_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_suite_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_suite_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_suite_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_suite_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_suite_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_suite_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_suite_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_suite_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,8,4,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_anywhere_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_anywhere_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_anywhere_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_anywhere_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_anywhere_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_anywhere_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_anywhere_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_anywhere_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_st_moe_paper_moe_anywhere_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ST_MoE_Paper,True,8,4,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_suite_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_suite_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_suite_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_suite_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_suite_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_suite_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_suite_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_suite_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_suite_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,8,4,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_anywhere_h1_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,True,2,1,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_anywhere_h2_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,True,2,2,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_anywhere_h4_kp2,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,True,2,4,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_anywhere_h1_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,True,4,1,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_anywhere_h2_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,True,4,2,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_anywhere_h4_kp4,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,True,4,4,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_anywhere_h1_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,True,8,1,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_anywhere_h2_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,True,8,2,LRU,True,FEASIBLE
+P4_prefetch_acsh_moe_anywhere_h4_kp8,Phase 4 - Prefetching Engine,Hardware Prefetch Optimization Sweep,moe_anywhere,1,128,256,1,43,40,cold,80.0,ACSH,True,8,4,LRU,True,FEASIBLE
+P5_hbm_lru_nopref_cap2gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,2.0,none,False,0,0,LRU,True,FEASIBLE
+P5_hbm_lru_nopref_cap4gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,4.0,none,False,0,0,LRU,True,FEASIBLE
+P5_hbm_lru_nopref_cap8gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,8.0,none,False,0,0,LRU,True,FEASIBLE
+P5_hbm_lru_nopref_cap16gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,16.0,none,False,0,0,LRU,True,FEASIBLE
+P5_hbm_lru_nopref_cap80gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,80.0,none,False,0,0,LRU,True,FEASIBLE
+P5_hbm_lru_acsh_cap2gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,2.0,ACSH,True,8,2,LRU,True,FEASIBLE
+P5_hbm_lru_acsh_cap4gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,4.0,ACSH,True,8,2,LRU,True,FEASIBLE
+P5_hbm_lru_acsh_cap8gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,8.0,ACSH,True,8,2,LRU,True,FEASIBLE
+P5_hbm_lru_acsh_cap16gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,16.0,ACSH,True,8,2,LRU,True,FEASIBLE
+P5_hbm_lru_acsh_cap80gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,80.0,ACSH,True,8,2,LRU,True,FEASIBLE
+P5_hbm_lfu_frequency_nopref_cap2gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,2.0,none,False,0,0,LFU_Frequency,True,FEASIBLE
+P5_hbm_lfu_frequency_nopref_cap4gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,4.0,none,False,0,0,LFU_Frequency,True,FEASIBLE
+P5_hbm_lfu_frequency_nopref_cap8gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,8.0,none,False,0,0,LFU_Frequency,True,FEASIBLE
+P5_hbm_lfu_frequency_nopref_cap16gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,16.0,none,False,0,0,LFU_Frequency,True,FEASIBLE
+P5_hbm_lfu_frequency_nopref_cap80gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,80.0,none,False,0,0,LFU_Frequency,True,FEASIBLE
+P5_hbm_lfu_frequency_acsh_cap2gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,2.0,ACSH,True,8,2,LFU_Frequency,True,FEASIBLE
+P5_hbm_lfu_frequency_acsh_cap4gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,4.0,ACSH,True,8,2,LFU_Frequency,True,FEASIBLE
+P5_hbm_lfu_frequency_acsh_cap8gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,8.0,ACSH,True,8,2,LFU_Frequency,True,FEASIBLE
+P5_hbm_lfu_frequency_acsh_cap16gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,16.0,ACSH,True,8,2,LFU_Frequency,True,FEASIBLE
+P5_hbm_lfu_frequency_acsh_cap80gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,80.0,ACSH,True,8,2,LFU_Frequency,True,FEASIBLE
+P5_hbm_prediction_aware_nopref_cap2gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,2.0,none,False,0,0,Prediction_Aware,True,FEASIBLE
+P5_hbm_prediction_aware_nopref_cap4gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,4.0,none,False,0,0,Prediction_Aware,True,FEASIBLE
+P5_hbm_prediction_aware_nopref_cap8gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,8.0,none,False,0,0,Prediction_Aware,True,FEASIBLE
+P5_hbm_prediction_aware_nopref_cap16gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,16.0,none,False,0,0,Prediction_Aware,True,FEASIBLE
+P5_hbm_prediction_aware_nopref_cap80gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,80.0,none,False,0,0,Prediction_Aware,True,FEASIBLE
+P5_hbm_prediction_aware_acsh_cap2gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,2.0,ACSH,True,8,2,Prediction_Aware,True,FEASIBLE
+P5_hbm_prediction_aware_acsh_cap4gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,4.0,ACSH,True,8,2,Prediction_Aware,True,FEASIBLE
+P5_hbm_prediction_aware_acsh_cap8gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,8.0,ACSH,True,8,2,Prediction_Aware,True,FEASIBLE
+P5_hbm_prediction_aware_acsh_cap16gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,16.0,ACSH,True,8,2,Prediction_Aware,True,FEASIBLE
+P5_hbm_prediction_aware_acsh_cap80gb,Phase 5 - HBM Management,Capacity Constrained Memory Sweep,moe_suite,1,128,512,2,78,75,lru,80.0,ACSH,True,8,2,Prediction_Aware,True,FEASIBLE
+P6_energy_baseline_lru,Phase 6 - Energy Evaluation,Memory Subsystem Energy Audit,moe_suite,1,128,512,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P6_energy_cstp_lru,Phase 6 - Energy Evaluation,Memory Subsystem Energy Audit,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,8,2,LRU,True,FEASIBLE
+P6_energy_stmoe_lru,Phase 6 - Energy Evaluation,Memory Subsystem Energy Audit,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,8,2,LRU,True,FEASIBLE
+P6_energy_acsh_lru,Phase 6 - Energy Evaluation,Memory Subsystem Energy Audit,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,8,2,LRU,True,FEASIBLE
+P6_energy_acsh_predaware,Phase 6 - Energy Evaluation,Memory Subsystem Energy Audit,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,8,2,Prediction_Aware,True,FEASIBLE
+P7_ablation_1_baseline,Phase 7 - Final Ablation Matrix,Standardized Ablation,moe_suite,1,128,512,1,78,75,cold,80.0,none,False,0,0,LRU,True,FEASIBLE
+P7_ablation_2_predictor_only,Phase 7 - Final Ablation Matrix,Standardized Ablation,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,False,0,0,LRU,True,FEASIBLE
+P7_ablation_3_cstp_prefetch_lru,Phase 7 - Final Ablation Matrix,Standardized Ablation,moe_suite,1,128,512,1,78,75,cold,80.0,CSTP,True,8,2,LRU,True,FEASIBLE
+P7_ablation_4_stmoe_prefetch_lru,Phase 7 - Final Ablation Matrix,Standardized Ablation,moe_suite,1,128,512,1,78,75,cold,80.0,ST_MoE_Paper,True,8,2,LRU,True,FEASIBLE
+P7_ablation_5_acsh_prefetch_lru,Phase 7 - Final Ablation Matrix,Standardized Ablation,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,8,2,LRU,True,FEASIBLE
+P7_ablation_6_acsh_prefetch_lfu,Phase 7 - Final Ablation Matrix,Standardized Ablation,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,8,2,LFU_Frequency,True,FEASIBLE
+P7_ablation_7_acsh_prefetch_predaware,Phase 7 - Final Ablation Matrix,Standardized Ablation,moe_suite,1,128,512,1,78,75,cold,80.0,ACSH,True,8,2,Prediction_Aware,True,FEASIBLE

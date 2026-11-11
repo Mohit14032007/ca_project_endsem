@@ -1,0 +1,77 @@
+model:
+  model_name: deepseekV3
+  num_layers: 5
+system:
+  gpu_gen: A100
+  nvlink_gen: 3
+  infiniband_gen: 800
+  num_node: 1
+  num_device: 1
+  processor_type: GPU
+  distribution:
+    none_expert_tensor_degree: 1
+    expert_tensor_degree: 1
+  optimization:
+    parallel_execution: 'off'
+    hetero_subbatch: false
+    disagg_system: false
+    use_low_unit_moe_only: false
+    use_ramulator: 'on'
+    use_event_driven_dram: true
+    bypass_offchip_execution_cache: false
+    expert_cache_capacity_bytes: 80000000000
+    offchip_dram_cfg_path: reproduction_A100/with_off_chip_dram/deepseekv3/experiments/deepseekv3_mixtral_style_20261011/config_snapshot/dram_config_DDR5_retry.yaml
+    hbm_dram_cfg_path: reproduction_A100/with_off_chip_dram/deepseekv3/experiments/deepseekv3_mixtral_style_20261011/config_snapshot/dram_config_HBM3_80GB.yaml
+    compressed_kv: true
+    use_absorb: true
+    use_flash_mla: true
+    use_flash_attention: true
+    reuse_kv_cache: true
+    kv_cache_reuse_rate: 0.0
+    prefill_mode: false
+    decode_mode: true
+    use_hitting_queue: false
+serving:
+  max_batch_size: 1
+  max_process_token: 0
+simulation:
+  data: synthesis
+  input_len: 128
+  output_len: 128
+  precision_byte: 2
+  skewness: 0.0
+  iter: 4
+  injection_rate: 0
+  exit_out_of_memory: false
+  mem_cap_limit: false
+  trace_file: results/endsem_phase_e/final_baseline/traces/ms_task12_t128_l2.csv
+  warm_hbm_preload: false
+  prefetching:
+    enabled: true
+    mode: prediction_only
+    predictor:
+      type: st_moe
+      confidence_threshold: 2
+      online_adaptation: true
+    candidate_selection:
+      policy: top_k
+      budget: 4
+    scheduling:
+      prediction_horizon: 1
+      lookahead_tokens: 0
+      demand_priority: true
+      queue_enabled: true
+      queue_capacity: 1024
+      priority_policy: deadline_score_rank
+      duplicate_policy: retain_highest_priority
+      overflow_policy: reject_lowest_priority
+    transfer:
+      model: event_driven
+      asynchronous: true
+    eviction_policy: lru
+log:
+  print_log: false
+  export_gantt: false
+  output_directory: /home/mohman/ca_project/LLMSimulator/results/phase_4d5b/c02_stmoe_predonly/csv/
+  gantt_directory: /home/mohman/ca_project/LLMSimulator/results/phase_4d5b/c02_stmoe_predonly/raw/
+  traces_directory: /home/mohman/ca_project/LLMSimulator/results/phase_4d5b/c02_stmoe_predonly/traces/

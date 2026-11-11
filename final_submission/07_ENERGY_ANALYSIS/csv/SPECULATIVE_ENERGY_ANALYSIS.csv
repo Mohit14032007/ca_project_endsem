@@ -1,0 +1,4 @@
+candidate_budget,speculative_transfers,speculative_energy_j,stall_reduction_ms,energy_per_hit_j
+1,88,0.217,7.8,0.1085
+2,184,0.454,18.82,0.227
+4,395,0.974,7.8,0.487

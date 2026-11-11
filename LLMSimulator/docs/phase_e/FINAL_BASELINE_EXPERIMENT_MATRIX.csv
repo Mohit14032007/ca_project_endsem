@@ -1,0 +1,16 @@
+config_id,table,dataset,sequence_length_T,batch_size_B,input_len,output_len,iter,moe_stages_full,total_layers_full,routing_type,trace_id,hbm_initial_state,hbm_capacity_gb,eviction_policy,execution_cache_bypass,predictor_enabled,prefetch_enabled
+A1,A,MoE Suite,128,1,128,128,128,75,78,real_recorded,corpus-12-typescript-migration-planner,cold_empty,80.0,LRU,True,False,False
+A2,A,MoE Suite,512,1,128,512,512,75,78,real_recorded,corpus-12-typescript-migration-planner,cold_empty,80.0,LRU,True,False,False
+A3,A,MoE Suite,1024,1,128,1024,1024,75,78,real_recorded,corpus-12-typescript-migration-planner,cold_empty,80.0,LRU,True,False,False
+A4,A,MoE Suite,2048,1,128,2048,2048,75,78,real_recorded,corpus-12-typescript-migration-planner,cold_empty,80.0,LRU,True,False,False
+A5,A,MoE Anywhere,128,1,128,128,128,40,43,real_recorded,prompt_60,cold_empty,80.0,LRU,True,False,False
+A6,A,MoE Anywhere,256,1,128,256,256,40,43,real_recorded,prompt_60,cold_empty,80.0,LRU,True,False,False
+A7,A,DeepSeek-style synthetic,128,1,128,128,128,57,60,synthetic_random_k8,dynamic_mt19937_s777,cold_empty,80.0,LRU,True,False,False
+A8,A,DeepSeek-style synthetic,512,1,128,512,512,57,60,synthetic_random_k8,dynamic_mt19937_s777,cold_empty,80.0,LRU,True,False,False
+B1,B,MoE Anywhere,128,2,128,128,128,40,43,real_recorded,prompts_60_61,cold_empty,80.0,LRU,True,False,False
+B2,B,MoE Anywhere,128,4,128,128,128,40,43,real_recorded,prompts_60_61_62_63,cold_empty,80.0,LRU,True,False,False
+B3,B,MoE Anywhere,256,2,128,256,256,40,43,real_recorded,prompts_60_61,cold_empty,80.0,LRU,True,False,False
+B4,B,MoE Anywhere,256,4,128,256,256,40,43,real_recorded,prompts_60_61_62_63,cold_empty,80.0,LRU,True,False,False
+C1,C,MoE Suite,128,1,512,128,128,75,78,real_recorded,corpus-12-typescript-migration-planner,cold_empty,80.0,LRU,True,False,False
+C2,C,MoE Suite,128,1,1024,128,128,75,78,real_recorded,corpus-12-typescript-migration-planner,cold_empty,80.0,LRU,True,False,False
+C3,C,MoE Suite,128,1,2048,128,128,75,78,real_recorded,corpus-12-typescript-migration-planner,cold_empty,80.0,LRU,True,False,False

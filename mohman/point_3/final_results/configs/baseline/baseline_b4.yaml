@@ -1,0 +1,58 @@
+model:
+  model_name: deepseekV3
+  num_layers: 6
+
+system:
+  gpu_gen: A100
+  nvlink_gen: 3
+  infiniband_gen: 800
+  num_node: 1
+  num_device: 1
+  processor_type: GPU
+  distribution:
+    none_expert_tensor_degree: 1
+    expert_tensor_degree: 1
+  optimization:
+    parallel_execution: 'off'
+    hetero_subbatch: false
+    disagg_system: false
+    use_low_unit_moe_only: false
+    use_ramulator: 'on'
+    offchip_dram_cfg_path: /home/mohman/ca_project/LLMSimulator/reproduction_A100/with_off_chip_dram/configs/dram_config_DDR5_retry.yaml
+    hbm_dram_cfg_path: /home/mohman/ca_project/LLMSimulator/build/dram_config_HBM3_80GB.yaml
+    expert_cache_capacity_bytes: 85899345920
+    compressed_kv: true
+    use_absorb: true
+    use_flash_mla: true
+    use_flash_attention: true
+    reuse_kv_cache: true
+    kv_cache_reuse_rate: 0.0
+    prefill_mode: false
+    decode_mode: true
+    use_hitting_queue: false
+
+serving:
+  max_batch_size: 4
+  max_process_token: 0
+
+simulation:
+  data: moe_anywhere
+  input_len: 128
+  output_len: 4
+  precision_byte: 2
+  skewness: 0.0
+  iter: 4
+  injection_rate: 0
+  exit_out_of_memory: false
+  mem_cap_limit: false
+  trace_file: /home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b4_t4.csv
+  prefetching:
+    enabled: false
+    mode: none
+
+log:
+  print_log: false
+  export_gantt: false
+  output_directory: /home/mohman/ca_project/mohman/point_3/experiments/raw/baseline_b4/csv/
+  gantt_directory: /home/mohman/ca_project/mohman/point_3/experiments/raw/baseline_b4/raw/
+  traces_directory: /home/mohman/ca_project/mohman/point_3/experiments/raw/baseline_b4/traces/

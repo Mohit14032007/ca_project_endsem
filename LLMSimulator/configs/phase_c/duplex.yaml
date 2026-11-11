@@ -1,0 +1,26 @@
+dataset:
+  id: "duplex_a100"
+  name: "Duplex A100 Simulator Trace"
+  workload_type: "small_universe_simulator"
+  num_moe_stages: 32
+  num_routed_experts: 8
+  top_k: 2
+  first_k_dense: 0
+  train_ratio: 0.75
+
+evaluation:
+  horizons: [1]
+  budgets: [1, 2, 4, 6, 8]
+  note_b8_trivial: true
+  regimes: ["frozen", "online", "cold_start"]
+  seed: 42
+
+predictors:
+  cstp:
+    alpha: 0.5
+    smoothing_lambda: 1.0
+    prior_epsilon: 0.1
+  st_moe:
+    cct_capacity: 2
+    confidence_threshold: 2
+

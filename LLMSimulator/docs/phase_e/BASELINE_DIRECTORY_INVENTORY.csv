@@ -1,0 +1,103 @@
+config_id,directory,filename,file_type,file_size_bytes,record_count,purpose
+A1,configs,A1.yaml,YAML Configuration,1788,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+A2,configs,A2.yaml,YAML Configuration,1788,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+A3,configs,A3.yaml,YAML Configuration,1791,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+A4,configs,A4.yaml,YAML Configuration,1791,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+A5,configs,A5.yaml,YAML Configuration,1785,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+A6,configs,A6.yaml,YAML Configuration,1785,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+A7,configs,A7.yaml,YAML Configuration,1669,52,"Simulator execution parameters, DRAM configs, hardware architecture"
+A8,configs,A8.yaml,YAML Configuration,1669,52,"Simulator execution parameters, DRAM configs, hardware architecture"
+B1,configs,B1.yaml,YAML Configuration,1784,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+B2,configs,B2.yaml,YAML Configuration,1784,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+B3,configs,B3.yaml,YAML Configuration,1784,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+B4,configs,B4.yaml,YAML Configuration,1784,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+C1,configs,C1.yaml,YAML Configuration,1788,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+C2,configs,C2.yaml,YAML Configuration,1789,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+C3,configs,C3.yaml,YAML Configuration,1789,53,"Simulator execution parameters, DRAM configs, hardware architecture"
+INTERMEDIATE_TRACE,traces,ma_b2_t128_l40.csv,CSV Trace,1103695,81920,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ma_b2_t256_l40.csv,CSV Trace,2275694,163840,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ma_b4_t128_l40.csv,CSV Trace,2204998,163840,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ma_b4_t256_l40.csv,CSV Trace,4547911,327680,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ma_p60_t128_l2.csv,CSV Trace,26189,2048,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ma_p60_t128_l40.csv,CSV Trace,552051,40960,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ma_p60_t256_l40.csv,CSV Trace,1138044,81920,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ms_task12_t1024_l75.csv,CSV Trace,8815541,614400,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ms_task12_t128_l2.csv,CSV Trace,26113,2048,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ms_task12_t128_l75.csv,CSV Trace,1043034,76800,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ms_task12_t2048_l75.csv,CSV Trace,18295332,1228800,Ingested Top-8 routing trace exported from raw Parquet
+INTERMEDIATE_TRACE,traces,ms_task12_t512_l75.csv,CSV Trace,4367303,307200,Ingested Top-8 routing trace exported from raw Parquet
+A1,runs/A1,stdout_stderr.log,Text Log,15456,169,C++ executable stdout and stderr log
+A1,runs/A1/traces,expert_cache.csv,CSV Data,8342677,355134,HBM cache hit/miss/evict state trace
+A1,runs/A1/traces,expert_load.csv,CSV Data,45329897,586442,DDR5 and HBM memory transfer timing and latency log
+A1,runs/A1/traces,expert_routing.csv,CSV Data,1109046,76800,Simulated per-token Top-8 routed expert decisions
+A1,runs/A1/csv,deepseekV3_synthesis_128_128_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter128_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,42122,128,"Per-token latency, energy, compute and stall summary"
+A2,runs/A2,stdout_stderr.log,Text Log,55784,553,C++ executable stdout and stderr log
+A2,runs/A2/traces,expert_cache.csv,CSV Data,33926661,1442822,HBM cache hit/miss/evict state trace
+A2,runs/A2/traces,expert_load.csv,CSV Data,184228419,2365330,DDR5 and HBM memory transfer timing and latency log
+A2,runs/A2/traces,expert_routing.csv,CSV Data,4433291,307200,Simulated per-token Top-8 routed expert decisions
+A2,runs/A2/csv,deepseekV3_synthesis_128_512_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter512_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,167482,512,"Per-token latency, energy, compute and stall summary"
+A3,runs/A3,stdout_stderr.log,Text Log,109744,1065,C++ executable stdout and stderr log
+A3,runs/A3/traces,expert_cache.csv,CSV Data,68278312,2902154,HBM cache hit/miss/evict state trace
+A3,runs/A3/traces,expert_load.csv,CSV Data,372587599,4746262,DDR5 and HBM memory transfer timing and latency log
+A3,runs/A3/traces,expert_routing.csv,CSV Data,8957767,614400,Simulated per-token Top-8 routed expert decisions
+A3,runs/A3/csv,deepseekV3_synthesis_128_1024_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter1024_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,335827,1024,"Per-token latency, energy, compute and stall summary"
+A4,runs/A4,stdout_stderr.log,Text Log,219322,2089,C++ executable stdout and stderr log
+A4,runs/A4/traces,expert_cache.csv,CSV Data,136919500,5818820,HBM cache hit/miss/evict state trace
+A4,runs/A4/traces,expert_load.csv,CSV Data,749477537,9506128,DDR5 and HBM memory transfer timing and latency log
+A4,runs/A4/traces,expert_routing.csv,CSV Data,18437545,1228800,Simulated per-token Top-8 routed expert decisions
+A4,runs/A4/csv,deepseekV3_synthesis_128_2048_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter2048_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,671699,2048,"Per-token latency, energy, compute and stall summary"
+A5,runs/A5,stdout_stderr.log,Text Log,15447,169,C++ executable stdout and stderr log
+A5,runs/A5/traces,expert_cache.csv,CSV Data,3774230,163576,HBM cache hit/miss/evict state trace
+A5,runs/A5/traces,expert_load.csv,CSV Data,21325159,287364,DDR5 and HBM memory transfer timing and latency log
+A5,runs/A5/traces,expert_routing.csv,CSV Data,587279,40960,Simulated per-token Top-8 routed expert decisions
+A5,runs/A5/csv,deepseekV3_synthesis_128_128_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter128_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,41182,128,"Per-token latency, energy, compute and stall summary"
+A6,runs/A6,stdout_stderr.log,Text Log,28888,297,C++ executable stdout and stderr log
+A6,runs/A6/traces,expert_cache.csv,CSV Data,7576621,328472,HBM cache hit/miss/evict state trace
+A6,runs/A6/traces,expert_load.csv,CSV Data,42943586,575140,DDR5 and HBM memory transfer timing and latency log
+A6,runs/A6/traces,expert_routing.csv,CSV Data,1173281,81920,Simulated per-token Top-8 routed expert decisions
+A6,runs/A6/csv,deepseekV3_synthesis_128_256_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter256_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,81847,256,"Per-token latency, energy, compute and stall summary"
+A7,runs/A7,stdout_stderr.log,Text Log,15005,163,C++ executable stdout and stderr log
+A7,runs/A7/traces,expert_cache.csv,CSV Data,6683329,283860,HBM cache hit/miss/evict state trace
+A7,runs/A7/traces,expert_load.csv,CSV Data,35863520,459872,DDR5 and HBM memory transfer timing and latency log
+A7,runs/A7/traces,expert_routing.csv,CSV Data,840202,58368,Simulated per-token Top-8 routed expert decisions
+A7,runs/A7/csv,deepseekV3_synthesis_128_128_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter128_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,42535,128,"Per-token latency, energy, compute and stall summary"
+A8,runs/A8,stdout_stderr.log,Text Log,55326,547,C++ executable stdout and stderr log
+A8,runs/A8/traces,expert_cache.csv,CSV Data,26791123,1137758,HBM cache hit/miss/evict state trace
+A8,runs/A8/traces,expert_load.csv,CSV Data,144286534,1839082,DDR5 and HBM memory transfer timing and latency log
+A8,runs/A8/traces,expert_routing.csv,CSV Data,3360570,233472,Simulated per-token Top-8 routed expert decisions
+A8,runs/A8/csv,deepseekV3_synthesis_128_512_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter512_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,168496,512,"Per-token latency, energy, compute and stall summary"
+B1,runs/B1,stdout_stderr.log,Text Log,15443,169,C++ executable stdout and stderr log
+B1,runs/B1/traces,expert_cache.csv,CSV Data,7087566,305581,HBM cache hit/miss/evict state trace
+B1,runs/B1/traces,expert_load.csv,CSV Data,39551665,523374,DDR5 and HBM memory transfer timing and latency log
+B1,runs/B1/traces,expert_routing.csv,CSV Data,1174126,81920,Simulated per-token Top-8 routed expert decisions
+B1,runs/B1/csv,deepseekV3_synthesis_128_128_GPU_N1_D1_TP1_DP1_maxbatch2_maxprocess524288_iter128_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,41701,128,"Per-token latency, energy, compute and stall summary"
+B2,runs/B2,stdout_stderr.log,Text Log,15447,169,C++ executable stdout and stderr log
+B2,runs/B2/traces,expert_cache.csv,CSV Data,15457965,658250,HBM cache hit/miss/evict state trace
+B2,runs/B2/traces,expert_load.csv,CSV Data,83209552,1061014,DDR5 and HBM memory transfer timing and latency log
+B2,runs/B2/traces,expert_routing.csv,CSV Data,2346518,163840,Simulated per-token Top-8 routed expert decisions
+B2,runs/B2/csv,deepseekV3_synthesis_128_128_GPU_N1_D1_TP1_DP1_maxbatch4_maxprocess524288_iter128_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,41928,128,"Per-token latency, energy, compute and stall summary"
+B3,runs/B3,stdout_stderr.log,Text Log,28890,297,C++ executable stdout and stderr log
+B3,runs/B3/traces,expert_cache.csv,CSV Data,14976328,645566,HBM cache hit/miss/evict state trace
+B3,runs/B3/traces,expert_load.csv,CSV Data,83593290,1100542,DDR5 and HBM memory transfer timing and latency log
+B3,runs/B3/traces,expert_routing.csv,CSV Data,2346150,163840,Simulated per-token Top-8 routed expert decisions
+B3,runs/B3/csv,deepseekV3_synthesis_128_256_GPU_N1_D1_TP1_DP1_maxbatch2_maxprocess524288_iter256_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,82867,256,"Per-token latency, energy, compute and stall summary"
+B4,runs/B4,stdout_stderr.log,Text Log,28890,297,C++ executable stdout and stderr log
+B4,runs/B4/traces,expert_cache.csv,CSV Data,32985377,1404177,HBM cache hit/miss/evict state trace
+B4,runs/B4/traces,expert_load.csv,CSV Data,177435720,2254508,DDR5 and HBM memory transfer timing and latency log
+B4,runs/B4/traces,expert_routing.csv,CSV Data,4689431,327680,Simulated per-token Top-8 routed expert decisions
+B4,runs/B4/csv,deepseekV3_synthesis_128_256_GPU_N1_D1_TP1_DP1_maxbatch4_maxprocess524288_iter256_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,83332,256,"Per-token latency, energy, compute and stall summary"
+C1,runs/C1,stdout_stderr.log,Text Log,15456,169,C++ executable stdout and stderr log
+C1,runs/C1/traces,expert_cache.csv,CSV Data,8342677,355134,HBM cache hit/miss/evict state trace
+C1,runs/C1/traces,expert_load.csv,CSV Data,45329816,586442,DDR5 and HBM memory transfer timing and latency log
+C1,runs/C1/traces,expert_routing.csv,CSV Data,1109046,76800,Simulated per-token Top-8 routed expert decisions
+C1,runs/C1/csv,deepseekV3_synthesis_512_128_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter128_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,42336,128,"Per-token latency, energy, compute and stall summary"
+C2,runs/C2,stdout_stderr.log,Text Log,15584,169,C++ executable stdout and stderr log
+C2,runs/C2/traces,expert_cache.csv,CSV Data,8342677,355134,HBM cache hit/miss/evict state trace
+C2,runs/C2/traces,expert_load.csv,CSV Data,45329323,586442,DDR5 and HBM memory transfer timing and latency log
+C2,runs/C2/traces,expert_routing.csv,CSV Data,1185846,76800,Simulated per-token Top-8 routed expert decisions
+C2,runs/C2/csv,deepseekV3_synthesis_1024_128_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter128_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,42596,128,"Per-token latency, energy, compute and stall summary"
+C3,runs/C3,stdout_stderr.log,Text Log,15584,169,C++ executable stdout and stderr log
+C3,runs/C3/traces,expert_cache.csv,CSV Data,8342677,355134,HBM cache hit/miss/evict state trace
+C3,runs/C3/traces,expert_load.csv,CSV Data,45329027,586442,DDR5 and HBM memory transfer timing and latency log
+C3,runs/C3/traces,expert_routing.csv,CSV Data,1185846,76800,Simulated per-token Top-8 routed expert decisions
+C3,runs/C3/csv,deepseekV3_synthesis_2048_128_GPU_N1_D1_TP1_DP1_maxbatch1_maxprocess524288_iter128_skew0_precision_byte2_parallel_execution0_ramul_decode.csv,CSV Data,42484,128,"Per-token latency, energy, compute and stall summary"

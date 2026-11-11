@@ -1,0 +1,63 @@
+log:
+  export_gantt: false
+  gantt_directory: /home/mohman/ca_project/mohman/point_3/results/sensitivity/budget/budget_1/raw/
+  output_directory: /home/mohman/ca_project/mohman/point_3/results/sensitivity/budget/budget_1/csv/
+  print_log: false
+  traces_directory: /home/mohman/ca_project/mohman/point_3/results/sensitivity/budget/budget_1/traces/
+model:
+  model_name: deepseekV3
+  num_layers: 5
+serving:
+  max_batch_size: 1
+  max_process_token: 0
+simulation:
+  data: moe_anywhere
+  exit_out_of_memory: false
+  injection_rate: 0
+  input_len: 128
+  iter: 4
+  mem_cap_limit: false
+  output_len: 4
+  precision_byte: 2
+  prefetching:
+    candidate_selection:
+      budget: 1
+    enabled: true
+    mode: hardware_async
+    predictor:
+      budget: 1
+      prediction_horizon: 1
+      type: CSTP
+    scheduling:
+      prediction_horizon: 1
+      scheduling_mode: forward_lookahead
+  skewness: 0.0
+  trace_file: /home/mohman/ca_project/mohman/point_3/traces/moe_anywhere_b1_t128.csv
+system:
+  distribution:
+    expert_tensor_degree: 1
+    none_expert_tensor_degree: 1
+  gpu_gen: A100
+  infiniband_gen: 800
+  num_device: 1
+  num_node: 1
+  nvlink_gen: 3
+  optimization:
+    compressed_kv: true
+    decode_mode: true
+    disagg_system: false
+    expert_cache_capacity_bytes: 85899345920
+    hbm_dram_cfg_path: /home/mohman/ca_project/LLMSimulator/build/dram_config_HBM3_80GB.yaml
+    hetero_subbatch: false
+    kv_cache_reuse_rate: 0.0
+    offchip_dram_cfg_path: /home/mohman/ca_project/LLMSimulator/reproduction_A100/with_off_chip_dram/configs/dram_config_DDR5_retry.yaml
+    parallel_execution: 'off'
+    prefill_mode: false
+    reuse_kv_cache: true
+    use_absorb: true
+    use_flash_attention: true
+    use_flash_mla: true
+    use_hitting_queue: false
+    use_low_unit_moe_only: false
+    use_ramulator: 'on'
+  processor_type: GPU

@@ -1,0 +1,29 @@
+experiment:
+  name: "distribution_shift"
+  description: "Controlled routing distribution shift from Cluster A to Cluster B at token 50"
+  num_tokens_phase1: 50
+  num_tokens_phase2: 50
+  total_tokens: 100
+  num_moe_stages: 32
+  num_routed_experts: 256
+  top_k: 8
+  cluster_size: 16
+  cluster_a_id: 2
+  cluster_b_id: 9
+  cluster_affinity: 0.8
+  temporal_affinity: 0.4
+  seed: 42
+
+evaluation:
+  budgets: [8]
+  horizons: [1]
+  target_recovery_fraction: 0.90
+  predictors:
+    - "cstp_online"
+    - "cstp_frozen"
+    - "st_moe_paper_online"
+    - "st_moe_paper_frozen"
+    - "frequency_only"
+    - "temporal_only"
+    - "random"
+

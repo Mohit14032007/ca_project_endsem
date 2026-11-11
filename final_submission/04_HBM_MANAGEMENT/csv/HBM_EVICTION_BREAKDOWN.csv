@@ -1,0 +1,4 @@
+policy,demand_evictions,speculative_evictions,speculative_rejections,demand_cache_pollution_events
+Standard LRU,62664,1845,0,1845
+PABI Quarantine (20% cap),62687,3210,922,0
+PABI + Belady Pinning,62687,3210,922,0

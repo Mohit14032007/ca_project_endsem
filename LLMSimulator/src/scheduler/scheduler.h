@@ -105,6 +105,24 @@ class Scheduler : public std::enable_shared_from_this<Scheduler> {
   std::string expert_file_path;
   
   void initRunningQueue(); // juhwan
+  void loadRealTrace(const std::string& trace_path, int expected_seqs, int num_layer, int num_expert, int top_k, int iter_tokens);
+  
+  std::shared_ptr<class LivePredictionEngine> prediction_engine = nullptr;
+  std::shared_ptr<class Device> device = nullptr;
+  void init_prediction_engine();
+  void set_prediction_engine(std::shared_ptr<class LivePredictionEngine> engine) {
+    prediction_engine = engine;
+  }
+  std::shared_ptr<class LivePredictionEngine> get_prediction_engine() {
+    return prediction_engine;
+  }
+  void set_device(std::shared_ptr<class Device> dev) {
+    device = dev;
+  }
+  std::shared_ptr<class Device> get_device() {
+    return device;
+  }
+  std::shared_ptr<class PrefetchCandidateQueue> get_candidate_queue();
   
  private:
   Scheduler(SystemConfig system_config, ModelConfig& model_config,

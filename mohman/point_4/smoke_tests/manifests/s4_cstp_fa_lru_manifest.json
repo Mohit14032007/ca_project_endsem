@@ -1,0 +1,12 @@
+{
+  "run_id": "s4_cstp_fa_lru",
+  "description": "CSTP Prefetching with FA-LRU eviction (W=16)",
+  "config_path": "/home/mohman/ca_project/mohman/point_4/smoke_tests/configs/s4_cstp_fa_lru.yaml",
+  "log_path": "/home/mohman/ca_project/mohman/point_4/smoke_tests/logs/s4_cstp_fa_lru.log",
+  "return_code": 0,
+  "host_elapsed_seconds": 2.335233211517334,
+  "eviction_policy": "fa_lru",
+  "window_size": 16,
+  "capacity_bytes": 4000000000,
+  "prefetch": true
+}

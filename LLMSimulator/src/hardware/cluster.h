@@ -26,6 +26,9 @@ class Cluster : public std::enable_shared_from_this<Cluster> {
     cluster->initializeDRAM((int)(ProcessorType::GPU), gpuEnergy);
     cluster->initializeDRAM((int)(ProcessorType::LOGIC), logicEnergy);
     cluster->initializeDRAM((int)(ProcessorType::PIM), pimEnergy);
+    if (scheduler != nullptr && cluster->get_device(0) != nullptr) {
+      scheduler->set_device(cluster->get_device(0));
+    }
     return cluster;
   }
 

@@ -1,0 +1,19 @@
+metric_name,metric_value,unit,configuration,workload,source_campaign,source_run_id,exact_source_file,measurement_type
+coalesced_resident_hits,0.0,count,Config A: Baseline,W3 (B=14),Point 4 Big Experiment,w3_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_hbm_hit_rate_pct,0.0,percent,Config A: Baseline,W3 (B=14),Point 4 Big Experiment,w3_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,calculated
+expert_reloads_count,317775.0,count,Config A: Baseline,W3 (B=14),Point 4 Big Experiment,w3_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_resident_hits,1657.0,count,Config C2: CSTP + LRU,W3 (B=14),Point 4 Big Experiment,w3_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_hbm_hit_rate_pct,0.5063,percent,Config C2: CSTP + LRU,W3 (B=14),Point 4 Big Experiment,w3_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,calculated
+expert_reloads_count,316227.0,count,Config C2: CSTP + LRU,W3 (B=14),Point 4 Big Experiment,w3_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_resident_hits,1643.0,count,Config D: Complete System,W3 (B=14),Point 4 Big Experiment,w3_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_hbm_hit_rate_pct,0.5021,percent,Config D: Complete System,W3 (B=14),Point 4 Big Experiment,w3_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,calculated
+expert_reloads_count,316241.0,count,Config D: Complete System,W3 (B=14),Point 4 Big Experiment,w3_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_resident_hits,0.0,count,Config A: Baseline,W4 (B=32),Point 4 Big Experiment,w4_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_hbm_hit_rate_pct,0.0,percent,Config A: Baseline,W4 (B=32),Point 4 Big Experiment,w4_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,calculated
+expert_reloads_count,537137.0,count,Config A: Baseline,W4 (B=32),Point 4 Big Experiment,w4_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_resident_hits,1417.0,count,Config C2: CSTP + LRU,W4 (B=32),Point 4 Big Experiment,w4_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_hbm_hit_rate_pct,0.2642,percent,Config C2: CSTP + LRU,W4 (B=32),Point 4 Big Experiment,w4_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,calculated
+expert_reloads_count,536034.0,count,Config C2: CSTP + LRU,W4 (B=32),Point 4 Big Experiment,w4_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_resident_hits,1432.0,count,Config D: Complete System,W4 (B=32),Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+coalesced_hbm_hit_rate_pct,0.267,percent,Config D: Complete System,W4 (B=32),Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,calculated
+expert_reloads_count,536019.0,count,Config D: Complete System,W4 (B=32),Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured

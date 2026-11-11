@@ -1,0 +1,4 @@
+batch_size,workload,sim_exec_ms,hit_rate_pct,exposed_stall_ms,tokens_per_sec
+1,A5 (MoE-Anywhere),83416.9,83.07,177418.18,1.53
+2,B1 (MoE-Anywhere),166833.8,82.95,354836.36,1.53
+4,B2 (MoE-Anywhere),333667.6,82.8,709672.72,1.53

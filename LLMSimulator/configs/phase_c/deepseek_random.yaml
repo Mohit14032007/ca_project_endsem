@@ -1,0 +1,25 @@
+dataset:
+  id: "deepseek_random"
+  name: "DeepSeek-V3 Simulator Random Trace"
+  workload_type: "negative_control"
+  num_moe_stages: 57
+  num_routed_experts: 256
+  top_k: 8
+  first_k_dense: 3
+  reconstruct_stages: true
+
+evaluation:
+  horizons: [1]
+  budgets: [4, 8, 16, 24, 32, 48, 64]
+  regimes: ["frozen", "online", "cold_start"]
+  seed: 42
+
+predictors:
+  cstp:
+    alpha: 0.5
+    smoothing_lambda: 1.0
+    prior_epsilon: 0.1
+  st_moe:
+    cct_capacity: 8
+    confidence_threshold: 2
+

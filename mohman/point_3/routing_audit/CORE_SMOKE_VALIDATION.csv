@@ -1,0 +1,13 @@
+experiment_name,topology,dataset,predictor,horizon,budget,total_demands,unique_demands,resident_hits,demand_misses,hbm_hit_rate,dispatched_prefetches,timely_hits,late_attachments,unused_prefetches,speculative_bytes,demand_bytes,total_ddr5_bytes,exposed_gpu_stall_ns,token_latency_mean_ns,tokens_per_sec,routing_match_status,random_fallback_count
+smoke_2stg_baseline_anywhere,2_stage,moe_anywhere,baseline,0,0,192,64,150,42,0.7800,0,0,0,0,0,3699376128,3699376128,57802752.00,16575444.23,60.33,100% EXACT_MATCH,0
+smoke_2stg_stmoe_h1_anywhere,2_stage,moe_anywhere,ST_MOE,1,4,192,64,150,42,0.7800,4,0,0,4,352321536,3699376128,4051697664,57802752.00,16575444.23,60.33,100% EXACT_MATCH,0
+smoke_2stg_cstp_h1_anywhere,2_stage,moe_anywhere,CSTP,1,4,192,64,150,42,0.7800,4,0,0,4,352321536,3699376128,4051697664,57802752.00,16575444.23,60.33,100% EXACT_MATCH,0
+smoke_2stg_baseline_suite12,2_stage,moe_suite_corpus12,baseline,0,0,192,64,132,60,0.6900,0,0,0,0,0,5284823040,5284823040,82575360.00,22721882.81,44.01,100% EXACT_MATCH,0
+smoke_2stg_stmoe_h1_suite12,2_stage,moe_suite_corpus12,ST_MOE,1,4,192,64,132,60,0.6900,4,0,0,4,352321536,5284823040,5637144576,82575360.00,22721882.81,44.01,100% EXACT_MATCH,0
+smoke_2stg_cstp_h1_suite12,2_stage,moe_suite_corpus12,CSTP,1,4,192,64,132,60,0.6900,4,0,0,4,352321536,5284823040,5637144576,82575360.00,22721882.81,44.01,100% EXACT_MATCH,0
+smoke_2stg_synthetic,2_stage,synthetic,baseline,0,0,192,64,131,61,0.6800,0,0,0,0,0,5372903424,5372903424,83951616.00,23058601.63,43.37,100% EXACT_MATCH,0
+smoke_3stg_baseline_anywhere,3_stage,moe_anywhere,baseline,0,0,288,96,229,59,0.8000,0,0,0,0,0,5196742656,5196742656,81199104.00,22830871.76,43.80,100% EXACT_MATCH,0
+smoke_3stg_stmoe_h1_anywhere,3_stage,moe_anywhere,ST_MOE,1,4,288,96,229,59,0.8000,8,0,0,6,704643072,5196742656,5901385728,81199104.00,22830871.76,43.80,100% EXACT_MATCH,0
+smoke_3stg_stmoe_h2_anywhere,3_stage,moe_anywhere,ST_MOE,2,4,288,96,229,59,0.8000,4,0,0,4,352321536,5196742656,5549064192,81199104.00,22830871.76,43.80,100% EXACT_MATCH,0
+smoke_3stg_cstp_h1_anywhere,3_stage,moe_anywhere,CSTP,1,4,288,96,229,59,0.8000,8,0,0,6,704643072,5196742656,5901385728,81199104.00,22830871.76,43.80,100% EXACT_MATCH,0
+smoke_3stg_cstp_h2_anywhere,3_stage,moe_anywhere,CSTP,2,4,288,96,229,59,0.8000,4,0,0,4,352321536,5196742656,5549064192,81199104.00,22830871.76,43.80,100% EXACT_MATCH,0

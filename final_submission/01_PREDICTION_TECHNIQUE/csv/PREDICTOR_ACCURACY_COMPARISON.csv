@@ -1,0 +1,5 @@
+predictor,workload,horizon,budget,precision_pct,recall_pct,f1_pct,hit_rate_pct,mrr,ndcg,mean_pred_latency_us,mean_upd_latency_us,host_overhead_pct
+ST-MoE,MoE-Suite Task 12,2,4,19.69,9.85,13.13,54.79,0.3599,0.2061,33.58,9.19,0.149
+CSTP,MoE-Suite Task 12,2,4,19.09,9.55,12.73,54.79,0.3599,0.2061,35.12,11.04,0.165
+ST-MoE,MoE-Anywhere P60,2,4,28.45,14.23,18.97,68.32,0.4215,0.258,28.14,8.45,0.112
+CSTP,MoE-Anywhere P60,2,4,29.12,14.56,19.41,69.1,0.4302,0.2641,29.8,9.9,0.125

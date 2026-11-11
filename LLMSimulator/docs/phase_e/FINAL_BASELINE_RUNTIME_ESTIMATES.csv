@@ -1,0 +1,16 @@
+config_id,dataset,tokens_T,batch_B,moe_stages,expert_demands,unique_experts_est,expected_ddr5_misses,ddr5_burst_count,simulated_time_ms_est,host_time_full_depth_hours,host_time_2l_screening_hours,host_time_memoized_sec,bottleneck,execution_gate_recommendation,gate_rationale
+A1,MoE Suite,128,1,75,76800,15360,23040,31708938240,90144.72,72.77,1.29,57.6,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (72.8h) exceeds 4h budget
+A2,MoE Suite,512,1,75,307200,18432,27648,38050725888,108911.97,87.32,1.55,230.4,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (87.3h) exceeds 4h budget
+A3,MoE Suite,1024,1,75,614400,18432,27648,38050725888,109966.69,87.32,1.55,460.8,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (87.3h) exceeds 4h budget
+A4,MoE Suite,2048,1,75,1228800,18432,27648,38050725888,112076.13,87.32,1.55,921.6,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (87.3h) exceeds 4h budget
+A5,MoE Anywhere,128,1,40,40960,8192,12288,16911433728,48200.24,38.81,1.29,57.6,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (38.8h) exceeds 4h budget
+A6,MoE Anywhere,256,1,40,81920,9011,13516,18601476096,53254.45,42.69,1.42,115.2,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (42.7h) exceeds 4h budget
+A7,DeepSeek-style synthetic,128,1,57,58368,11673,17509,24096866304,68567.81,55.30,1.29,57.6,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (55.3h) exceeds 4h budget
+A8,DeepSeek-style synthetic,512,1,57,233472,14008,21012,28917891072,83024.36,66.36,1.55,230.4,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (66.4h) exceeds 4h budget
+B1,MoE Anywhere,128,2,40,81920,16384,24576,33822867456,96136.79,77.62,2.59,57.6,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (77.6h) exceeds 4h budget
+B2,MoE Anywhere,128,4,40,163840,32768,49152,67645734912,192009.91,155.24,5.17,57.6,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (155.2h) exceeds 4h budget
+B3,MoE Anywhere,256,2,40,163840,18022,27033,37204328448,105985.44,85.38,2.85,115.2,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (85.4h) exceeds 4h budget
+B4,MoE Anywhere,256,4,40,327680,36044,54066,74408656896,211443.53,170.76,5.69,115.2,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (170.8h) exceeds 4h budget
+C1,MoE Suite,128,1,75,76800,15360,23040,31708938240,90144.72,72.77,1.29,57.6,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (72.8h) exceeds 4h budget
+C2,MoE Suite,128,1,75,76800,15360,23040,31708938240,90144.72,72.77,1.29,57.6,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (72.8h) exceeds 4h budget
+C3,MoE Suite,128,1,75,76800,15360,23040,31708938240,90144.72,72.77,1.29,57.6,Ramulator cycle ticking for cold DDR5 bursts,EXCEEDS_BUDGET_OMITTED,Full-depth host time (72.8h) exceeds 4h budget

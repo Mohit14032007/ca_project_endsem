@@ -40,11 +40,15 @@ class Tensor : public std::enable_shared_from_this<Tensor> {
   
   // Phase 5 Expert metadata
   bool is_expert_weight = false;
+  bool is_primary_expert_weight = false;
   int expert_id = -1;
   int expert_layer_id = -1;
   std::vector<Tensor_Ptr> sister_weights;
   MemoryTarget weight_target = MemoryTarget::HBM;
   bool load_sisters = false;
+  int request_id = 0;
+  int seq_id = 0;
+  int token_id = 0;
   
   // for parallel execution
   bool parallel_execution;

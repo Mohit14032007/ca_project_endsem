@@ -333,6 +333,9 @@ std::vector<energy_nJ> TopModuleGraph::getDeviceEnergy(){
 }
 
 void TopModuleGraph::restart_graph() {
+  if (module_graph.empty()) {
+    return;
+  }
   current_module = module_graph.begin();
   assertTrue(current_module != module_graph.end(),
              "No module in TopModuleGraph");

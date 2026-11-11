@@ -1,0 +1,4 @@
+workload,model,st_moe_p_pct,st_moe_r_pct,st_moe_f1,cstp_p_pct,cstp_r_pct,cstp_f1,random_control_p_pct
+MoE-Suite Task 12,GLM-5.2-MoE,19.69,9.85,13.13,19.09,9.55,12.73,3.12
+MoE-Anywhere P60,Sage-A1.5,28.45,14.23,18.97,29.12,14.56,19.41,3.12
+DeepSeek Synthetic,DeepSeek-V3,3.25,1.63,2.17,3.18,1.59,2.12,3.12

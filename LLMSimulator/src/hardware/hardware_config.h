@@ -1,9 +1,12 @@
 #pragma once
+#include <cctype>
+#include <cstdlib>
 #include <string>
 #include <vector>
 
 #include "common/type.h"
 #include "hardware/base.h"
+#include "prefetch/prefetch_config.h"
 
 namespace llm_system {
 
@@ -52,7 +55,12 @@ class SystemConfig {
                  int num_cube = 5,
                  int num_logic_cube = 5,
                  std::string offchip_dram_cfg_path = "",
-                 std::string hbm_dram_cfg_path = ""
+                 std::string hbm_dram_cfg_path = "",
+                 bool bypass_offchip_execution_cache = false,
+                 bool use_event_driven_dram = false,
+                 double ddr5_bandwidth_gbps = 22.578,
+                 double compute_time_multiplier = 1.0,
+                 bool clock_continuity = true
                 )
       : gpu_gen(gpu_gen),
         num_node(num_node),
@@ -90,7 +98,12 @@ class SystemConfig {
         num_cube(num_cube),
         num_logic_cube(num_logic_cube),
         offchip_dram_cfg_path(offchip_dram_cfg_path),
-        hbm_dram_cfg_path(hbm_dram_cfg_path){
+        hbm_dram_cfg_path(hbm_dram_cfg_path),
+        bypass_offchip_execution_cache(bypass_offchip_execution_cache),
+        use_event_driven_dram(use_event_driven_dram),
+        ddr5_bandwidth_gbps(ddr5_bandwidth_gbps),
+        compute_time_multiplier(compute_time_multiplier),
+        clock_continuity(clock_continuity){
           logic_memory_bandwidth = memory_bandwidth * logic_x;
           pim_memory_bandwidth = memory_bandwidth * pim_x;
         };
@@ -141,6 +154,67 @@ class SystemConfig {
   bool use_ramulator = false;
   std::string offchip_dram_cfg_path = "";
   std::string hbm_dram_cfg_path = "";
+  bool bypass_offchip_execution_cache = false;
+  bool use_event_driven_dram = false;
+  double ddr5_bandwidth_gbps = 22.578;
+  double compute_time_multiplier = 1.0;
+  bool clock_continuity = true;
+
+  void apply_environment_overrides() {
+    const char* env_bypass = std::getenv("BYPASS_OFFCHIP_EXECUTION_CACHE");
+    if (env_bypass != nullptr) {
+      std::string s = "";
+      for (const char* p = env_bypass; *p != '\0'; p++) {
+        s += std::tolower(*p);
+      }
+      if (s == "1" || s == "true" || s == "on" || s == "yes") {
+        bypass_offchip_execution_cache = true;
+      } else if (s == "0" || s == "false" || s == "off" || s == "no") {
+        bypass_offchip_execution_cache = false;
+      }
+    }
+    const char* env_event_dram = std::getenv("USE_EVENT_DRIVEN_DRAM");
+    if (env_event_dram != nullptr) {
+      std::string s = "";
+      for (const char* p = env_event_dram; *p != '\0'; p++) {
+        s += std::tolower(*p);
+      }
+      if (s == "1" || s == "true" || s == "on" || s == "yes") {
+        use_event_driven_dram = true;
+      } else if (s == "0" || s == "false" || s == "off" || s == "no") {
+        use_event_driven_dram = false;
+      }
+    }
+    const char* env_ddr5_bw = std::getenv("DDR5_BANDWIDTH_GBPS");
+    if (env_ddr5_bw != nullptr) {
+      try {
+        ddr5_bandwidth_gbps = std::stod(env_ddr5_bw);
+      } catch (...) {
+      }
+    }
+    const char* env_comp_mult = std::getenv("COMPUTE_MULTIPLIER");
+    if (env_comp_mult != nullptr) {
+      try {
+        double val = std::stod(env_comp_mult);
+        if (val > 0.0) {
+          compute_time_multiplier = val;
+        }
+      } catch (...) {
+      }
+    }
+    const char* env_clock_cont = std::getenv("CLOCK_CONTINUITY");
+    if (env_clock_cont != nullptr) {
+      std::string s = "";
+      for (const char* p = env_clock_cont; *p != '\0'; p++) {
+        s += std::tolower(*p);
+      }
+      if (s == "1" || s == "true" || s == "on" || s == "yes") {
+        clock_continuity = true;
+      } else if (s == "0" || s == "false" || s == "off" || s == "no") {
+        clock_continuity = false;
+      }
+    }
+  }
   
   bool exit_out_of_memory = false;
   bool mem_cap_limit = false;
@@ -162,6 +236,9 @@ class SystemConfig {
 
   int num_cube; //8: for HBM3E (B100), 5 for HBM3 (H100)
   int num_logic_cube;
+
+  // Prefetching Configuration (Phase 1)
+  PrefetchConfig prefetch_config;
   // Device
 };
 

@@ -1,0 +1,7 @@
+horizon,predictor,timely_hits,late_attachments,exposed_stall_ms,stall_red_ms
+1,ST-MoE,0,64,7884.24,0.0
+2,ST-MoE,0,59,7884.24,0.0
+3,ST-MoE,0,55,7884.24,0.0
+1,CSTP,0,57,7884.24,0.0
+2,CSTP,0,52,7884.24,0.0
+3,CSTP,0,49,7884.24,0.0

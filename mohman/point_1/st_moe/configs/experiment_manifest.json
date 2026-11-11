@@ -1,0 +1,116 @@
+{
+  "manifest_metadata": {
+    "deliverable": "Point 1: ST-MoE Expert Prediction Baseline Reproduction",
+    "version": "1.0.0",
+    "date": "2026-11-09",
+    "authoritative_baseline_git_anchor": "d5bf61ff0c066c06f72173189f9924329f613a88",
+    "authoritative_evaluator": "LLMSimulator/src/predictor/evaluation.py",
+    "authoritative_predictor": "LLMSimulator/src/predictor/st_moe_paper.py"
+  },
+  "predictor_configuration": {
+    "algorithm": "ST-MoE (Zhao et al., arXiv:2606.15453v1)",
+    "cct_capacity": 8,
+    "confidence_bits": 2,
+    "confidence_max": 3,
+    "confidence_init": 1,
+    "confidence_threshold": 2,
+    "history_table_capacity": 8,
+    "scoring_modes": {
+      "confidence_additive": {
+        "formula": "Score(e) = CCT_conf(e) + HT_conf(e)",
+        "paper_ref": "Equation 1 (Literal)",
+        "status": "Authoritative"
+      },
+      "indicator_intersection": {
+        "formula": "Score(e) = I(CCT_conf(e) >= 1) + I(HT_conf(e) >= 1)",
+        "paper_ref": "Algorithm 2 Prose Interpretation",
+        "status": "Ablation"
+      }
+    }
+  },
+  "evaluation_protocols": {
+    "online_within_request": {
+      "description": "Primary standard. CCT initialized from profiling; updated causally within request; restored to initial state at request boundaries.",
+      "request_order_invariant": true,
+      "multi_tenant_safe": true,
+      "primary_benchmark": true
+    },
+    "online_across_requests": {
+      "description": "Secondary benchmark. CCT initialized from profiling; updated continuously across request boundaries.",
+      "request_order_invariant": false,
+      "multi_tenant_safe": false,
+      "primary_benchmark": false
+    },
+    "frozen": {
+      "description": "Static baseline. CCT initialized from profiling; zero online mutations during test phase.",
+      "request_order_invariant": true,
+      "multi_tenant_safe": true,
+      "primary_benchmark": false
+    }
+  },
+  "datasets": {
+    "moe_anywhere": {
+      "classification": "authoritative",
+      "model": "InternScience/Sage-A1.5",
+      "num_moe_stages": 40,
+      "num_routed_experts": 256,
+      "top_k": 8,
+      "split_type": "deterministic_prompt_disjoint",
+      "train_units": 52,
+      "val_units": 8,
+      "test_units": 14,
+      "test_opportunities_h1": 16800,
+      "test_opportunities_h2": 16800,
+      "tokens_per_prompt_eval": 30,
+      "seed": 42
+    },
+    "moe_suite": {
+      "classification": "authoritative",
+      "model": "zai-org/GLM-5.2",
+      "num_moe_stages": 75,
+      "num_routed_experts": 256,
+      "top_k": 8,
+      "split_type": "official_task_disjoint",
+      "train_units": 8,
+      "val_units": 2,
+      "test_units": 2,
+      "test_opportunities_h1": 7500,
+      "test_opportunities_h2": 7500,
+      "tokens_per_task_eval": 50,
+      "seed": 42
+    },
+    "duplex_a100": {
+      "classification": "diagnostic",
+      "model": "Duplex Synthetic A100",
+      "num_moe_stages": 8,
+      "num_routed_experts": 16,
+      "top_k": 2,
+      "split_type": "disjoint_trace_split",
+      "train_units": 32,
+      "val_units": 8,
+      "test_units": 8,
+      "test_opportunities": 1280,
+      "seed": 42
+    },
+    "correlated_synthetic": {
+      "classification": "diagnostic",
+      "model": "Controlled Markov Correlation Engine",
+      "num_moe_stages": 16,
+      "num_routed_experts": 32,
+      "top_k": 8,
+      "split_type": "disjoint_trace_split",
+      "train_units": 16,
+      "val_units": 4,
+      "test_units": 4,
+      "test_opportunities": 1140,
+      "seed": 42
+    }
+  },
+  "sweeps": {
+    "fixed_budgets": [1, 2, 4, 6, 8],
+    "horizons": [1, 2],
+    "native_thresholds": [2],
+    "profiling_fractions": [0.1, 0.2, 0.4, 0.6, 0.8, 1.0]
+  }
+}
+

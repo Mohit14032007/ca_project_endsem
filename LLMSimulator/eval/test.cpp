@@ -127,6 +127,20 @@ int main(int argc, char *argv[]) {
       system_config.offchip_dram_cfg_path = config["system"]["optimization"]["offchip_dram_cfg_path"].as<std::string>();
   }
 
+  if (config["system"]["optimization"]["bypass_offchip_execution_cache"]) {
+      std::string val_str = config["system"]["optimization"]["bypass_offchip_execution_cache"].as<std::string>();
+      std::string s = "";
+      for (char c : val_str) {
+          s += std::tolower(c);
+      }
+      if (s == "1" || s == "true" || s == "on" || s == "yes") {
+          system_config.bypass_offchip_execution_cache = true;
+      } else if (s == "0" || s == "false" || s == "off" || s == "no") {
+          system_config.bypass_offchip_execution_cache = false;
+      }
+  }
+  system_config.apply_environment_overrides();
+
   system_config.use_flash_mla =
       config["system"]["optimization"]["use_flash_mla"].as<bool>();
   system_config.use_flash_attention =

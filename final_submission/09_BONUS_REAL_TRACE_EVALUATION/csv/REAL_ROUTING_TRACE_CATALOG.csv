@@ -1,0 +1,3 @@
+trace_name,source,model,layers,experts_per_layer,top_k,tokens,filesize_bytes,sha256
+MoE-Suite Task 12,MoE-Suite Public Benchmark,GLM-5.2-MoE,75,256,8,128,1458399,5a635dece5747e78be7f600082c888a7f9e9d2ee50e1ae829d338f75f235ea1c
+MoE-Anywhere Prompt 60,MoE-Anywhere Public Dataset,Sage-A1.5,40,256,8,128,1747368,aab2b0f6594a27606d2a53044329a8e35cf1e4214f1b21e094c197cc4250f210

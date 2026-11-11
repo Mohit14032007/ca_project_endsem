@@ -10,6 +10,7 @@
 #include <set>
 #include <sstream>
 #include <string>
+#include <tuple>
 #include <vector>
 
 #include "common/type.h"
@@ -94,6 +95,7 @@ class BatchedSequence {
       num_token_in_expert.push_back(0);
     }
     cur_layer = 0;
+    current_moe_stage_id = 0;
   }
 
   void add(Sequence::Ptr seq);
@@ -117,6 +119,8 @@ class BatchedSequence {
   void add_sequence(std::vector<int> seq_ids);
 
   int cur_layer;  // 이 batch의 현재 layer와 stage
+  int current_moe_stage_id = 0;  // Explicit logical stage ID currently being routed and executed
+  int last_completed_stage = -1;
   int num_expert;
   int top_k;
   std::vector<int> local_num_token_in_expert;
@@ -124,7 +128,9 @@ class BatchedSequence {
   std::vector<Sequence::Ptr> sequence;
   std::vector<int> seq_ids;
   Scheduler_ptr scheduler;
-  std::map<std::pair<int, int>, std::vector<int>> cached_routing;
+  using RouteKey = std::tuple<int, int, int, int>;  // (request_id, seq_id, token_id, cur_layer)
+  std::map<RouteKey, std::vector<int>> cached_routing;
+  void clear_cached_routing() { cached_routing.clear(); }
 };
 
 }  // namespace llm_system

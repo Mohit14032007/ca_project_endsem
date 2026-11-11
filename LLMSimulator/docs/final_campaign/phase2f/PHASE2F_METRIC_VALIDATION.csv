@@ -1,0 +1,16 @@
+run_id,multiplier,total_demand_lookups,natural_hits,timely_hits,late_attachments,unprefetched_misses,demand_sum,demand_conservation_valid,speculative_submitted,spec_demanded,spec_unused,spec_evicted,spec_in_flight_at_end,spec_cancelled,transfer_sum,transfer_conservation_valid
+B-M1,1.0,7200,5179,0,0,2021,7200,True,0,0,0,0,0,0,0,True
+FWD-S-H2-M1,1.0,7200,5179,0,59,1962,7200,True,395,59,30,0,306,0,395,True
+FWD-C-H2-M1,1.0,7200,5179,0,68,1953,7200,True,457,68,30,0,359,0,457,True
+B-M4,4.0,7200,5179,0,0,2021,7200,True,0,0,0,0,0,0,0,True
+FWD-S-H2-M4,4.0,7200,5179,1,52,1968,7200,True,395,53,110,0,232,0,395,True
+FWD-C-H2-M4,4.0,7200,5179,1,61,1959,7200,True,457,62,110,0,285,0,457,True
+B-M8,8.0,7200,5179,0,0,2021,7200,True,0,0,0,0,0,0,0,True
+FWD-S-H2-M8,8.0,7200,5179,1,48,1972,7200,True,395,49,219,0,127,0,395,True
+FWD-C-H2-M8,8.0,7200,5179,1,57,1963,7200,True,457,58,219,0,180,0,457,True
+B-M12,12.0,7200,5179,0,0,2021,7200,True,0,0,0,0,0,0,0,True
+FWD-S-H2-M12,12.0,7200,5179,2,43,1976,7200,True,395,45,329,0,21,0,395,True
+FWD-C-H2-M12,12.0,7200,5179,2,52,1967,7200,True,457,54,329,0,74,0,457,True
+B-M16,16.0,7200,5179,0,0,2021,7200,True,0,0,0,0,0,0,0,True
+FWD-S-H2-M16,16.0,7200,5179,2,31,1988,7200,True,395,33,362,0,0,0,395,True
+FWD-C-H2-M16,16.0,7200,5179,2,48,1971,7200,True,457,50,386,0,21,0,457,True

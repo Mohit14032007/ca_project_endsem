@@ -1,4 +1,5 @@
 #include "scheduler/scheduler.h"
+#include "prefetch/live_prediction_engine.h"
 
 namespace llm_system {
 Scheduler::Scheduler(SystemConfig system_config, ModelConfig& model_config,
@@ -19,7 +20,46 @@ Scheduler::Scheduler(SystemConfig system_config, ModelConfig& model_config,
   real_data = false;
   disagg_system = system_config.disagg_system;
   initExpertList(expert_file_path);
+  init_prediction_engine();
 };
+
+void Scheduler::init_prediction_engine() {
+  if (prediction_engine != nullptr) {
+    return;
+  }
+  if (system_config.prefetch_config.enabled && 
+      (system_config.prefetch_config.mode == PrefetchMode::PREDICTION_ONLY ||
+       system_config.prefetch_config.mode == PrefetchMode::HARDWARE_ASYNC)) {
+    int moe_layers = model_config.num_layers;
+    if (model_config.model_name == "deepseekV3" || model_config.model_name == "debugV3") {
+      moe_layers = model_config.num_layers - model_config.first_k_dense;
+    } else {
+      if (model_config.expert_freq != 0) {
+        moe_layers = model_config.num_layers / model_config.expert_freq;
+      }
+    }
+    std::string out_dir = "results/phase_2c_prediction_only";
+    const char* env_dir = std::getenv("PREDICTION_OUTPUT_DIR");
+    if (env_dir != nullptr && std::string(env_dir) != "") {
+      out_dir = env_dir;
+    }
+    prediction_engine = std::make_shared<LivePredictionEngine>(
+        system_config.prefetch_config,
+        moe_layers,
+        model_config.num_routed_expert,
+        model_config.top_k,
+        out_dir);
+  } else {
+    prediction_engine = nullptr;
+  }
+}
+
+std::shared_ptr<PrefetchCandidateQueue> Scheduler::get_candidate_queue() {
+  if (prediction_engine != nullptr) {
+    return prediction_engine->get_candidate_queue();
+  }
+  return nullptr;
+}
 
 bool Scheduler::hasSumSeq() {
   for (auto batchseq : running_queue) {
@@ -606,5 +646,92 @@ int Scheduler::getGenSize() {
       }
     }
   };
+
+void Scheduler::loadRealTrace(const std::string& trace_path, int expected_seqs, int num_layer, int num_expert, int top_k, int iter_tokens) {
+  sequences_info.clear();
+  std::ifstream f(trace_path);
+  if (!f.is_open()) {
+    throw std::runtime_error("[ERROR] Failed to open real MoE trace file: " + trace_path);
+  }
+
+  std::string header;
+  if (!std::getline(f, header)) {
+    throw std::runtime_error("[ERROR] Trace file is empty: " + trace_path);
+  }
+
+  // Pre-allocate sequence info structures
+  sequences_info.resize(expected_seqs);
+  for (int s = 0; s < expected_seqs; s++) {
+    sequences_info[s] = SequenceInfo::Ptr(new SequenceInfo);
+    sequences_info[s]->Lin = 0;
+    sequences_info[s]->Lout = iter_tokens;
+    sequences_info[s]->cur = 0;
+    sequences_info[s]->expert_list.resize((size_t)iter_tokens * num_layer);
+  }
+
+  std::string line;
+  size_t record_count = 0;
+  std::vector<std::vector<int>> token_layer_counts(expected_seqs, std::vector<int>(iter_tokens * num_layer, 0));
+
+  while (std::getline(f, line)) {
+    if (line.empty() || line[0] == '#') continue;
+    std::stringstream ss(line);
+    std::string val;
+    int seq_id, token_id, layer_id, topk_rank, expert_id;
+
+    if (!std::getline(ss, val, ',')) continue;
+    seq_id = std::stoi(val);
+    if (!std::getline(ss, val, ',')) continue;
+    token_id = std::stoi(val);
+    if (!std::getline(ss, val, ',')) continue;
+    layer_id = std::stoi(val);
+    if (!std::getline(ss, val, ',')) continue;
+    topk_rank = std::stoi(val);
+    if (!std::getline(ss, val, ',')) continue;
+    expert_id = std::stoi(val);
+
+    if (seq_id < 0 || seq_id >= expected_seqs) {
+      continue;
+    }
+    if (token_id < 0 || token_id >= iter_tokens) {
+      continue;
+    }
+    if (layer_id < 0 || layer_id >= num_layer) {
+      continue;
+    }
+    if (topk_rank < 1 || topk_rank > top_k) {
+      throw std::runtime_error("[ERROR] Trace topk_rank " + std::to_string(topk_rank) + " out of bounds [1, " + std::to_string(top_k) + "] in " + trace_path);
+    }
+    if (expert_id < 0 || expert_id >= num_expert) {
+      throw std::runtime_error("[ERROR] Trace expert_id " + std::to_string(expert_id) + " out of bounds [0, " + std::to_string(num_expert - 1) + "] in " + trace_path);
+    }
+
+    size_t table_idx = (size_t)token_id * num_layer + layer_id;
+    auto& exp_vec = sequences_info[seq_id]->expert_list[table_idx];
+    if ((int)exp_vec.size() < topk_rank) {
+      exp_vec.resize(topk_rank);
+    }
+    exp_vec[topk_rank - 1] = expert_id;
+    token_layer_counts[seq_id][table_idx]++;
+    record_count++;
+  }
+
+  // Completeness verification: every (seq, token, layer) must have exactly top_k experts!
+  for (int s = 0; s < expected_seqs; s++) {
+    for (int t = 0; t < iter_tokens; t++) {
+      for (int l = 0; l < num_layer; l++) {
+        size_t table_idx = (size_t)t * num_layer + l;
+        if (token_layer_counts[s][table_idx] != top_k) {
+          throw std::runtime_error("[ERROR] Trace incomplete in " + trace_path + ": sequence " + std::to_string(s) + ", token " + std::to_string(t) + ", layer " + std::to_string(l) + " has " + std::to_string(token_layer_counts[s][table_idx]) + " experts (expected " + std::to_string(top_k) + "). Zero fallback to random allowed!");
+        }
+      }
+    }
+  }
+
+  std::cout << "[REAL_TRACE_LOADER] Successfully loaded and validated real MoE trace:\n";
+  std::cout << "  File: " << trace_path << "\n";
+  std::cout << "  Sequences: " << expected_seqs << ", Replay Tokens: " << iter_tokens << ", Layers: " << num_layer << ", Top-K: " << top_k << "\n";
+  std::cout << "  Total Records: " << record_count << " (100% verified, 0 fallback to random)\n" << std::flush;
+}
 
 }  // namespace llm_system

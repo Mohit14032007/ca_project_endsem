@@ -1,0 +1,32 @@
+dataset:
+  id: "moe_suite"
+  name: "Predicting Experts for MoE Suite"
+  source: "mistrjirka/Predicting-Experts-for-MOE-Suite"
+  config: "token_cube"
+  model: "zai-org/GLM-5.2"
+  num_tasks: 12
+  tokens_per_task: 8191
+  num_moe_stages: 75
+  num_routed_experts: 256
+  top_k: 8
+  split_type: "official_task_disjoint"
+  train_tasks_count: 8
+  val_tasks_count: 2
+  test_tasks_count: 2
+
+evaluation:
+  horizons: [2]
+  primary_track: "J -> J+2"
+  budgets: [4, 8, 16, 24, 32, 48, 64]
+  regimes: ["frozen", "online", "cold_start"]
+  seed: 42
+
+predictors:
+  cstp:
+    alpha: 0.5
+    smoothing_lambda: 1.0
+    prior_epsilon: 0.1
+  st_moe:
+    cct_capacity: 8
+    confidence_threshold: 2
+

@@ -1,0 +1,182 @@
+[
+  {
+    "run_id": "baseline_b1",
+    "predictor": "baseline",
+    "batch_size": 1,
+    "horizon": 0,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/baseline_b1.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b1_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/baseline_b1.log"
+  },
+  {
+    "run_id": "baseline_b2",
+    "predictor": "baseline",
+    "batch_size": 2,
+    "horizon": 0,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/baseline_b2.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b2_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/baseline_b2.log"
+  },
+  {
+    "run_id": "baseline_b4",
+    "predictor": "baseline",
+    "batch_size": 4,
+    "horizon": 0,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/baseline_b4.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b4_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/baseline_b4.log"
+  },
+  {
+    "run_id": "baseline_b8",
+    "predictor": "baseline",
+    "batch_size": 8,
+    "horizon": 0,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/baseline_b8.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b8_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/baseline_b8.log"
+  },
+  {
+    "run_id": "stmoe_b1_h1",
+    "predictor": "stmoe",
+    "batch_size": 1,
+    "horizon": 1,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/stmoe_b1_h1.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b1_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/stmoe_b1_h1.log"
+  },
+  {
+    "run_id": "stmoe_b2_h1",
+    "predictor": "stmoe",
+    "batch_size": 2,
+    "horizon": 1,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/stmoe_b2_h1.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b2_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/stmoe_b2_h1.log"
+  },
+  {
+    "run_id": "stmoe_b4_h1",
+    "predictor": "stmoe",
+    "batch_size": 4,
+    "horizon": 1,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/stmoe_b4_h1.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b4_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/stmoe_b4_h1.log"
+  },
+  {
+    "run_id": "stmoe_b8_h1",
+    "predictor": "stmoe",
+    "batch_size": 8,
+    "horizon": 1,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/stmoe_b8_h1.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b8_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/stmoe_b8_h1.log"
+  },
+  {
+    "run_id": "stmoe_b1_h2",
+    "predictor": "stmoe",
+    "batch_size": 1,
+    "horizon": 2,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/stmoe_b1_h2.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b1_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/stmoe_b1_h2.log"
+  },
+  {
+    "run_id": "stmoe_b2_h2",
+    "predictor": "stmoe",
+    "batch_size": 2,
+    "horizon": 2,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/stmoe_b2_h2.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b2_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/stmoe_b2_h2.log"
+  },
+  {
+    "run_id": "stmoe_b4_h2",
+    "predictor": "stmoe",
+    "batch_size": 4,
+    "horizon": 2,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/stmoe_b4_h2.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b4_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/stmoe_b4_h2.log"
+  },
+  {
+    "run_id": "stmoe_b8_h2",
+    "predictor": "stmoe",
+    "batch_size": 8,
+    "horizon": 2,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/stmoe_b8_h2.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b8_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/stmoe_b8_h2.log"
+  },
+  {
+    "run_id": "cstp_b1_h1",
+    "predictor": "cstp",
+    "batch_size": 1,
+    "horizon": 1,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/cstp_b1_h1.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b1_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/cstp_b1_h1.log"
+  },
+  {
+    "run_id": "cstp_b2_h1",
+    "predictor": "cstp",
+    "batch_size": 2,
+    "horizon": 1,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/cstp_b2_h1.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b2_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/cstp_b2_h1.log"
+  },
+  {
+    "run_id": "cstp_b4_h1",
+    "predictor": "cstp",
+    "batch_size": 4,
+    "horizon": 1,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/cstp_b4_h1.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b4_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/cstp_b4_h1.log"
+  },
+  {
+    "run_id": "cstp_b8_h1",
+    "predictor": "cstp",
+    "batch_size": 8,
+    "horizon": 1,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/cstp_b8_h1.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b8_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/cstp_b8_h1.log"
+  },
+  {
+    "run_id": "cstp_b1_h2",
+    "predictor": "cstp",
+    "batch_size": 1,
+    "horizon": 2,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/cstp_b1_h2.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b1_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/cstp_b1_h2.log"
+  },
+  {
+    "run_id": "cstp_b2_h2",
+    "predictor": "cstp",
+    "batch_size": 2,
+    "horizon": 2,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/cstp_b2_h2.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b2_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/cstp_b2_h2.log"
+  },
+  {
+    "run_id": "cstp_b4_h2",
+    "predictor": "cstp",
+    "batch_size": 4,
+    "horizon": 2,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/cstp_b4_h2.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b4_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/cstp_b4_h2.log"
+  },
+  {
+    "run_id": "cstp_b8_h2",
+    "predictor": "cstp",
+    "batch_size": 8,
+    "horizon": 2,
+    "config_path": "/home/mohman/ca_project/mohman/point_3/experiments/configs/cstp_b8_h2.yaml",
+    "trace_file": "/home/mohman/ca_project/mohman/point_3/sensitivity/traces/batch/test_moe_anywhere_b8_t4.csv",
+    "log_path": "/home/mohman/ca_project/mohman/point_3/experiments/logs/cstp_b8_h2.log"
+  }
+]

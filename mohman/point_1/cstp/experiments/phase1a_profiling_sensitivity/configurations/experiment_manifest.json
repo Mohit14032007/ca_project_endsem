@@ -1,0 +1,66 @@
+{
+  "manifest_metadata": {
+    "deliverable": "Point 1: CSTP Standalone Package & Phase 1A Sensitivity",
+    "version": "1.0.0",
+    "date": "2026-11-09",
+    "baseline_git_anchor": "d5bf61ff0c066c06f72173189f9924329f613a88",
+    "authoritative_evaluator": "mohman/point_1/cstp/src/evaluation.py",
+    "authoritative_predictor_python": "mohman/point_1/cstp/src/cstp_predictor.py",
+    "authoritative_predictor_cpp": "mohman/point_1/cstp/src/cstp_predictor.cpp",
+    "certification_test_suite": "mohman/point_1/cstp/tests/test_phase1a_certified_correction.py"
+  },
+  "predictor_configuration": {
+    "algorithm": "Correlation-based Spatio-Temporal Predictor (CSTP)",
+    "alpha": 0.5,
+    "smoothing_lambda": 1.0,
+    "prior_epsilon": 0.0001,
+    "history_capacity": 8,
+    "scoring_formula": "S(e_j) = alpha * S_spatial(e_j) + (1 - alpha) * S_temporal(e_j)",
+    "spatial_formula": "P_spatial(e_j|e_i) = (C_spatial(e_i, e_j) + lambda * P_marginal(e_j)) / (sum_e' C_spatial(e_i, e') + lambda)",
+    "temporal_formula": "P_temporal(e_j|e_k) = (C_temporal(e_k, e_j) + lambda * P_marginal(e_j)) / (sum_e' C_temporal(e_k, e') + lambda)",
+    "marginal_formula": "P_marginal(e_j) = (C_marginal(e_j) + epsilon) / (sum_e' C_marginal(e') + M * epsilon)"
+  },
+  "evaluation_protocols": {
+    "online_within_request": {
+      "description": "Primary standard. Count tables initialized from profiling; updated causally within request; restored to initial state at request boundaries.",
+      "request_order_invariant": true,
+      "multi_tenant_safe": true,
+      "primary_benchmark": true
+    },
+    "frozen": {
+      "description": "Static baseline. Count tables initialized from profiling; zero online mutations during test phase.",
+      "request_order_invariant": true,
+      "multi_tenant_safe": true,
+      "primary_benchmark": false
+    }
+  },
+  "workloads": {
+    "moe_anywhere": {
+      "model": "Sage-A1.5",
+      "moe_stages": 40,
+      "routed_experts": 256,
+      "routing_degree_k": 8,
+      "test_prompts": 14,
+      "test_opportunities": 16800,
+      "trace_path": "data/moe_anywhere_trace.json"
+    },
+    "moe_suite": {
+      "model": "GLM-5.2",
+      "moe_stages": 75,
+      "routed_experts": 256,
+      "routing_degree_k": 8,
+      "test_prompts": 100,
+      "test_tasks": ["gsm8k", "alpaca"],
+      "test_opportunities": 7500,
+      "trace_path": "data/moe_suite_trace.json",
+      "statistical_scope": "DESCRIPTIVE_ONLY_N2_TASKS"
+    }
+  },
+  "sweeps": {
+    "profiling_percentages": [25, 50, 75, 100],
+    "profiling_seeds": [42, 123, 999],
+    "horizons": [1, 2],
+    "prediction_budgets": [8]
+  }
+}
+

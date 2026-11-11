@@ -13,7 +13,21 @@ ExecStatus issueRamulator(Device_Ptr device, LayerType layer_type,
   CacheKey key = std::make_tuple(layer_type, processor_type, dram_request_type,
                                  tensor->getSize(), target);
   ExecStatus exec_status;
-  bool bypass_cache = (target == MemoryTarget::OFFCHIP_DRAM);
+  // NOTE on CacheKey limitation:
+  // CacheKey consists of (LayerType, ProcessorType, DRAMRequestType, size, MemoryTarget).
+  // It does NOT contain physical DDR5 addresses, expert IDs, layer IDs, or request IDs.
+  // When bypass_offchip_execution_cache is false (default), identically sized off-chip
+  // tensor transfers reuse the memoized ExecStatus from the initial Ramulator simulation.
+  // This memoized shortcut is an analytical acceleration for sequential decoding latency,
+  // NOT a cycle-accurate DRAM simulation of row-buffer conflicts or bus contention.
+  // For cycle-accurate contention modeling (e.g., asynchronous prefetching), set
+  // bypass_offchip_execution_cache = true.
+  bool bypass_cache = false;
+  if (target == MemoryTarget::OFFCHIP_DRAM) {
+    if (device->config.bypass_offchip_execution_cache) {
+      bypass_cache = true;
+    }
+  }
 
   if (bypass_cache || !device->checkExecutionCache(exec_status, key)) {
     DRAMRequest::Ptr dram_request = DRAMRequest::Create(dram_request_type);
@@ -52,7 +66,21 @@ ExecStatus issueRamulatorBatch(Device_Ptr device, LayerType layer_type,
   CacheKey key = std::make_tuple(layer_type, processor_type, dram_request_type,
                                  total_size, target);
   ExecStatus exec_status;
-  bool bypass_cache = (target == MemoryTarget::OFFCHIP_DRAM);
+  // NOTE on CacheKey limitation:
+  // CacheKey consists of (LayerType, ProcessorType, DRAMRequestType, size, MemoryTarget).
+  // It does NOT contain physical DDR5 addresses, expert IDs, layer IDs, or request IDs.
+  // When bypass_offchip_execution_cache is false (default), identically sized off-chip
+  // tensor transfers reuse the memoized ExecStatus from the initial Ramulator simulation.
+  // This memoized shortcut is an analytical acceleration for sequential decoding latency,
+  // NOT a cycle-accurate DRAM simulation of row-buffer conflicts or bus contention.
+  // For cycle-accurate contention modeling (e.g., asynchronous prefetching), set
+  // bypass_offchip_execution_cache = true.
+  bool bypass_cache = false;
+  if (target == MemoryTarget::OFFCHIP_DRAM) {
+    if (device->config.bypass_offchip_execution_cache) {
+      bypass_cache = true;
+    }
+  }
 
   if (bypass_cache || !device->checkExecutionCache(exec_status, key)) {
     std::list<DRAMRequest::Ptr> requests;

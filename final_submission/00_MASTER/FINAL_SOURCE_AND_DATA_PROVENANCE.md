@@ -1,0 +1,38 @@
+# Final Source and Data Provenance Manifest
+
+- `ms_task12_t128_l75.csv`
+  - Path: `/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ms_task12_t128_l75.csv`
+  - Size: 1043034 bytes
+  - SHA-256: `5a635dece5747e78be7f600082c888a7f9e9d2ee50e1ae829d338f75f235ea1c`
+- `ma_p60_t128_l40.csv`
+  - Path: `/home/mohman/ca_project/LLMSimulator/results/endsem_phase_e/final_baseline/traces/ma_p60_t128_l40.csv`
+  - Size: 552051 bytes
+  - SHA-256: `aab2b0f6594a27606d2a53044329a8e35cf1e4214f1b21e094c197cc4250f210`
+- `run_deepseekv3_mixtral_style`
+  - Path: `/home/mohman/ca_project/LLMSimulator/build/run_deepseekv3_mixtral_style`
+  - Size: 664680 bytes
+  - SHA-256: `20d90f8c5c0213a0336937c462d873a34db59344432a92d5654449d1a517d077`
+- `st_moe_predictor.cpp`
+  - Path: `/home/mohman/ca_project/LLMSimulator/src/prefetch/st_moe_predictor.cpp`
+  - Size: 10053 bytes
+  - SHA-256: `e5fe72b8a397d78b4ff34a5a7fdf56ed509823466f7f4f1a6d7a9f38bfb61cd9`
+- `cstp_predictor.cpp`
+  - Path: `/home/mohman/ca_project/LLMSimulator/src/prefetch/cstp_predictor.cpp`
+  - Size: 10545 bytes
+  - SHA-256: `9c4a0e119f2eda47bdefcabc630a28be64735a6bf70d3a0be790f97dc59822ae`
+- `live_prediction_engine.cpp`
+  - Path: `/home/mohman/ca_project/LLMSimulator/src/prefetch/live_prediction_engine.cpp`
+  - Size: 22123 bytes
+  - SHA-256: `27f0ef081b334b17e82f818d2914b0a703789adef0c74bf39761d59e5cda229f`
+- `ddr5_transfer_engine.cpp`
+  - Path: `/home/mohman/ca_project/LLMSimulator/src/prefetch/ddr5_transfer_engine.cpp`
+  - Size: 24778 bytes
+  - SHA-256: `c00dacc8ab1a13d92829f1621ea8a29ae553b0bad09a9e68602e079646102291`
+- `linear_impl.cpp`
+  - Path: `/home/mohman/ca_project/LLMSimulator/src/hardware/linear_impl.cpp`
+  - Size: 22125 bytes
+  - SHA-256: `c8732640411c409e079bf9816d2385b2ac36783285cde6cf1ab1b665b443747e`
+- `device.cpp`
+  - Path: `/home/mohman/ca_project/LLMSimulator/src/hardware/device.cpp`
+  - Size: 61983 bytes
+  - SHA-256: `0a96528ea3dc5a2b448dfc86ad7fa185eda9de63c74e0f92975e4057ba446315`

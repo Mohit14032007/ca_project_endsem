@@ -9,12 +9,14 @@ add_compile_options(-fPIC)
 
 include_directories(src)
 include_directories(src/dram/ramulator2/src)
+include_directories(src/dram/ramulator2/ext/yaml-cpp/include)
 add_subdirectory(src)
 add_subdirectory(eval)
 
 
 target_link_libraries(
     llm_system
+    PRIVATE prefetch
     PRIVATE hardware
     PRIVATE -Wl,--whole-archive dram -Wl,--no-whole-archive 
     #PRIVATE dram

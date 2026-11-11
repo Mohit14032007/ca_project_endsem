@@ -3,6 +3,7 @@
 
 #include "common/assert.h"
 #include "hardware/hardware_config.h"
+#include "scheduler/scheduler.h"
 // Linear //
 
 namespace llm_system {
@@ -46,12 +47,71 @@ Tensor::Ptr Linear::forward(const Tensor::Ptr input,
   A->weight_target = MemoryTarget::HBM;
   A->load_sisters = false;
   if (A->is_expert_weight && input->getSize() > 0) {
-    int layer_id = sequences_metadata->cur_layer;
+    int layer_id = sequences_metadata->current_moe_stage_id;
     A->expert_layer_id = layer_id;
-    if (!device->config.offchip_dram_cfg_path.empty()) {
-      if (!device->is_expert_resident(layer_id, A->expert_id)) {
+    auto seq_list = sequences_metadata->get_seq();
+    if (!seq_list.empty()) {
+      auto first_seq = seq_list[0];
+      A->request_id = first_seq->id;
+      A->seq_id = first_seq->expert_seq_id;
+      A->token_id = first_seq->current_len;
+      for (auto s : seq_list) {
+        int s_seq_id = s->expert_seq_id;
+        int s_tok_id = s->current_len;
+        if (s->get_expert_from_list) {
+          int rel_tok = s_tok_id - s->input_len;
+          if (rel_tok < 0) {
+            rel_tok = 0;
+          }
+          if (sequences_metadata->scheduler != nullptr && s_seq_id >= 0 && s_seq_id < (int)sequences_metadata->scheduler->sequences_info.size()) {
+            int num_layer = sequences_metadata->scheduler->model_config.num_layers;
+            if (sequences_metadata->scheduler->model_config.model_name == "deepseekV3" || sequences_metadata->scheduler->model_config.model_name == "debugV3") {
+              num_layer = sequences_metadata->scheduler->model_config.num_layers - sequences_metadata->scheduler->model_config.first_k_dense;
+            } else if (sequences_metadata->scheduler->model_config.expert_freq != 0) {
+              num_layer = sequences_metadata->scheduler->model_config.num_layers / sequences_metadata->scheduler->model_config.expert_freq;
+            }
+            size_t t_idx = (size_t)rel_tok * num_layer + layer_id;
+            if (t_idx < sequences_metadata->scheduler->sequences_info[s_seq_id]->expert_list.size()) {
+              for (int eid : sequences_metadata->scheduler->sequences_info[s_seq_id]->expert_list[t_idx]) {
+                if (eid == A->expert_id) {
+                  A->request_id = s->id;
+                  A->seq_id = s_seq_id;
+                  A->token_id = s_tok_id;
+                  break;
+                }
+              }
+            }
+          }
+        } else {
+          auto route_key = std::make_tuple(s->id, s_seq_id, s_tok_id, layer_id);
+          auto it = sequences_metadata->cached_routing.find(route_key);
+          if (it != sequences_metadata->cached_routing.end()) {
+            for (int eid : it->second) {
+              if (eid == A->expert_id) {
+                A->request_id = s->id;
+                A->seq_id = s_seq_id;
+                A->token_id = s_tok_id;
+                break;
+              }
+            }
+          }
+        }
+      }
+    }
+    if (!device->config.offchip_dram_cfg_path.empty() || device->config.use_event_driven_dram) {
+      if (device->config.use_event_driven_dram) {
+        device->set_current_stage(layer_id);
+        device->process_completed_prefetches(device->get_time());
+      }
+      bool is_primary = A->is_primary_expert_weight;
+      if (!device->is_expert_resident(layer_id, A->expert_id, true, is_primary)) {
         A->weight_target = MemoryTarget::OFFCHIP_DRAM;
         A->load_sisters = true;
+        for (auto sister : A->sister_weights) {
+          sister->request_id = A->request_id;
+          sister->seq_id = A->seq_id;
+          sister->token_id = A->token_id;
+        }
       }
     }
   }

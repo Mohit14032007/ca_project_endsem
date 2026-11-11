@@ -1,0 +1,12 @@
+{
+  "run_id": "s3_cstp_lru",
+  "description": "CSTP Prefetching with LRU eviction",
+  "config_path": "/home/mohman/ca_project/mohman/point_4/smoke_tests/configs/s3_cstp_lru.yaml",
+  "log_path": "/home/mohman/ca_project/mohman/point_4/smoke_tests/logs/s3_cstp_lru.log",
+  "return_code": 0,
+  "host_elapsed_seconds": 2.3812968730926514,
+  "eviction_policy": "lru",
+  "window_size": 16,
+  "capacity_bytes": 4000000000,
+  "prefetch": true
+}

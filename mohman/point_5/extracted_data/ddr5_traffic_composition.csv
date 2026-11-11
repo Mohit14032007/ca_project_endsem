@@ -1,0 +1,22 @@
+metric_name,metric_value,unit,configuration,workload,source_campaign,source_run_id,exact_source_file,measurement_type
+demand_bytes,48740157001664.0,bytes,Config A: Baseline,W4 (B=32),Point 4 Big Experiment,w4_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+speculative_bytes,0.0,bytes,Config A: Baseline,W4 (B=32),Point 4 Big Experiment,w4_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+total_ddr5_gb,48740.16,decimal_GB,Config A: Baseline,W4 (B=32),Point 4 Big Experiment,w4_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,extracted
+demand_bytes,48740157001664.0,bytes,Config B: Prediction Only,W4 (B=32),Point 4 Big Experiment / phase_4d5c,inferred_w4_cstp_shadow,LLMSimulator/results/phase_4d5c/production_matrix_summary.csv,inferred_shadow_mode_equivalence
+speculative_bytes,0.0,bytes,Config B: Prediction Only,W4 (B=32),Point 4 Big Experiment / phase_4d5c,inferred_w4_cstp_shadow,LLMSimulator/results/phase_4d5c/production_matrix_summary.csv,inferred_shadow_mode_equivalence
+total_ddr5_gb,48740.16,decimal_GB,Config B: Prediction Only,W4 (B=32),Point 4 Big Experiment / phase_4d5c,inferred_w4_cstp_shadow,LLMSimulator/results/phase_4d5c/production_matrix_summary.csv,inferred_shadow_mode_equivalence
+demand_bytes,37790536433664.0,bytes,Config C2: CSTP + LRU,W4 (B=32),Point 4 Big Experiment,w4_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+speculative_bytes,10948303650816.0,bytes,Config C2: CSTP + LRU,W4 (B=32),Point 4 Big Experiment,w4_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+total_ddr5_gb,48738.84,decimal_GB,Config C2: CSTP + LRU,W4 (B=32),Point 4 Big Experiment,w4_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,extracted
+demand_bytes,37808769073152.0,bytes,Config D: Complete System,W4 (B=32),Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+speculative_bytes,10928045162496.0,bytes,Config D: Complete System,W4 (B=32),Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+total_ddr5_gb,48736.81,decimal_GB,Config D: Complete System,W4 (B=32),Point 4 Big Experiment,w4_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,extracted
+demand_bytes,28824393744384.0,bytes,Config A: Baseline,W3 (B=14),Point 4 Big Experiment,w3_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+speculative_bytes,0.0,bytes,Config A: Baseline,W3 (B=14),Point 4 Big Experiment,w3_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+total_ddr5_gb,28824.39,decimal_GB,Config A: Baseline,W3 (B=14),Point 4 Big Experiment,w3_c1_r1,mohman/point_4/big_exp/results/all_runs.csv,extracted
+demand_bytes,21972268351488.0,bytes,Config C2: CSTP + LRU,W3 (B=14),Point 4 Big Experiment,w3_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+speculative_bytes,7245051985920.0,bytes,Config C2: CSTP + LRU,W3 (B=14),Point 4 Big Experiment,w3_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+total_ddr5_gb,29217.32,decimal_GB,Config C2: CSTP + LRU,W3 (B=14),Point 4 Big Experiment,w3_c3_r1,mohman/point_4/big_exp/results/all_runs.csv,extracted
+demand_bytes,21978169737216.0,bytes,Config D: Complete System,W3 (B=14),Point 4 Big Experiment,w3_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+speculative_bytes,7240031404032.0,bytes,Config D: Complete System,W3 (B=14),Point 4 Big Experiment,w3_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,measured
+total_ddr5_gb,29218.2,decimal_GB,Config D: Complete System,W3 (B=14),Point 4 Big Experiment,w3_c4_r1,mohman/point_4/big_exp/results/all_runs.csv,extracted

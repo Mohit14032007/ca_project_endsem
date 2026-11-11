@@ -1,0 +1,5 @@
+context_len,workload,sim_exec_ms,hit_rate_pct,exposed_stall_ms
+128,A1 (MoE-Suite),248918.55,72.73,245074.77
+512,C1 (MoE-Suite),248930.0,72.73,245074.77
+1024,C2 (MoE-Suite),248934.0,72.73,245074.77
+2048,C3 (MoE-Suite),248942.0,72.73,245074.77

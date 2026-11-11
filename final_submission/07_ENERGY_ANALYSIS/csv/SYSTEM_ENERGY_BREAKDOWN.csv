@@ -1,0 +1,6 @@
+configuration,native_dram_act_j,native_dram_read_j,native_dram_write_j,native_mac_comp_j,native_total_energy_j,spec_transfers,estimated_ddr5_transport_j,total_system_energy_j
+Baseline (B-M1),0.452,3.815,1.28,3.521,9.068,0,0.0,9.068
+ST-MoE Forward (FWD-S-H2-M1),0.452,3.815,1.28,3.521,9.068,395,0.9742,10.0422
+CSTP Forward (FWD-C-H2-M1),0.452,3.815,1.28,3.521,9.068,457,1.1271,10.1951
+ST-MoE Multiplier 12x (FWD-S-H2-M12),0.452,3.815,1.28,3.523,9.07,395,0.9742,10.0442
+CSTP Multiplier 12x (FWD-C-H2-M12),0.452,3.815,1.28,3.523,9.07,457,1.1271,10.1971

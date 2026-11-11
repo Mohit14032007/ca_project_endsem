@@ -1,0 +1,80 @@
+{
+  "experiment_metadata": {
+    "config_label": "/home/mohman/ca_project/LLMSimulator/reproduction_A100/with_off_chip_dram/deepseekv3/experiments/phase3_validation/configs/synthetic_deepseek_b8.yaml",
+    "dataset": "synthesis",
+    "batch_size": 8,
+    "predictor_type": "CSTP",
+    "horizon": 1,
+    "budget": 4
+  },
+  "prefetch_coverage": {
+    "total_actual_demands": 711,
+    "demands_with_prediction": 1,
+    "demands_without_prediction": 710,
+    "prefetch_assisted_demands": 1,
+    "overall_coverage": 0.001406,
+    "predicted_coverage": 1.000000,
+    "completed_prefetch_utilization": 0.250000
+  },
+  "timely_and_late_rates": {
+    "timely_resident_hits": 0,
+    "late_inflight_attachments": 1,
+    "timely_rate_of_demands": 0.000000,
+    "late_rate_of_demands": 0.001406,
+    "timely_rate_of_dispatched": 0.000000,
+    "late_rate_of_dispatched": 0.250000,
+    "total_dispatched_prefetches": 4,
+    "candidates_rejected_admission": 0,
+    "duplicate_prefetches_skipped": 0,
+    "transfers_cancelled": 0
+  },
+  "unused_prefetches": {
+    "prefetches_completed_and_used": 1,
+    "prefetches_completed_unused": 3,
+    "prefetches_evicted_before_demand": 0,
+    "prefetches_cancelled_inflight": 0,
+    "prefetches_still_inflight_at_end": 0,
+    "completed_unused_bytes": 264241152,
+    "cancelled_partial_bytes": 0,
+    "total_wasted_speculative_bytes": 264241152
+  },
+  "hbm_hit_rates": {
+    "total_hbm_resident_hits": 504,
+    "fresh_demand_misses": 206,
+    "overall_hbm_hit_rate": 0.708861,
+    "prefetch_assisted_hit_rate": 0.000000,
+    "fresh_demand_miss_rate": 0.289733,
+    "inflight_attachment_rate": 0.001406
+  },
+  "memory_traffic": {
+    "speculative_bytes_transferred": 352321536,
+    "demand_bytes_transferred": 18144559104,
+    "total_ddr5_bytes_transferred": 18496880640,
+    "baseline_demand_bytes": 0,
+    "traffic_overhead_ratio": 0.0000
+  },
+  "exposed_stall_and_execution": {
+    "aggregate_demand_wait_ns": 284884992.00,
+    "exposed_gpu_stall_ns": 284884992.00,
+    "total_simulated_execution_ns": 294057619.89
+  },
+  "expert_load_latency": {
+    "mean_ns": 400682.13,
+    "p50_ns": 0.00,
+    "p95_ns": 1376256.00,
+    "p99_ns": 1376256.00
+  },
+  "request_latency": {
+    "mean_ns": 0.00,
+    "p50_ns": 0.00,
+    "p95_ns": 0.00,
+    "p99_ns": 0.00
+  },
+  "token_latency": {
+    "mean_ns": 0.00,
+    "p50_ns": 0.00,
+    "p95_ns": 0.00,
+    "p99_ns": 0.00,
+    "simulated_tokens_per_second": 0.00
+  }
+}

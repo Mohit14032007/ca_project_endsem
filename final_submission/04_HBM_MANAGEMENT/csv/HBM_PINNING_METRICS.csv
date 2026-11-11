@@ -1,0 +1,2 @@
+workload,policy,pin_intents_created,pins_expired_at_deadline,pins_promoted_to_demand,pin_leaks,incremental_hits
+Workload A1 (T=128),Belady Pinning,35563,35563,0,0,0

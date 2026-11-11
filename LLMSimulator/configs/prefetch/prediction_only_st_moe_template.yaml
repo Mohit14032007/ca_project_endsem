@@ -1,0 +1,90 @@
+# ==============================================================================
+# TEMPLATE ONLY: Phase 2 ST-MoE Predictor Configuration
+# STATUS: NOT EXECUTABLE IN PHASE 1
+# WARNING: Selecting 'st_moe' in Phase 1 produces a deliberate PredictorRegistry
+#          configuration error because algorithm implementation is deferred to Phase 2.
+# ==============================================================================
+log:
+  export_gantt: false
+  gantt_directory: results/prefetch_test/prediction_only_st_moe/raw/
+  output_directory: results/prefetch_test/prediction_only_st_moe/csv/
+  print_log: false
+  traces_directory: results/prefetch_test/prediction_only_st_moe/traces/
+model:
+  model_name: deepseekV3
+  num_layers: 78
+serving:
+  max_batch_size: 1
+  max_process_token: 0
+simulation:
+  data: synthesis
+  exit_out_of_memory: false
+  injection_rate: 0
+  input_len: 128
+  iter: 128
+  mem_cap_limit: false
+  output_len: 128
+  precision_byte: 2
+  skewness: 0.0
+  trace_file: results/endsem_phase_e/final_baseline/traces/ms_task12_t128_l75.csv
+  warm_hbm_preload: false
+
+  prefetching:
+    enabled: true
+    mode: "prediction_only"
+
+    # Future ST-MoE configuration (Zhao et al.)
+    predictor:
+      type: "st_moe"
+      confidence_threshold: 2
+      online_adaptation: true
+
+    candidate_selection:
+      policy: "top_k"
+      budget: 4
+
+    scheduling:
+      prediction_horizon: 2
+      lookahead_tokens: 0
+      demand_priority: true
+
+    transfer:
+      model: "event_driven"
+      asynchronous: true
+      max_outstanding_transfers: 4
+      calibration_file: ""
+
+    hbm:
+      eviction_policy: "lru"
+      reserved_prefetch_bytes: 0
+
+system:
+  distribution:
+    expert_tensor_degree: 1
+    none_expert_tensor_degree: 1
+  gpu_gen: A100
+  infiniband_gen: 800
+  num_device: 1
+  num_node: 1
+  nvlink_gen: 3
+  optimization:
+    bypass_offchip_execution_cache: false
+    compressed_kv: true
+    decode_mode: true
+    disagg_system: false
+    expert_cache_capacity_bytes: 80000000000
+    hbm_dram_cfg_path: reproduction_A100/with_off_chip_dram/deepseekv3/experiments/deepseekv3_mixtral_style_20261011/config_snapshot/dram_config_HBM3_80GB.yaml
+    hetero_subbatch: false
+    kv_cache_reuse_rate: 0.0
+    offchip_dram_cfg_path: reproduction_A100/with_off_chip_dram/deepseekv3/experiments/deepseekv3_mixtral_style_20261011/config_snapshot/dram_config_DDR5_retry.yaml
+    parallel_execution: "off"
+    prefill_mode: false
+    reuse_kv_cache: true
+    use_absorb: true
+    use_flash_attention: true
+    use_flash_mla: true
+    use_hitting_queue: false
+    use_low_unit_moe_only: false
+    use_ramulator: "on"
+  processor_type: GPU
+

@@ -1,0 +1,33 @@
+dataset:
+  id: "correlated_synthetic"
+  name: "Correlated Synthetic Benchmark"
+  workload_type: "calibrated_synthetic"
+  num_requests: 16
+  num_tokens: 5
+  num_moe_stages: 57
+  num_routed_experts: 256
+  top_k: 8
+  first_k_dense: 3
+  spatial_affinity: 0.6
+  temporal_affinity: 0.5
+  cluster_count: 16
+  cluster_size: 16
+  zipf_exponent: 0.8
+  train_ratio: 0.75
+  seed: 42
+
+evaluation:
+  horizons: [1]
+  budgets: [4, 8, 16, 24, 32, 48, 64]
+  regimes: ["frozen", "online", "cold_start"]
+  seed: 42
+
+predictors:
+  cstp:
+    alpha: 0.5
+    smoothing_lambda: 1.0
+    prior_epsilon: 0.1
+  st_moe:
+    cct_capacity: 8
+    confidence_threshold: 2
+

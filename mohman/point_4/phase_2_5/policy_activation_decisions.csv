@@ -1,0 +1,15 @@
+step,layer,expert,epoch,lru_outcome,lru_victim_layer,lru_victim_expert,falru_outcome,falru_victim_layer,falru_victim_expert,diverged
+0,0,1,0,MISS,0,0,MISS,0,0,0
+1,0,2,0,MISS,0,0,MISS,0,0,0
+2,0,3,0,MISS,0,0,MISS,0,0,0
+3,0,4,0,MISS,0,0,MISS,0,0,0
+4,0,1,0,HIT,0,0,HIT,0,0,0
+5,0,2,0,HIT,0,0,HIT,0,0,0
+6,0,1,1,HIT,0,0,HIT,0,0,0
+7,0,1,1,HIT,0,0,HIT,0,0,0
+8,0,5,1,MISS,0,3,MISS,0,3,0
+9,0,6,1,MISS,0,4,MISS,0,4,0
+10,0,7,1,MISS,0,2,MISS,0,2,0
+11,0,8,1,MISS,0,1,MISS,0,5,1
+12,0,1,1,MISS,0,5,HIT,0,0,1
+13,0,5,1,MISS,0,6,MISS,0,6,0

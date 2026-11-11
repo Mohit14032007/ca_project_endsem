@@ -1,0 +1,32 @@
+dataset:
+  id: "moe_anywhere"
+  name: "MoE Anywhere Routing Traces"
+  source: "carlosfelipe/moe-anywhere-routing-traces"
+  file: "e1-sage-a1.5.parquet"
+  model: "InternScience/Sage-A1.5"
+  num_prompts: 74
+  num_tasks: 10
+  num_tokens_total: 19018
+  num_moe_stages: 40
+  num_routed_experts: 256
+  top_k: 8
+  split_type: "deterministic_prompt_disjoint"
+  train_prompts_count: 52
+  val_prompts_count: 8
+  test_prompts_count: 14
+
+evaluation:
+  horizons: [1, 2]
+  budgets: [4, 8, 16, 24, 32, 48, 64]
+  regimes: ["frozen", "online", "cold_start"]
+  seed: 42
+
+predictors:
+  cstp:
+    alpha: 0.5
+    smoothing_lambda: 1.0
+    prior_epsilon: 0.1
+  st_moe:
+    cct_capacity: 8
+    confidence_threshold: 2
+

@@ -1,0 +1,10 @@
+config,description,sim_exec_ms,exposed_stall_ms,hbm_hits,hbm_misses,hit_rate_pct,stall_red_ms,speedup_pct
+B,"Demand-only baseline, LRU",248918.55,245074.77,167579,62821,72.73,0.0,0.0
+P-S,"ST-MoE prediction only, no speculative transfers",248918.55,245074.77,167579,62821,72.73,0.0,0.0
+P-C,"CSTP prediction only, no speculative transfers",248918.55,245074.77,167579,62821,72.73,0.0,0.0
+PF-S,"ST-MoE prefetching, LRU",248306.29,244460.74,167736,62664,72.79,614.03,0.246
+PF-C,"CSTP prefetching, LRU",247975.39,244128.85,167821,62579,72.83,945.92,0.379
+QUAR-S,ST-MoE prefetching + PABI quarantine,248394.62,244549.32,167713,62687,72.78,525.45,0.21
+QUAR-C,CSTP prefetching + PABI quarantine,248083.52,244237.3,167793,62607,72.82,837.47,0.335
+FULL-S,ST-MoE prefetching + PABI + Pinning,248394.62,244549.32,167713,62687,72.78,525.45,0.21
+FULL-C,CSTP prefetching + PABI + Pinning,248083.52,244237.3,167793,62607,72.82,837.47,0.335

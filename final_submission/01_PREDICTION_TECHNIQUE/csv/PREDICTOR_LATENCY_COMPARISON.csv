@@ -1,0 +1,5 @@
+predictor,operation,latency_us,complexity,memory_footprint_kb
+ST-MoE,predict(),33.58,O(K * E),128.0
+ST-MoE,update(),9.19,O(K^2),128.0
+CSTP,predict(),35.12,O(K * E),256.0
+CSTP,update(),11.04,O(K * E),256.0

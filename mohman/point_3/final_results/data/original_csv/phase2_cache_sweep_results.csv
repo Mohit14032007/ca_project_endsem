@@ -1,0 +1,9 @@
+exp_name,predictor,cache_gb,host_sec,inserts,evicts,hits,hbm_hit_pct,dispatches,coverage_pct,timely_pct,late_pct
+sweep_baseline_80gb,baseline,80.0,6.013608694076538,813,0,3027,0.0,0,0.0,0.0,0.0
+sweep_cstp_80gb,cstp,80.0,6.17628812789917,861,0,3027,0.0,0,0.0,0.0,100.0
+sweep_baseline_50gb,baseline,50.0,6.662017583847046,821,212,3019,0.0,0,0.0,0.0,0.0
+sweep_cstp_50gb,cstp,50.0,6.550168514251709,869,260,3019,0.0,0,0.0,0.0,100.0
+sweep_baseline_35gb,baseline,35.0,6.0087621212005615,923,497,2917,0.0,0,0.0,0.0,0.0
+sweep_cstp_35gb,cstp,35.0,5.871920585632324,971,545,2917,0.0,0,0.0,0.0,100.0
+sweep_baseline_25gb,baseline,25.0,5.098988771438599,1280,976,2560,0.0,0,0.0,0.0,0.0
+sweep_cstp_25gb,cstp,25.0,5.337316989898682,1325,1021,2560,0.0,0,0.0,0.0,100.0

@@ -1,0 +1,4 @@
+trace,type,entropy,top10_expert_share_pct,st_moe_f1
+MoE-Suite (Task 12),Authentic Recorded,4.12,38.5,13.13
+MoE-Anywhere (P60),Authentic Recorded,3.78,46.2,18.97
+Synthetic Control,Pseudo-Random,5.54,3.9,2.17

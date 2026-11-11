@@ -23,6 +23,11 @@
 #include "model/model.h"
 #include "model/model_config.h"
 #include "module/tensor.h"
+#include "prefetch/live_prediction_engine.h"
+#include "prefetch/prefetch_config.h"
+#include "prefetch/prefetch_metrics_collector.h"
+#include "prefetch/predictor_interface.h"
+#include "prefetch/predictor_registry.h"
 #include "scheduler/scheduler.h"
 
 using namespace llm_system;
@@ -40,12 +45,18 @@ static size_t count_file_lines(const std::string& path) {
 
 int main(int argc, char* argv[]) {
   bool validate_only = false;
+  std::string trace_file_cli = "";
+  bool warm_hbm_cli = false;
   std::string config_path = "reproduction_A100/with_off_chip_dram/deepseekv3/experiments/deepseekv3_mixtral_style_20261011/configs/deepseekv3_b1_full.yaml";
 
   for (int i = 1; i < argc; i++) {
     std::string arg = argv[i];
     if (arg == "--validate-config" || arg == "--check-only") {
       validate_only = true;
+    } else if (arg == "--trace-file" && i + 1 < argc) {
+      trace_file_cli = argv[++i];
+    } else if (arg == "--warm-hbm" || arg == "--warm-replay") {
+      warm_hbm_cli = true;
     } else if (arg.rfind("--", 0) != 0) {
       config_path = arg;
     }
@@ -79,7 +90,10 @@ int main(int argc, char* argv[]) {
   std::string processor_type = config["system"]["processor_type"].as<std::string>();
   int num_node = config["system"]["num_node"].as<int>();
   int num_device = config["system"]["num_device"].as<int>();
-  int nvlink_gen = config["system"]["nvlink_gen"] ? config["system"]["nvlink_gen"].as<int>() : 3;
+  int nvlink_gen = 3;
+  if (config["system"]["nvlink_gen"]) {
+    nvlink_gen = config["system"]["nvlink_gen"].as<int>();
+  }
 
   int e_tp_dg = config["system"]["distribution"]["expert_tensor_degree"].as<int>();
   int ne_tp_dg = config["system"]["distribution"]["none_expert_tensor_degree"].as<int>();
@@ -115,6 +129,27 @@ int main(int argc, char* argv[]) {
   double skewness = config["simulation"]["skewness"].as<double>();
   bool exit_out_of_memory = config["simulation"]["exit_out_of_memory"].as<bool>();
   bool mem_cap_limit = config["simulation"]["mem_cap_limit"].as<bool>();
+
+  std::string trace_file = trace_file_cli;
+  if (trace_file.empty() && config["simulation"]["trace_file"]) {
+    trace_file = config["simulation"]["trace_file"].as<std::string>();
+  }
+  bool warm_hbm_preload = warm_hbm_cli;
+  if (!warm_hbm_preload && config["simulation"]["warm_hbm_preload"]) {
+    warm_hbm_preload = config["simulation"]["warm_hbm_preload"].as<bool>();
+  }
+
+  // 4b. Prefetching Configuration (Phase 1)
+  PrefetchConfig prefetch_config;
+  if (config["simulation"]["prefetching"]) {
+    prefetch_config = PrefetchConfig::parse_yaml(config["simulation"]["prefetching"]);
+  }
+  try {
+    prefetch_config.validate();
+  } catch (const std::exception& e) {
+    std::cerr << "[CONFIGURATION ERROR] Prefetching validation failed:\n  " << e.what() << "\n";
+    return 3;
+  }
 
   // 5. Log Section
   std::string output_path = config["log"]["output_directory"].as<std::string>();
@@ -175,13 +210,40 @@ int main(int argc, char* argv[]) {
   system_config.exit_out_of_memory = exit_out_of_memory;
   system_config.mem_cap_limit = mem_cap_limit;
 
+  if (config["system"]["optimization"]["bypass_offchip_execution_cache"]) {
+    std::string val_str = config["system"]["optimization"]["bypass_offchip_execution_cache"].as<std::string>();
+    std::string s = "";
+    for (char c : val_str) {
+      s += std::tolower(c);
+    }
+    if (s == "1" || s == "true" || s == "on" || s == "yes") {
+      system_config.bypass_offchip_execution_cache = true;
+    } else if (s == "0" || s == "false" || s == "off" || s == "no") {
+      system_config.bypass_offchip_execution_cache = false;
+    }
+  }
+  double compute_multiplier = 1.0;
+  if (config["simulation"] && config["simulation"]["optimization"] && config["simulation"]["optimization"]["compute_time_multiplier"]) {
+    compute_multiplier = config["simulation"]["optimization"]["compute_time_multiplier"].as<double>();
+  } else if (config["system"] && config["system"]["optimization"] && config["system"]["optimization"]["compute_time_multiplier"]) {
+    compute_multiplier = config["system"]["optimization"]["compute_time_multiplier"].as<double>();
+  } else if (config["simulation"] && config["simulation"]["compute_time_multiplier"]) {
+    compute_multiplier = config["simulation"]["compute_time_multiplier"].as<double>();
+  }
+  system_config.compute_time_multiplier = compute_multiplier;
+  system_config.apply_environment_overrides();
+  system_config.prefetch_config = prefetch_config;
+
   if (nvlink_gen == 3) {
     system_config.device_ict_bandwidth = 150.0 * 1000 * 1000 * 1000;     // 150 GB/s NVLink 3 (A100)
     system_config.device_ict_latency = 3.0 * 1000;                        // 3000 ns
   }
 
   // Model Config: DeepSeek-V3 exact architecture
-  ModelConfig model_config = (model_name == "debugV3") ? debugV3 : deepseekV3;
+  ModelConfig model_config = deepseekV3;
+  if (model_name == "debugV3") {
+    model_config = debugV3;
+  }
   if (config["model"]["num_layers"]) {
     model_config.num_layers = config["model"]["num_layers"].as<int>();
   }
@@ -225,6 +287,44 @@ int main(int argc, char* argv[]) {
   std::cout << "  Summary CSV Directory: " << output_path << "\n";
   std::cout << "  Workload: input_len=" << input_len << ", output_len=" << output_len 
             << ", iter=" << iter << ", batch_size=" << max_batch_size << "\n";
+  std::string prefetch_str = "DISABLED";
+  if (prefetch_config.enabled) {
+    prefetch_str = "ENABLED";
+  }
+  std::cout << "  Prefetching: " << prefetch_str
+            << " (mode=" << to_string(prefetch_config.mode)
+            << ", predictor=" << to_string(prefetch_config.predictor_type)
+            << ", budget=" << prefetch_config.budget
+            << ", horizon=" << prefetch_config.prediction_horizon
+            << ", transfer_model=" << to_string(prefetch_config.transfer_model) << ")\n";
+  std::cout << "  Eviction Policy: " << to_string(prefetch_config.eviction_policy);
+  if (prefetch_config.eviction_policy == EvictionPolicy::FA_LRU) {
+    std::cout << " (fa_lru_window_size=" << prefetch_config.fa_lru_window_size << ")";
+  }
+  std::cout << "\n";
+
+  IPredictor::Ptr predictor_instance = nullptr;
+  if (prefetch_config.enabled && prefetch_config.mode != PrefetchMode::NONE) {
+    try {
+      predictor_instance = PredictorRegistry::create_predictor(
+          prefetch_config.predictor_type, prefetch_config,
+          moe_layers, model_config.num_routed_expert, model_config.top_k);
+      std::string impl_str = "no";
+      if (predictor_instance->is_implemented()) {
+        impl_str = "yes";
+      }
+      std::string eval_str = "no";
+      if (predictor_instance->is_evaluation_only()) {
+        eval_str = "yes";
+      }
+      std::cout << "  Predictor Status: instantiated (" << predictor_instance->get_name()
+                << ", implemented=" << impl_str
+                << ", eval_only=" << eval_str << ")\n";
+    } catch (const std::exception& e) {
+      std::cerr << "[CONFIGURATION ERROR] Failed to instantiate predictor:\n  " << e.what() << "\n";
+      return 5;
+    }
+  }
 
   assert(max_row_gpu < ddr5_cfg.num_row);
 
@@ -244,7 +344,34 @@ int main(int argc, char* argv[]) {
 
   Device::Ptr device = cluster->get_device(0);
   device->cache_capacity_bytes = cache_capacity;
+  if (device->config.prefetch_config.pabi_speculative_buffer_capacity_bytes <= 0 && device->config.prefetch_config.pabi_speculative_fraction > 0.0) {
+    device->speculative_buffer_capacity_bytes = static_cast<long long>(device->cache_capacity_bytes * device->config.prefetch_config.pabi_speculative_fraction);
+  }
   device->reset_expert_cache();
+  if (scheduler != nullptr) {
+    scheduler->set_device(device);
+  }
+
+  PrefetchMetricsCollector::getInstance().reset();
+  PrefetchMetricsCollector::getInstance().set_enabled(true);
+  std::string pred_name = "none";
+  if (prefetch_config.enabled) {
+    if (prefetch_config.predictor_type == PredictorType::ST_MOE) {
+      pred_name = "ST_MOE";
+    } else if (prefetch_config.predictor_type == PredictorType::CSTP) {
+      pred_name = "CSTP";
+    }
+  }
+  int eff_horizon = 0;
+  int eff_budget = 0;
+  if (prefetch_config.enabled) {
+    eff_horizon = prefetch_config.prediction_horizon;
+    eff_budget = prefetch_config.budget;
+  }
+  PrefetchMetricsCollector::getInstance().set_experiment_metadata(
+      data_name, max_batch_size, pred_name, eff_horizon,
+      eff_budget, config_path);
+  PrefetchMetricsCollector::getInstance().set_output_dir(trace_dir);
 
   std::cout << "\n[INITIALIZATION] Scheduler, Cluster, Device, and Model Graph created.\n" << std::flush;
 
@@ -281,10 +408,70 @@ int main(int argc, char* argv[]) {
     std::cout << "\n--- Executing Controlled Sequential Decoding Loop (" << iter << " steps) ---\n" << std::flush;
     scheduler->clear();
     scheduler->initRunningQueue();
-    for (int b = 0; b < max_batch_size; b++) {
-      scheduler->pushDummySeq(input_len, output_len);
+
+    int num_moe_layers = model_config.num_layers;
+    if (model_name == "deepseekV3" || model_name == "debugV3") {
+      num_moe_layers = model_config.num_layers - model_config.first_k_dense;
+    } else if (model_config.expert_freq != 0) {
+      num_moe_layers = model_config.num_layers / model_config.expert_freq;
+    }
+
+    bool is_real_trace_data = false;
+    if (data_name == "moe_anywhere" || data_name.rfind("moe_suite", 0) == 0 || !trace_file.empty()) {
+      is_real_trace_data = true;
+    }
+    if (data_name == "synthetic") {
+      is_real_trace_data = false;
+      trace_file = ""; // Strict isolation: never use real trace file in synthetic mode
+    }
+
+    if (is_real_trace_data) {
+      if (trace_file.empty()) {
+        throw std::runtime_error("[ERROR] Real trace dataset '" + data_name + "' specified but trace_file is empty! Zero fallback to random allowed.");
+      }
+      std::cout << "\n[REAL TRACE REPLAY MODE] Ingesting trace: " << trace_file << "\n";
+      scheduler->loadRealTrace(trace_file, max_batch_size, num_moe_layers, model_config.num_routed_expert, model_config.top_k, iter);
+      for (int b = 0; b < max_batch_size; b++) {
+        int seq_out_len = output_len;
+        if (seq_out_len < iter) {
+          seq_out_len = iter;
+        }
+        Sequence::Ptr new_seq = Sequence::Create(b, input_len, seq_out_len);
+        if (system_config.decode_mode) {
+          new_seq->current_len = input_len;
+        }
+        new_seq->get_expert_from_list = true;
+        scheduler->sequence_queue.push_back(new_seq);
+      }
+    } else {
+      std::cout << "\n[SYNTHETIC ROUTING MODE] Using synthetic generator with 4-tuple cache isolation.\n";
+      for (int b = 0; b < max_batch_size; b++) {
+        scheduler->pushDummySeq(input_len, output_len);
+      }
     }
     scheduler->fillRunningQueue();
+
+    if (warm_hbm_preload) {
+      std::cout << "[WARM HBM PRELOAD] Preloading replay working set into HBM cache...\n";
+      long long total_expert_size = 88080384LL;
+      if (!trace_file.empty()) {
+        for (int s = 0; s < max_batch_size; s++) {
+          for (int t = 0; t < iter; t++) {
+            for (int l = 0; l < num_moe_layers; l++) {
+              size_t table_idx = (size_t)t * num_moe_layers + l;
+              int target_layer = (l + 1) % num_moe_layers;
+              for (int e_id : scheduler->sequences_info[s]->expert_list[table_idx]) {
+                if (!device->is_expert_resident(target_layer, e_id)) {
+                  device->mark_expert_resident(target_layer, e_id, total_expert_size);
+                }
+              }
+            }
+          }
+        }
+      }
+      std::cout << "[WARM HBM PRELOAD] Resident experts in HBM: " << device->lru_expert_list.size() 
+                << " (" << (device->resident_bytes / (1024.0 * 1024.0 * 1024.0)) << " GB)\n" << std::flush;
+    }
 
     std::ofstream summary_csv(summary_csv_filename);
     summary_csv << "iter_info,split,type,time,latency,queueing_delay,arrival_time,seq_queue_size,"
@@ -296,6 +483,12 @@ int main(int argc, char* argv[]) {
 
     time_ns cumulative_device_time = 0;
 
+    time_ns req_start_time = device->status.device_time;
+    for (int s = 0; s < max_batch_size; s++) {
+      PrefetchMetricsCollector::getInstance().record_request_start(
+          0, s, input_len, 0.0, static_cast<double>(req_start_time));
+    }
+
     for (int step = 0; step < iter; step++) {
       auto metadata = scheduler->setMetadata();
       if (metadata.empty()) {
@@ -303,19 +496,49 @@ int main(int argc, char* argv[]) {
         break;
       }
 
+      time_ns step_start_dev_time = device->status.device_time;
+      for (int s = 0; s < max_batch_size; s++) {
+        PrefetchMetricsCollector::getInstance().record_token_start(
+            0, s, input_len + step, step, static_cast<double>(step_start_dev_time));
+      }
+
       auto step_host_start = std::chrono::high_resolution_clock::now();
-      double ddr5_sim_before = device->offchip_dram_interface ? device->offchip_dram_interface->time : 0.0;
-      double hbm_sim_before = device->dram_interface ? device->dram_interface->time : 0.0;
+      double ddr5_sim_before = 0.0;
+      if (device->offchip_dram_interface != nullptr) {
+        ddr5_sim_before = device->offchip_dram_interface->time;
+      }
+      double hbm_sim_before = 0.0;
+      if (device->dram_interface != nullptr) {
+        hbm_sim_before = device->dram_interface->time;
+      }
 
       cluster->run(metadata);
+
+      time_ns step_end_dev_time = device->status.device_time;
+      for (int s = 0; s < max_batch_size; s++) {
+        PrefetchMetricsCollector::getInstance().record_token_end(
+            0, s, input_len + step, step, static_cast<double>(step_end_dev_time));
+      }
 
       auto step_host_end = std::chrono::high_resolution_clock::now();
       std::chrono::duration<double> step_host_sec = step_host_end - step_host_start;
 
-      double ddr5_delta_ns = (device->offchip_dram_interface ? device->offchip_dram_interface->time : 0.0) - ddr5_sim_before;
-      double hbm_delta_ns = (device->dram_interface ? device->dram_interface->time : 0.0) - hbm_sim_before;
-      time_ns step_device_time = device->status.device_time;
-      cumulative_device_time += step_device_time;
+      double ddr5_sim_after = 0.0;
+      if (device->offchip_dram_interface != nullptr) {
+        ddr5_sim_after = device->offchip_dram_interface->time;
+      }
+      double hbm_sim_after = 0.0;
+      if (device->dram_interface != nullptr) {
+        hbm_sim_after = device->dram_interface->time;
+      }
+      double ddr5_delta_ns = ddr5_sim_after - ddr5_sim_before;
+      double hbm_delta_ns = hbm_sim_after - hbm_sim_before;
+      time_ns step_device_time = device->status.device_time - step_start_dev_time;
+      if (system_config.clock_continuity) {
+        cumulative_device_time = device->status.device_time;
+      } else {
+        cumulative_device_time += step_device_time;
+      }
 
       // Populate standard Stat object with measured simulation breakdowns and energies
       Stat stat;
@@ -341,6 +564,8 @@ int main(int argc, char* argv[]) {
       stat.total_energy = total_energy[7];
 
       cluster->setStat(stat);
+      stat.latency = step_device_time;
+      stat.time = cumulative_device_time;
       cluster->setTimeBreakDown(stat);
 
       std::cout << "  [Step " << step << "] Token SeqLen=" << (input_len + step) 
@@ -351,8 +576,13 @@ int main(int argc, char* argv[]) {
 
       // Advance scheduler for the next sequential decoding token
       scheduler->updateScheduler(step_device_time);
-      scheduler->fillSequenceQueue(step_device_time, cumulative_device_time);
+      if (!is_real_trace_data) {
+        scheduler->fillSequenceQueue(step_device_time, cumulative_device_time);
+      }
       scheduler->fillRunningQueue();
+      if (is_real_trace_data && scheduler->running_queue.empty() && step + 1 < iter) {
+        throw std::runtime_error("[ERROR] Running queue unexpectedly empty during real trace replay at step " + std::to_string(step));
+      }
 
       // Export step row to summary CSV using genuine Stat values
       summary_csv << stat.iter_info << ","
@@ -409,10 +639,30 @@ int main(int argc, char* argv[]) {
       summary_csv.flush();
     }
     summary_csv.close();
+
+    time_ns req_end_time = device->status.device_time;
+    for (int s = 0; s < max_batch_size; s++) {
+      PrefetchMetricsCollector::getInstance().record_request_end(
+          0, s, iter, static_cast<double>(req_end_time));
+    }
   }
 
   auto run_host_end = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> total_host_sec = run_host_end - run_host_start;
+
+  if (scheduler != nullptr && scheduler->prediction_engine != nullptr) {
+    scheduler->prediction_engine->finalize(total_host_sec.count());
+  }
+
+  if (device != nullptr) {
+    device->dump_prefetch_effectiveness(trace_dir + "/prefetch_effectiveness.csv");
+    device->dump_fa_lru_diagnostics(trace_dir + "/fa_lru_diagnostics.json");
+    PrefetchMetricsCollector::getInstance().set_hbm_metrics(
+        device->cache_capacity_bytes, to_string(device->eviction_policy),
+        device->fa_lru_window_size, device->reloaded_experts_count);
+    PrefetchMetricsCollector::getInstance().finalize(static_cast<double>(device->get_time()), 0);
+    PrefetchMetricsCollector::getInstance().dump_artifacts();
+  }
 
   if (export_gantt) {
     cluster->exportGantt(gantt_dir);
@@ -449,7 +699,32 @@ int main(int argc, char* argv[]) {
                 << "RESIDENT_BYTES=" << device->resident_bytes << "\n"
                 << "ROUTING_RECORDS=" << routing_lines << "\n"
                 << "LOAD_RECORDS=" << load_lines << "\n"
-                << "CACHE_RECORDS=" << cache_lines << "\n";
+                << "CACHE_RECORDS=" << cache_lines << "\n"
+                << "CANDIDATES_EVALUATED=" << device->prefetch_metrics.candidates_evaluated << "\n"
+                << "CANDIDATES_DISPATCHED=" << device->prefetch_metrics.candidates_dispatched << "\n"
+                << "PREFETCH_TRANSFERS_SUBMITTED=" << device->prefetch_metrics.prefetch_transfers_submitted << "\n"
+                << "PREFETCH_TRANSFERS_COMPLETED=" << device->prefetch_metrics.prefetch_transfers_completed << "\n"
+                << "PREFETCHES_INSERTED_HBM=" << device->prefetch_metrics.prefetches_inserted_hbm << "\n"
+                << "RESIDENT_PREFETCHES_SKIPPED=" << device->prefetch_metrics.resident_prefetches_skipped << "\n"
+                << "DUPLICATE_PREFETCHES_PREVENTED=" << device->prefetch_metrics.duplicate_prefetches_prevented << "\n"
+                << "PREFETCH_USEFUL_HITS=" << device->prefetch_metrics.prefetch_useful_hits << "\n"
+                << "DEMAND_INFLIGHT_ATTACHMENTS=" << device->prefetch_metrics.demand_inflight_attachments << "\n"
+                << "SPECULATIVE_INSERTIONS=" << device->pabi_metrics.speculative_insertions << "\n"
+                << "SPECULATIVE_PROMOTIONS=" << device->pabi_metrics.speculative_promotions << "\n"
+                << "SPECULATIVE_EVICTIONS=" << device->pabi_metrics.speculative_evictions << "\n"
+                << "UNPINNED_SPECULATIVE_EVICTIONS=" << device->pabi_metrics.unpinned_speculative_evictions << "\n"
+                << "PINNED_EVICTION_SKIPPED=" << device->pabi_metrics.pinned_eviction_skipped << "\n"
+                << "PINS_CLEARED_ON_PROMOTION=" << device->pabi_metrics.pins_cleared_on_promotion << "\n"
+                << "PIN_CANDIDATES_CONSIDERED=" << device->pabi_metrics.pin_candidates_considered << "\n"
+                << "PIN_CANDIDATES_SELECTED=" << device->pabi_metrics.pin_candidates_selected << "\n"
+                << "PIN_INTENTS_CREATED=" << device->pabi_metrics.pin_intents_created << "\n"
+                << "PIN_EXPIRATIONS=" << device->pabi_metrics.pin_expirations << "\n"
+                << "RESIDENT_EXPERTS_PINNED=" << device->pabi_metrics.resident_experts_pinned << "\n"
+                << "CANCELLED_PREFETCHES=" << device->prefetch_metrics.cancelled_prefetches << "\n"
+                << "DEMAND_INSERTIONS=" << device->pabi_metrics.demand_insertions << "\n"
+                << "DEMAND_EVICTIONS=" << device->pabi_metrics.demand_evictions << "\n"
+                << "PINNED_EXPERT_DEMAND_HITS=" << device->pabi_metrics.pinned_expert_demand_hits << "\n"
+                << "SPECULATIVE_REJECT_PINNED_CAPACITY=" << device->pabi_metrics.speculative_reject_pinned_capacity << "\n";
     status_file.close();
   }
 

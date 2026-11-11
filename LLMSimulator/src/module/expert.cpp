@@ -106,10 +106,13 @@ ExpertFFN::ExpertFFN(std::string& prefix, std::string& name,
         w2->name = "W2_down";
 
         w1->is_expert_weight = true;
+        w1->is_primary_expert_weight = true;
         w1->expert_id = expert_id;
         w3->is_expert_weight = true;
+        w3->is_primary_expert_weight = false;
         w3->expert_id = expert_id;
         w2->is_expert_weight = true;
+        w2->is_primary_expert_weight = false;
         w2->expert_id = expert_id;
 
         w1->sister_weights = {w3, w2};

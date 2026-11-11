@@ -1,0 +1,13 @@
+source,evaluation_type,run_id,predictor,mode,horizon,budget,precision,recall,f1_score,hit_rate,mrr,ndcg,mean_pred_latency_us,mean_update_latency_us,host_overhead_pct
+LLMSimulator/results/phase_4d5c/production_matrix_summary.csv,in_situ_simulation,c02_stmoe_predonly,st_moe,prediction_only,1,4,0.338667,0.169333,0.225778,0.736,0.574667,0.368387,42.4498,7.51495,0.251378
+LLMSimulator/results/phase_4d5c/production_matrix_summary.csv,in_situ_simulation,c03_cstp_predonly,cstp,prediction_only,1,4,0.34,0.17,0.226667,0.730667,0.579889,0.371321,62.7351,1.4198,0.248935
+LLMSimulator/results/phase_4d5c/production_matrix_summary.csv,in_situ_simulation,c04_stmoe_prefetch_lru,st_moe,hardware_async,1,4,0.338667,0.169333,0.225778,0.736,0.574667,0.368387,41.2581,9.86112,0.238489
+LLMSimulator/results/phase_4d5c/production_matrix_summary.csv,in_situ_simulation,c05_cstp_prefetch_lru,cstp,hardware_async,1,4,0.34,0.17,0.226667,0.730667,0.579889,0.371321,60.6051,3.2905900000000003,0.269194
+mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,offline_trace_evaluation,p1_cstp_h1,cstp,offline_evaluation,1,8,0.455149,0.455149,0.455149,0.966726,,,,,
+mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,offline_trace_evaluation,p1_st-moe_h1,stmoe,offline_evaluation,1,8,0.479122,0.479122,0.479122,0.969405,,,,,
+mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,offline_trace_evaluation,p1_cstp_h2,cstp,offline_evaluation,2,8,0.441801,0.441801,0.441801,0.961369,,,,,
+mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,offline_trace_evaluation,p1_st-moe_h2,stmoe,offline_evaluation,2,8,0.462046,0.462046,0.462046,0.958512,,,,,
+mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,offline_trace_evaluation,p1_cstp_h1,cstp,offline_evaluation,1,8,0.165917,0.165917,0.165917,0.748267,,,,,
+mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,offline_trace_evaluation,p1_st-moe_h1,stmoe,offline_evaluation,1,8,0.265333,0.265333,0.265333,0.8984,,,,,
+mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,offline_trace_evaluation,p1_cstp_h2,cstp,offline_evaluation,2,8,0.161167,0.161167,0.161167,0.74,,,,,
+mohman/point_1/stmoe_cstp/results/csv/corrected_aggregate_metrics.csv,offline_trace_evaluation,p1_st-moe_h2,stmoe,offline_evaluation,2,8,0.259017,0.259017,0.259017,0.889467,,,,,

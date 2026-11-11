@@ -1,0 +1,16 @@
+run_id,multiplier,predictor,total_speculative_transfers,avg_queue_wait_ms,avg_remaining_transfer_ms,spec_demanded,spec_unused,spec_in_flight_at_end
+B-M1,1.0,none,0,0.0,0.0,0,0,0
+FWD-S-H2-M1,1.0,st_moe,395,2411.11,3.9,59,30,306
+FWD-C-H2-M1,1.0,cstp,457,2197.47,3.9,68,30,359
+B-M4,4.0,none,0,0.0,0.0,0,0,0
+FWD-S-H2-M4,4.0,st_moe,395,3000.7,3.9,53,110,232
+FWD-C-H2-M4,4.0,cstp,457,2847.89,3.9,62,110,285
+B-M8,8.0,none,0,0.0,0.0,0,0,0
+FWD-S-H2-M8,8.0,st_moe,395,3075.35,3.9,49,219,127
+FWD-C-H2-M8,8.0,cstp,457,2977.94,3.9,58,219,180
+B-M12,12.0,none,0,0.0,0.0,0,0,0
+FWD-S-H2-M12,12.0,st_moe,395,2171.37,3.9,45,329,21
+FWD-C-H2-M12,12.0,cstp,457,2155.33,3.9,54,329,74
+B-M16,16.0,none,0,0.0,0.0,0,0,0
+FWD-S-H2-M16,16.0,st_moe,395,1349.67,3.74,33,362,0
+FWD-C-H2-M16,16.0,cstp,457,1248.36,3.9,50,386,21
