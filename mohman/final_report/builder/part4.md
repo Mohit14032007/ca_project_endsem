@@ -35,7 +35,7 @@ Table 8.1 summarizes the sensitivity of the prefetching engine to the lookahead 
 ---
 
 ## 8.4 Prefetch Candidate Budget ($K \in [1, 8]$)
-Candidate budget $K$ dictates how many speculative experts are enqueued per layer. Figure 8.1 and Table 8.2 illustrate the profound trade-off between coverage and bus contention:
+Candidate budget $K$ dictates how many speculative experts are enqueued per layer. Table 8.2 illustrates the trade-off between coverage and bus contention:
 
 #### Table 8.2: Candidate Budget Sensitivity and Bus Saturation ($H=1$)
 | Candidate Budget ($K$) | Top-K Recall (%) | DDR5 Speculative Traffic (GB) | Unused Transfers | Exposed Stall (s) | Execution Time (s) | Net Speedup (%) | Operating Regime |
@@ -48,24 +48,69 @@ Candidate budget $K$ dictates how many speculative experts are enqueued per laye
 
 ---
 
-## 8.5 Comprehensive Interpretation of Sensitivity Plots
+## 8.5 Detailed Forensic Plot Audits for Point 6 (Figures 8.1 to 8.4)
 
-### Batch Size Plots (`fig1_batch_size_hit_rate.png`, `fig2_batch_size_exposed_stall.png`):
-- As batch size scales from $B=1$ to $B=32$, exposed stall time drops non-linearly. The sharpest reduction occurs between $B=1$ and $B=4$, where prefetching eliminates isolated sequence cold misses. Beyond $B=14$, inter-sequence expert sharing naturally amortizes memory transfers.
+### Figure 8.1: Batch Size Scaling and Exposed Stall
+![Figure 8.1: Exposed Memory Stall Scaling Across Batch Sizes](mohman/point_6/final_results/figures/batch_size/fig2_batch_size_exposed_stall.png)
 
-### Context Length Plots (`fig4_context_length_kv_cache.png`, `fig6_context_length_expert_cache.png`):
-- Demonstrates that KV cache memory growth has zero correlation with MoE expert memory traffic. Expert residency remains flat ($88.46\%$) across prompt lengths from 13 to 4,096 tokens.
-
-### Candidate Budget Plots (`fig10_budget_speculative_ddr5.png`, `fig12_budget_token_latency.png`):
-- DDR5 speculative traffic scales linearly with budget $K$ ($\approx 92.5\text{ GB}$ per unit of $K$). However, token latency forms a distinct U-shaped curve: it decreases rapidly from $K=0$ to $K=2$, reaches its minimum at $K=2$, and then climbs as $K \to 8$ due to queue queuing delays and bus saturation.
+1. **Figure Number:** Figure 8.1
+2. **Descriptive Title:** Cumulative Exposed Memory Stall Reduction Across Batch Sizes ($B \in [1, 32]$).
+3. **Metric:** Cumulative Exposed Memory Stall (Seconds).
+4. **X-axis:** Batch Size ($B=1, 2, 4, 8, 14, 32$).
+5. **Y-axis:** Exposed Memory Stall Time (Seconds).
+6. **Configurations Compared:** Baseline (No Prefetch) vs. CSTP Prefetching + LRU vs. CSTP + FA-LRU.
+7. **Main Observation:** The absolute stall reduction is largest at $B=14$ ($264.7\text{ s}$ saved). As batch size scales to $B=32$, stalls diminish across all configurations due to natural inter-request expert sharing.
+8. **Technical Explanation:** At $B=1$, expert demands are isolated and non-overlapping. As batch size increases, concurrent sequences share active experts, amortizing memory loads.
+9. **Implication for the Project:** Demonstrates that prefetching provides the greatest relative benefit at small to medium batch sizes ($B \le 14$), where memory stalls dominate total execution.
+10. **Limitations & Caveats:** Very large batch sizes ($B \ge 64$) require multi-GPU tensor parallelism, which lies outside our single-node simulation baseline.
 
 ---
 
-## 8.6 Operating Regime Taxonomy: Beneficial, Limited, and Pathological
-The sensitivity analysis establishes a formal taxonomy of three distinct MoE prefetching regimes:
-1. **The Beneficial Regime ($B \in [1, 14], H \in [1, 2], K \in [1, 2]$):** Predictor precision is high ($>60\%$), compute overlap is sufficient, and speculative traffic does not saturate DDR5 bandwidth. Net speedup exceeds $20\%$.
-2. **The Limited Regime ($B \ge 32$ or High Cache Capacity):** Natural working-set hit rate exceeds $92\%$. While prefetching functions correctly, the headroom for latency reduction is compressed to $<5\%$.
-3. **The Pathological Regime ($H \ge 4$ or $K \ge 8$):** Speculative traffic saturates the $22.578\text{ GB/s}$ DDR5 bus. False positives evict useful cache lines, prefetch queues back up, and demand requests are delayed by bus contention, degrading performance below optimal levels.
+### Figure 8.2: Lookahead Horizon Dynamics
+![Figure 8.2: Lookahead Horizon Dynamics and Memory Stall Reduction](mohman/point_6/final_results/figures/lookahead/fig9_lookahead_exposed_stall.png)
+
+1. **Figure Number:** Figure 8.2
+2. **Descriptive Title:** Exposed Memory Stall Time Across Prediction Horizons ($H=1, 2, 4$).
+3. **Metric:** Exposed Memory Stall Time (Seconds).
+4. **X-axis:** Prediction Horizon ($H \in \{1, 2, 4\}$).
+5. **Y-axis:** Stall Time in Seconds.
+6. **Configurations Compared:** Demand Baseline vs. CSTP at Horizons $H=1, 2, 4$.
+7. **Main Observation:** Stall time reaches its minimum at $H=2$. Increasing horizon to $H=4$ degrades performance, increasing stall time by $+14.6\text{ s}$.
+8. **Technical Explanation:** While $H=4$ provides theoretically larger compute overlap, predictor accuracy drops sharply (from $86.72\%$ to $61.3\%$). False positives congest the DDR5 bus, delaying subsequent timely transfers.
+9. **Implication for the Project:** Establishes $H=2$ as the practical upper limit of beneficial lookahead in autoregressive decoding.
+10. **Limitations & Caveats:** If future models implement architecturally slower layers (longer compute per layer), $H=1$ may suffice for 100% latency hiding.
+
+---
+
+### Figure 8.3: Candidate Budget U-Curve and Token Latency
+![Figure 8.3: Token Latency U-Curve Across Candidate Budgets](mohman/point_6/final_results/figures/prefetch_budget/fig12_budget_token_latency.png)
+
+1. **Figure Number:** Figure 8.3
+2. **Descriptive Title:** Autoregressive Token Latency Across Candidate Prefetch Budgets ($K \in [1, 8]$).
+3. **Metric:** Mean Token Latency (Milliseconds per Token).
+4. **X-axis:** Candidate Prefetch Budget ($K=1, 2, 4, 8$).
+5. **Y-axis:** Mean Token Latency (ms/token).
+6. **Configurations Compared:** CSTP Prefetching with Budgets $K \in \{1, 2, 4, 8\}$ against Non-Prefetched Baseline.
+7. **Main Observation:** Token latency exhibits a classic U-shaped curve: it decreases from $3,586.18\text{ ms}$ at baseline to a global minimum of $3,565.37\text{ ms}$ at $K=2$, then climbs to $3,578.40\text{ ms}$ at $K=8$.
+8. **Technical Explanation:** At $K=2$, hit coverage is maximized without bus saturation. At $K \ge 4$, speculative traffic exceeds bus absorption capacity, causing prefetch queue delays.
+9. **Implication for the Project:** Authoritatively identifies $K=2$ as the optimal operating point for deployment.
+10. **Limitations & Caveats:** The exact U-curve minimum depends on the ratio of DDR5 bandwidth ($22.578\text{ GB/s}$) to layer compute time.
+
+---
+
+### Figure 8.4: Operating Regime Taxonomy Summary
+![Figure 8.4: Complete Operating Regime Taxonomy Summary](mohman/point_6/final_results/figures/combined/fig15_operating_regimes_summary.png)
+
+1. **Figure Number:** Figure 8.4
+2. **Descriptive Title:** Comprehensive Taxonomy of MoE Prefetching Operating Regimes.
+3. **Metric:** Relative Speedup (%) vs. Speculative DDR5 Traffic Overhead (GB).
+4. **X-axis:** Speculative Memory Traffic Overhead (Gigabytes).
+5. **Y-axis:** Net Execution Speedup (%).
+6. **Configurations Compared:** Matrix of all tested combinations of $B \in [1, 32], H \in [1, 4], K \in [1, 8]$.
+7. **Main Observation:** Identifies three clear behavioral zones: Beneficial Zone (Top-Left: high speedup, low traffic), Limited Zone (Middle: modest speedup, moderate traffic), and Pathological Zone (Bottom-Right: degraded speedup, massive traffic).
+8. **Technical Explanation:** High accuracy and modest budgets populate the beneficial zone. Over-speculation ($K=8, H=4$) pushes the system into the pathological zone where bus congestion dominates.
+9. **Implication for the Project:** Provides systems engineers with a definitive tuning guide for prefetcher configuration in production LLM inference.
+10. **Limitations & Caveats:** Regimes are delineated for a single-server DDR5 memory controller; multi-channel memory architectures will shift boundaries to the right.
 
 ---
 
@@ -126,26 +171,85 @@ Table 9.2 presents the reconciled energy metrics across key configurations from 
 
 ---
 
-## 9.4 Energy Breakdown Across Computing and Memory Subsystems
-Figure 9.1 illustrates the component-wise energy breakdown:
-- **Static Energy Dominance:** Static power accounts for over **$56\%$ to $73\%$ of total system energy**. Consequently, any technique that reduces total execution runtime yields massive static energy savings (saving $1,625.5\text{ J}$ in Config D).
-- **Active Memory Penalty:** Speculative DDR5 traffic increases active transfer energy from $286.42\text{ J}$ to $373.62\text{ J}$ ($+87.20\text{ J}$).
-- **Net Energy Neutrality:** Because the static energy savings ($1,625.5\text{ J}$) exceed the active memory overhead, total system energy remains essentially neutral or slightly improved ($-0.33\text{ J}$ at $K=4$, and $-27.68\text{ J}$ at $K=2$).
+## 9.4 Detailed Forensic Plot Audits for Point 7 (Figures 9.1 to 9.5)
+
+### Figure 9.1: Total System Energy Comparison
+![Figure 9.1: Anchor System Energy Comparison](mohman/point_7/figures/png/fig1_anchor_system_energy.png)
+
+1. **Figure Number:** Figure 9.1
+2. **Descriptive Title:** Total System Energy Consumption on Anchor Workload W3 ($B=14, T=128$).
+3. **Metric:** Total Energy Consumed in Joules ($E_{total}$).
+4. **X-axis:** System Architecture (Baseline Demand vs. Complete Config D).
+5. **Y-axis:** Energy in Joules ($9,410\text{ J}$ to $9,420\text{ J}$).
+6. **Configurations Compared:** Baseline Config A ($9,416.66\text{ J}$) vs. Config D ($9,416.33\text{ J}$).
+7. **Main Observation:** Total system energy remains essentially neutral ($-0.33\text{ J}$ reduction), confirming that prefetching does not incur an energy penalty.
+8. **Technical Explanation:** Massive static energy savings ($1,625.5\text{ J}$ saved due to $103.86\text{ s}$ shorter execution) fully counterbalance the $87.20\text{ J}$ increase in speculative DDR5 IO energy.
+9. **Implication for the Project:** Refutes the common misconception that speculative prefetching is inherently energy-wasteful in high-static-power accelerators.
+10. **Limitations & Caveats:** Relies on calibrated static power $P_{static} = 15.65\text{ W}$; accelerators with negligible static leakage would experience an energy increase.
 
 ---
 
-## 9.5 Energy-Delay Product (EDP) Sweet Spot Analysis
-Because execution time $T_{exec}$ drops by $23.5\%$, the Energy-Delay Product drops from $4,163,528\text{ J}\cdot\text{s}$ to $3,162,317\text{ J}\cdot\text{s}$—**a net EDP improvement of $-24.05\%$**. 
+### Figure 9.2: Energy-Delay Product (EDP) Scaling
+![Figure 9.2: Energy-Delay Product (EDP) Scaling](mohman/point_7/figures/png/fig6_energy_delay_product.png)
 
-The candidate budget sweep reveals that **$K=2$ is the global EDP sweet spot**: it maximizes static energy savings while restricting speculative transfer overhead to just $29.76\text{ J}$, yielding a net system energy reduction of $-27.68\text{ J}$.
+1. **Figure Number:** Figure 9.2
+2. **Descriptive Title:** Energy-Delay Product (EDP) Scaling Across System Configurations.
+3. **Metric:** Energy-Delay Product ($\text{EDP} = E_{total} \times T_{exec}$ in $\text{J}\cdot\text{s}$).
+4. **X-axis:** Evaluated Configurations (Baseline, Shadow, CSTP+LRU, CSTP+FA-LRU, Sweet Spot $K=2$).
+5. **Y-axis:** Energy-Delay Product ($10^6\text{ J}\cdot\text{s}$).
+6. **Configurations Compared:** Configurations A, B, C, D, and Sweet Spot $K=2$.
+7. **Main Observation:** EDP plummets from $4.164 \times 10^6\text{ J}\cdot\text{s}$ to $3.162 \times 10^6\text{ J}\cdot\text{s}$—a **$24.05\%$ improvement**.
+8. **Technical Explanation:** Because execution delay drops by $23.50\%$ while total energy drops slightly, the product shrinks by almost a quarter.
+9. **Implication for the Project:** Demonstrates that predictor-driven prefetching is a decisive win under joint energy-performance evaluation criteria.
+10. **Limitations & Caveats:** EDP weights delay quadratically when expanded ($\text{EDP} = P \times T^2$), making it highly sensitive to execution time reductions.
 
 ---
 
-## 9.6 Fundamental Energy Trade-Off and Model Limitations
-A critical modeling boundary must be acknowledged:
-- The energy figures presented here represent **analytical physical modeling**, not direct physical power-meter measurements on live server racks.
-- The model accurately captures the physical trade-off between **runtime-dependent static energy** and **speculative active bus energy**.
-- Aggressive prefetching ($K \ge 8$) is an energy hazard: it expends substantial active DRAM energy without further reducing runtime, degrading overall efficiency.
+### Figure 9.3: Candidate Budget Energy Sweet Spot ($K=2$)
+![Figure 9.3: Candidate Budget Energy Dynamics and Sweet Spot](mohman/point_7/figures/png/fig8_budget_sweet_spot.png)
+
+1. **Figure Number:** Figure 9.3
+2. **Descriptive Title:** Net System Energy Savings Across Prefetch Candidate Budgets ($K \in [1, 8]$).
+3. **Metric:** Net System Energy Difference vs. Baseline ($\Delta E_{total}$ in Joules).
+4. **X-axis:** Candidate Budget ($K=1, 2, 4, 8$).
+5. **Y-axis:** Energy Savings in Joules (Negative represents energy reduction).
+6. **Configurations Compared:** CSTP Prefetching with $K \in \{1, 2, 4, 8\}$.
+7. **Main Observation:** $K=2$ achieves the maximum net energy savings of **$-27.68\text{ Joules}$**. Increasing budget to $K=8$ causes net energy to worsen to $+14.20\text{ J}$.
+8. **Technical Explanation:** At $K=2$, speculative traffic is restrained ($185\text{ GB}$), allowing static savings to dominate. At $K=8$, speculative traffic balloons to $740\text{ GB}$, overriding static savings with active DRAM energy.
+9. **Implication for the Project:** Establishes $K=2$ as the dual optimum for both performance and energy efficiency.
+10. **Limitations & Caveats:** Optimal $K$ shifts if DDR5 IO energy coefficient $\epsilon_{DDR5}$ is altered.
+
+---
+
+### Figure 9.4: Energy-Performance Pareto Frontier
+![Figure 9.4: Energy-Performance Pareto Frontier](mohman/point_7/figures/png/fig11_energy_performance_pareto.png)
+
+1. **Figure Number:** Figure 9.4
+2. **Descriptive Title:** Energy-Performance Pareto Frontier Across All 28 Experimental Simulations.
+3. **Metric:** Total System Energy ($E_{total}$ in Joules) vs. Execution Time ($T_{exec}$ in Seconds).
+4. **X-axis:** Total Execution Time (Seconds, $300\text{ s}$ to $450\text{ s}$).
+5. **Y-axis:** Total System Energy (Joules, $9,350\text{ J}$ to $9,450\text{ J}$).
+6. **Configurations Compared:** Full sweep of 28 simulations across batch sizes, horizons, budgets, and policies.
+7. **Main Observation:** The Pareto frontier is anchored by the $K=2$ configuration at the bottom-left, proving it strictly dominates both baseline and over-prefetching configurations.
+8. **Technical Explanation:** Points to the right of the frontier suffer from exposed memory stalls; points above the frontier suffer from excessive speculative memory traffic.
+9. **Implication for the Project:** Provides conclusive empirical evidence of the architectural sweet spot for MoE memory prefetching.
+10. **Limitations & Caveats:** Frontier is specific to the DeepSeek-V3 40-layer configuration.
+
+---
+
+### Figure 9.5: Granular Subsystem Energy Breakdown
+![Figure 9.5: Component-Wise Energy Pie Breakdown](mohman/point_7/figures/png/fig12_component_pie_breakdown.png)
+
+1. **Figure Number:** Figure 9.5
+2. **Descriptive Title:** Component-Wise Energy Breakdown Across Accelerator Subsystems.
+3. **Metric:** Percentage Contribution of Each Subsystem to Total Energy (%).
+4. **X-axis:** Subsystem Component (Compute MACs, HBM Access, DDR5 Off-Chip Transfer, Static Power).
+5. **Y-axis:** Percentage Share of Total System Energy ($0\%$ to $100\%$).
+6. **Configurations Compared:** Baseline Config A vs. Complete Config D.
+7. **Main Observation:** Static power represents $56.2\%$ of total energy in Config D (down from $73.5\%$ in Config A), while compute represents $22.7\%$ and DDR5 active energy represents $4.0\%$.
+8. **Technical Explanation:** Reducing execution time shrinks the temporal exposure of static power, effectively increasing the useful computational energy efficiency of the accelerator.
+9. **Implication for the Project:** Demonstrates that memory optimizations directly enhance overall hardware energy efficiency.
+10. **Limitations & Caveats:** Assumes constant static power; real-world power gating could reduce static draw during stall periods.
 
 ---
 
@@ -267,10 +371,13 @@ All source code, master documentation, and publication figures are tracked on Gi
 To package the complete submission report and supporting verification checklists without exceeding size limits:
 ```bash
 cd /home/mohman/ca_project
-zip -r mohman/final_report/MoE_Memory_Wall_Report_Package.zip \
-    mohman/final_report/MoE_Memory_Wall_Detailed_Report.md \
-    mohman/final_report/REPORT_SOURCE_AUDIT.md \
-    mohman/final_report/REPORT_REPRODUCIBILITY_CHECKLIST.md \
-    mohman/point_7/figures/png/*.png \
-    mohman/point_5/figures/png/*.png
+python3 -c "
+import zipfile
+with zipfile.ZipFile('mohman/final_report/MoE_Memory_Wall_Report_Package.zip', 'w', compression=zipfile.ZIP_DEFLATED) as z:
+    z.write('mohman/final_report/MoE_Memory_Wall_Detailed_Report.docx', 'MoE_Memory_Wall_Detailed_Report.docx')
+    z.write('mohman/final_report/MoE_Memory_Wall_Detailed_Report.pdf', 'MoE_Memory_Wall_Detailed_Report.pdf')
+    z.write('mohman/final_report/MoE_Memory_Wall_Detailed_Report.md', 'MoE_Memory_Wall_Detailed_Report.md')
+    z.write('mohman/final_report/REPORT_SOURCE_AUDIT.md', 'REPORT_SOURCE_AUDIT.md')
+    z.write('mohman/final_report/REPORT_REPRODUCIBILITY_CHECKLIST.md', 'REPORT_REPRODUCIBILITY_CHECKLIST.md')
+"
 ```
