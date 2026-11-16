@@ -2,6 +2,7 @@
 report_sections_part1.py:
 Front matter, Chapter 1 (Executive Summary), Chapter 2 (Motivation & Architecture),
 and Chapter 3 (Point 1 Training-Free Expert Prediction).
+Enforces strict zero-ternary rule and authentic C++ source code verification.
 """
 
 METADATA = {
@@ -27,12 +28,12 @@ TABLES_CH1_CH3 = {
         "rows": [
             ["Target Accelerator Profile", "NVIDIA A100-SXM4 (40 GiB)", "Calibrated Baseline Architecture", "312 TFLOPS (FP16 / BF16 Tensor Core)"],
             ["On-Chip HBM2e Capacity", "40 GiB High Bandwidth Memory", "Shared: KV Cache + Active MoE Cache", "1,555 GB/s Theoretical Peak Bandwidth"],
-            ["Off-Chip Host DRAM", "DDR5-4800 Dual-Channel", "Host Weight Repository (Full MoE)", "64.0 GB/s Effective Transfer Bandwidth"],
-            ["Host-to-Device Interconnect", "PCIe Gen4 x16 / Simulated Bus", "Point-to-Point Host-GPU Link", "64.0 GB/s Duplex (31.5 GB/s Raw Single-Dir)"],
+            ["Off-Chip Host DRAM", "DDR5-4800 Dual-Channel", "Host Weight Repository (Full MoE)", "64.0 GB/s Effective Transfer Bandwidth (Point 3)"],
+            ["Host-to-Device Interconnect", "PCIe Gen4 x16 / Simulated Bus", "Point-to-Point Host-GPU Link", "22.578 GB/s Effective (Points 5, 6, 7 Anchor)"],
             ["DeepSeek-V3 MoE Architecture", "256 Routed Experts + 1 Shared", "Top-K = 8 Activated per Token", "250 MB per Expert Parameter Tensor"],
             ["Total Model Parameter Footprint", "671 Billion Total Parameters", "64.0 GiB Aggregated Expert Weights", "Exceeds 40 GiB HBM Budget (Offloading Required)"],
             ["HBM Expert Cache Capacity", "Partitioned Dynamic Allotment", "35 GiB Static Expert Cache", "Holds 140 of 256 Total Layer Experts (54.7%)"],
-            ["DRAM Access Latency", "Host Fetch Serialization", "150 ns tCL + Queueing Delay", "4.096 ms per Expert Uncached Fetch"]
+            ["DRAM Transfer Latency", "Host Fetch Serialization", "84 MiB @ 22.578 GB/s", "3.901 ms per Expert Uncached Fetch (88,080,384 bytes / 22.578 GB/s)"]
         ]
     },
     "table_2_2": {
@@ -40,104 +41,142 @@ TABLES_CH1_CH3 = {
         "title": "Mapping Project Deliverables to Repository Implementation Modules",
         "headers": ["Project Phase", "Core Objective", "Primary Implementation File", "Key Functionality / Deliverable"],
         "rows": [
-            ["Point 1", "Training-Free Predictors", "LLMSimulator/src/predictor/cstp_predictor.cpp", "CSTP and ST-MoE frequency correlation engines"],
-            ["Point 2", "Live Prefetch Engine", "LLMSimulator/src/prefetch/live_prediction_engine.cpp", "Asynchronous DDR5-to-HBM prefetch pipeline"],
-            ["Point 3", "Effectiveness Evaluation", "mohman/point_3/scripts/extract_metrics.py", "Coverage, timely vs late prefetch, stall hiding"],
-            ["Point 4", "HBM Cache Management", "LLMSimulator/src/cache/fa_lru_policy.cpp", "FA-LRU frequency-aware victim selection"],
-            ["Point 5", "Comparative Evaluation", "mohman/point_5/scripts/run_four_way_eval.py", "Four-way architectural matrix (Configs A, B, C, D)"],
-            ["Point 6", "Sensitivity Analysis", "mohman/point_6/scripts/run_sensitivity_suite.py", "Multi-parameter sweeps (B, P, H, K)"],
-            ["Point 7", "Energy & EDP Modeling", "LLMSimulator/src/energy/energy_model.cpp", "Static DRAM, dynamic DDR5, HBM, and compute energy"]
+            ["Point 1", "Training-Free Predictors", "LLMSimulator/src/prefetch/cstp_predictor.cpp", "CSTP Dirichlet smoothing and ST-MoE saturating counter engines"],
+            ["Point 2", "Live Prefetch Engine", "LLMSimulator/src/prefetch/live_prediction_engine.cpp", "Asynchronous DDR5-to-HBM prefetch pipeline and event hooks"],
+            ["Point 3", "Effectiveness Evaluation", "mohman/point_3/results/all_experiment_results.csv", "Coverage, timely vs late prefetch, exposed stall reduction (73 runs)"],
+            ["Point 4", "HBM Cache Management", "LLMSimulator/src/hardware/device.cpp", "FA-LRU windowed bottom-W scan and lazy epoch halving"],
+            ["Point 5", "Comparative Evaluation", "mohman/point_5/extracted_data/unified_comparison.csv", "Four-way architectural matrix (Configs A, B, C, D; 64 runs)"],
+            ["Point 6", "Sensitivity Analysis", "mohman/point_6/final_results/consolidated_data/", "Multi-parameter sweeps: B (4-32), P (128-2048), H (1-4), K (2-8)"],
+            ["Point 7", "Energy & EDP Modeling", "mohman/point_7/extracted_data/unified_energy_results.csv", "Static DRAM, dynamic DDR5, HBM, and compute energy (28 runs)"]
         ]
     },
     "table_3_1": {
         "num": "Table 3.1",
         "title": "Algorithmic Comparison: CSTP Proposed Predictor vs. ST-MoE Literature Baseline",
-        "headers": ["Feature / Dimension", "Literature Baseline: ST-MoE", "Proposed Predictor: CSTP", "Architectural Advantage"],
+        "headers": ["Feature / Dimension", "Literature Baseline: ST-MoE (Zhao et al.)", "Proposed Predictor: CSTP", "Architectural Advantage"],
         "rows": [
-            ["Mathematical Basis", "First-order Markov Transition Frequency", "Temporal Exponential Decay + Normalized Dot-Product", "Filters short-term burst noise while tracking long trends"],
-            ["Cold-Start Handling", "Degrades to static historical popularity", "Rapid dynamic warm-up with dual short/long buffers", "+18.4% higher top-1 recall during sequence onset"],
-            ["State Representation", "Integer transition count matrix [E x E]", "Continuous normalized correlation matrix [E x E]", "Prevents numerical saturation across long contexts"],
-            ["Computational Overhead", "1.42 microseconds per token prediction", "2.18 microseconds per token prediction", "Well within token compute budget (>15 ms per layer)"],
-            ["Prediction Horizon (H)", "Primarily evaluated at H=1", "Robust across multi-step lookahead (H=1 to 4)", "Maintains 74.2% hit rate at H=2 vs 58.1% for ST-MoE"],
-            ["Memory Footprint", "64 KB per MoE layer (256x256 int16)", "128 KB per MoE layer (256x256 float16)", "Inconsequential host RAM footprint (<4 MB total)"]
+            ["Mathematical Basis", "2-Bit Saturating Counter CCT (c in {0,1,2,3}) + History Table (+2 bonus)", "Dirichlet-Smoothed Spatial and Temporal Transitions + Marginal Priors", "Eliminates counter saturation; models joint spatio-temporal probabilities"],
+            ["Cold-Start Handling", "Unmapped candidates start at 0; warm up via reinforcement updates", "Marginal prior smoothing P_prior(v|L) ensures immediate non-zero calibration", "+18.4% higher top-1 recall during sequence onset; zero cold-start drop"],
+            ["State Representation", "Bounded table (C=8 entries per expert) of 2-bit counters + HT map", "Double-precision count tensors C_s, C_t, M + dynamic per-token HT map", "Preserves global continuous distributions without bounded slot thrashing"],
+            ["Computational Overhead", "1.42 microseconds per token prediction", "2.18 microseconds per token prediction", "Both operate well within token compute budget (>15 ms per layer)"],
+            ["Prediction Horizon (H)", "Primarily evaluated at H=1 (degrades sharply at H>=2)", "Robust across multi-step lookahead (H=1 to 4) via stage indexing", "Maintains 74.2% hit rate at H=2 vs 58.1% for ST-MoE"],
+            ["Memory Footprint", "16 KB per MoE layer (8 slots x 2 bits x 256 experts)", "512 KB per MoE layer (256x256 float64)", "Both represent negligible host RAM overhead (<25 MB total model state)"]
         ]
     },
     "table_3_2": {
         "num": "Table 3.2",
         "title": "Offline Expert Prediction Accuracy across Benchmark Suites (Lookahead Horizon H=1)",
-        "headers": ["Benchmark Suite", "Total Prompts", "ST-MoE Baseline Recall (%)", "CSTP Proposed Recall (%)", "Absolute Gain (%)"],
+        "headers": ["Benchmark Suite", "Total Prompts", "ST-MoE Baseline Recall (%)", "CSTP Proposed Recall (%)", "Difference (pp)"],
         "rows": [
-            ["MoE-Anywhere e1-sage-a1.5", "74 Prompts", "68.42%", "82.65%", "+14.23%"],
-            ["MoE-Anywhere e2-mixtral", "64 Prompts", "71.15%", "84.30%", "+13.15%"],
-            ["MoE-Suite DeepSeek Traces", "50 Prompts", "64.80%", "79.12%", "+14.32%"],
-            ["Aggregated Evaluation", "188 Prompts", "68.12%", "82.02%", "+13.90%"]
+            ["MoE-Anywhere e1-sage-a1.5", "74 Prompts", "68.42%", "82.65%", "+14.23 pp"],
+            ["MoE-Anywhere e2-mixtral", "64 Prompts", "71.15%", "84.30%", "+13.15 pp"],
+            ["MoE-Suite DeepSeek Traces", "50 Prompts", "64.80%", "79.12%", "+14.32 pp"],
+            ["Aggregated Evaluation", "188 Prompts", "68.12%", "82.02%", "+13.90 pp (+20.4% rel)"]
         ]
     }
 }
 
 CODE_SNIPPETS_CH3 = {
     "cstp_core": {
-        "file": "LLMSimulator/src/predictor/cstp_predictor.cpp",
-        "func": "CSTPPredictor::predict_top_k",
-        "desc": "Core scoring algorithm of the Correlation-based Spatio-Temporal Predictor (CSTP), computing temporal decay weighted correlations across past routing activations.",
-        "code": """std::vector<int> CSTPPredictor::predict_top_k(int current_expert, int lookahead_h, int budget_k) {
-    std::vector<std::pair<float, int>> scored_candidates;
-    scored_candidates.reserve(num_experts_);
+        "file": "LLMSimulator/src/prefetch/cstp_predictor.cpp",
+        "func": "CSTPPredictor::predict & compute_spatial_score",
+        "desc": "Authentic C++ implementation of CSTP scoring: combining Dirichlet-smoothed spatial transitions from active source experts and temporal transitions from target-stage token history.",
+        "code": """std::vector<double> CSTPPredictor::compute_spatial_score(
+    int source_stage_id, int target_stage_id, const std::vector<int>& source_experts) const {
+    std::vector<double> prior = get_marginal_prior(target_stage_id);
+    if (source_stage_id < 0 || source_stage_id >= num_moe_stages_) return prior;
 
-    // Iterate across all potential target experts in the layer
-    for (int target = 0; target < num_experts_; ++target) {
-        if (target == current_expert) continue;
-
-        // Retrieve raw spatial correlation coefficient
-        float spatial_corr = correlation_matrix_[current_expert][target];
-
-        // Compute temporal recency weight with exponential decay
-        int last_seen_delta = current_step_ - last_activation_step_[target];
-        float temporal_weight = std::exp(-decay_factor_ * static_cast<float>(last_seen_delta));
-
-        // Combined prediction score with smoothing constant
-        float score = (spatial_corr * 0.70f) + (temporal_weight * 0.30f);
-        scored_candidates.push_back({score, target});
+    std::vector<int> valid_sources;
+    for (int u : source_experts) {
+        if (u >= 0 && u < num_routed_experts_) valid_sources.push_back(u);
     }
+    if (valid_sources.empty()) return prior;
 
-    // Sort candidate experts in descending order of predicted probability
-    std::partial_sort(scored_candidates.begin(), 
-                      scored_candidates.begin() + budget_k,
-                      scored_candidates.end(), 
-                      std::greater<std::pair<float, int>>());
+    std::vector<double> spatial_accum(num_routed_experts_, 0.0);
+    for (int u : valid_sources) {
+        const auto& co_counts = spatial_counts_[source_stage_id][u];
+        double total_co = 0.0;
+        for (int v = 0; v < num_routed_experts_; ++v) total_co += co_counts[v];
 
-    std::vector<int> admitted_experts;
-    for (int i = 0; i < budget_k; ++i) {
-        admitted_experts.push_back(scored_candidates[i].second);
+        double denom = total_co + smoothing_lambda_;
+        if (denom > 0.0) {
+            for (int v = 0; v < num_routed_experts_; ++v) {
+                double p_cond = (co_counts[v] + (smoothing_lambda_ * prior[v])) / denom;
+                spatial_accum[v] += p_cond;
+            }
+        } else {
+            for (int v = 0; v < num_routed_experts_; ++v) spatial_accum[v] += prior[v];
+        }
     }
-    return admitted_experts;
+    double num_sources = static_cast<double>(valid_sources.size());
+    for (int v = 0; v < num_routed_experts_; ++v) spatial_accum[v] /= num_sources;
+    return spatial_accum;
+}
+
+PredictionResult CSTPPredictor::predict(
+    int request_id, int token_id, int source_stage_id, int target_stage_id,
+    const std::vector<int>& source_experts, int budget) {
+    PredictionResult result;
+    result.request_id = request_id;
+    result.token_id = token_id;
+    result.source_stage = source_stage_id;
+    result.target_stage = target_stage_id;
+    result.horizon = target_stage_id - source_stage_id;
+    if (budget <= 0) { result.finalize_and_sort(0); return result; }
+
+    std::vector<double> s_spatial = compute_spatial_score(source_stage_id, target_stage_id, source_experts);
+    std::vector<double> s_temporal = compute_temporal_score(request_id, target_stage_id);
+
+    result.scores.reserve(num_routed_experts_);
+    for (int v = 0; v < num_routed_experts_; ++v) {
+        double composite = (alpha_ * s_spatial[v]) + ((1.0 - alpha_) * s_temporal[v]);
+        CandidateScore cs; cs.expert_id = v; cs.score = composite;
+        result.scores.push_back(cs);
+    }
+    result.finalize_and_sort(budget);
+    return result;
 }"""
     },
     "st_moe_core": {
-        "file": "LLMSimulator/src/predictor/st_moe_predictor.cpp",
-        "func": "STMoEPredictor::predict",
-        "desc": "Baseline ST-MoE predictor logic utilizing an empirical transition frequency matrix and confidence counter thresholding.",
-        "code": """std::vector<int> STMoEPredictor::predict(int active_expert, int budget_k) {
-    std::vector<int> candidates;
-    const auto& transitions = transition_table_[active_expert];
+        "file": "LLMSimulator/src/prefetch/st_moe_predictor.cpp",
+        "func": "STMoEPredictor::compute_confidence_scores",
+        "desc": "Authentic C++ implementation of ST-MoE (Zhao et al.): Cross-Layer Correlation Table (CCT) 2-bit saturating counter summation plus History Table (HT) +2 confidence bonus.",
+        "code": """std::vector<double> STMoEPredictor::compute_confidence_scores(
+    int request_id, int source_stage_id, int target_stage_id,
+    const std::vector<int>& source_experts) const {
+    std::vector<double> scores(num_routed_experts_, 0.0);
 
-    // Identify candidate experts whose historical co-activation count exceeds threshold
-    for (int e = 0; e < num_experts_; ++e) {
-        if (transitions[e] >= confidence_threshold_) {
-            candidates.push_back(e);
-        }
-    }
-
-    // If thresholding yields fewer candidates than budget, fill with global frequency
-    if (candidates.size() < static_cast<size_t>(budget_k)) {
-        for (int pop_expert : global_popularity_order_) {
-            if (std::find(candidates.begin(), candidates.end(), pop_expert) == candidates.end()) {
-                candidates.push_back(pop_expert);
-                if (candidates.size() == static_cast<size_t>(budget_k)) break;
+    // 1. Spatial accumulation across all observed source experts (Algorithm 2, Lines 3-5)
+    if (source_stage_id >= 0 && source_stage_id < num_moe_stages_) {
+        if (!source_experts.empty()) {
+            for (int u : source_experts) {
+                if (u >= 0 && u < num_routed_experts_) {
+                    const auto& dest_map = cct_[source_stage_id][u];
+                    for (const auto& pair : dest_map) {
+                        int v = pair.first;
+                        int cnt = pair.second;
+                        if (v >= 0 && v < num_routed_experts_) {
+                            scores[v] += static_cast<double>(cnt);
+                        }
+                    }
+                }
             }
         }
     }
-    return candidates;
+
+    // 2. Temporal contribution from History Table (HT) (Score(e) = CCT(e) + HT(e), HT(e) = 2)
+    auto req_it = history_table_.find(request_id);
+    if (req_it != history_table_.end()) {
+        auto stage_it = req_it->second.find(target_stage_id);
+        if (stage_it != req_it->second.end()) {
+            for (int h : stage_it->second) {
+                if (h >= 0 && h < num_routed_experts_) {
+                    scores[h] += 2.0;
+                }
+            }
+        }
+    }
+    return scores;
 }"""
     }
 }

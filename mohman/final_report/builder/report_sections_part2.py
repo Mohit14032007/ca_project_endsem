@@ -30,17 +30,17 @@ TABLES_CH4 = {
             ["0.000 ms", "Layer 10 Routing Event", "Router / BatchedSequence", "Top-2 Router selects Experts {14, 42} for current token", "No stall; Layer 10 GEMM begins on GPU"],
             ["0.002 ms", "Live Prediction Trigger", "LivePredictionEngine", "CSTP scores candidate experts for Layer 11 (Lookahead H=1)", "Overhead: 2.18 microseconds (invisible to GPU)"],
             ["0.003 ms", "Candidate Enqueue", "PrefetchCandidateQueue", "Candidates {88 (0.91), 105 (0.84)} admitted; Budget K=2", "Queue capacity: 16 slots; priority order preserved"],
-            ["0.005 ms", "Prefetch Transfer Issue", "DDR5TransferEngine", "Transfer #101 (Expert 88, 84 MiB) submitted at 22.578 GB/s", "Transfer duration: 84 MB / 22.578 GB/s = 3.720 ms"],
+            ["0.005 ms", "Prefetch Transfer Issue", "DDR5TransferEngine", "Transfer #101 (Expert 88, 84 MiB / 88,080,384 B) submitted at 22.578 GB/s", "Transfer duration: 88,080,384 / (22.578 * 10^9) = 3.901 ms"],
             ["0.006 ms", "Layer 10 Execution", "LinearExecutionGPU", "Layer 10 Expert 14 & 42 GEMMs execute simultaneously", "GPU fully utilized; DDR5 bus busy in background"],
-            ["3.725 ms", "Prefetch #101 Completes", "DDR5TransferEngine", "Expert 88 fully arrived in on-chip HBM cache", "Marked as PREFETCHED; HBM residency updated"],
-            ["3.726 ms", "Prefetch Transfer #102 Issue", "DDR5TransferEngine", "Transfer #102 (Expert 105, 84 MiB) submitted at 22.578 GB/s", "Estimated completion: 3.726 + 3.720 = 7.446 ms"],
+            ["3.906 ms", "Prefetch #101 Completes", "DDR5TransferEngine", "Expert 88 fully arrived in on-chip HBM cache (0.005 + 3.901 = 3.906 ms)", "Marked as PREFETCHED; HBM residency updated"],
+            ["3.907 ms", "Prefetch Transfer #102 Issue", "DDR5TransferEngine", "Transfer #102 (Expert 105, 84 MiB) submitted to DDR5 bus", "Estimated completion: 3.907 + 3.901 = 7.808 ms"],
             ["5.200 ms", "Layer 10 GEMM Finishes", "LinearExecutionGPU", "Layer 10 compute complete; token activation arrives at Layer 11", "Total Layer 10 duration: 5.200 ms"],
-            ["5.201 ms", "Layer 11 Demand Check: Expert 88", "LinearExecutionGPU", "Router requires Expert 88. Found resident in HBM!", "TIMELY PREFETCH HIT: 0.000 ms exposed stall!"],
-            ["5.202 ms", "Layer 11 Demand Check: Expert 105", "LinearExecutionGPU", "Router requires Expert 105. Transfer #102 is IN-FLIGHT!", "LATE PREFETCH ATTACHMENT: Remaining time = 2.244 ms"],
-            ["5.203 ms", "Layer 11 Expert 88 Execution", "LinearExecutionGPU", "GPU executes Expert 88 GEMM (compute overlap: 1.800 ms)", "Hides 1.800 ms of Transfer #102 remaining latency"],
-            ["7.003 ms", "Expert 88 GEMM Finishes", "LinearExecutionGPU", "GPU needs Expert 105. Remaining transfer time: 7.446 - 7.003 = 0.443 ms", "GPU idles waiting for transfer completion"],
-            ["7.446 ms", "Transfer #102 Completes", "DDR5TransferEngine", "Expert 105 fully resident in HBM; GPU awakens", "Exposed Memory Stall: Exactly 0.443 ms (vs 3.720 ms demand miss!)"],
-            ["7.447 ms", "Layer 11 Expert 105 Execution", "LinearExecutionGPU", "Layer 11 compute proceeds; next prediction triggered", "Net latency saving: 3.277 ms hidden out of 3.720 ms (88.1%)"]
+            ["5.201 ms", "Layer 11 Demand Check: Expert 88", "LinearExecutionGPU", "Router requires Expert 88. Found resident in HBM!", "TIMELY PREFETCH HIT: 0.000 ms exposed stall (3.906 ms < 5.201 ms)"],
+            ["5.202 ms", "Layer 11 Demand Check: Expert 105", "LinearExecutionGPU", "Router requires Expert 105. Transfer #102 is IN-FLIGHT!", "LATE PREFETCH ATTACHMENT: Remaining time: 7.808 - 5.202 = 2.606 ms"],
+            ["5.203 ms", "Layer 11 Expert 88 Execution", "LinearExecutionGPU", "GPU executes Expert 88 GEMM (compute overlap: 1.800 ms)", "Hides 1.800 ms of Transfer #102 remaining latency (5.203 to 7.003 ms)"],
+            ["7.003 ms", "Expert 88 GEMM Finishes", "LinearExecutionGPU", "GPU needs Expert 105. Remaining transfer duration: 7.808 - 7.003 = 0.805 ms", "GPU idles waiting for transfer completion"],
+            ["7.808 ms", "Transfer #102 Completes", "DDR5TransferEngine", "Expert 105 fully resident in HBM; GPU awakens", "Exposed Memory Stall: Exactly 0.805 ms (vs 3.901 ms demand miss stall)"],
+            ["7.809 ms", "Layer 11 Expert 105 Execution", "LinearExecutionGPU", "Layer 11 compute proceeds; next prediction triggered", "Net latency saving: 3.096 ms hidden out of 3.901 ms (79.4% hidden)"]
         ]
     },
     "table_4_3": {

@@ -1,0 +1,10 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+1,Timely Prefetch Rate,0.0,0.0,%,H=1,CSTP,lookahead_comparison.csv,prefetch_timely_rate_pct,Direct percentage
+1,Late Attachment Rate,21.33,0.0,%,H=1,CSTP,lookahead_comparison.csv,late_attachment_rate_pct,Direct percentage
+1,Stall Hidden,3.567,0.0,s,H=1,CSTP,lookahead_comparison.csv,stall_hidden_ms,stall_hidden_ms / 1000.0
+2,Timely Prefetch Rate,0.0,0.0,%,H=2,CSTP,lookahead_comparison.csv,prefetch_timely_rate_pct,Direct percentage
+2,Late Attachment Rate,19.99,0.0,%,H=2,CSTP,lookahead_comparison.csv,late_attachment_rate_pct,Direct percentage
+2,Stall Hidden,3.825,0.0,s,H=2,CSTP,lookahead_comparison.csv,stall_hidden_ms,stall_hidden_ms / 1000.0
+4,Timely Prefetch Rate,0.0,0.0,%,H=4,CSTP,lookahead_comparison.csv,prefetch_timely_rate_pct,Direct percentage
+4,Late Attachment Rate,18.25,0.0,%,H=4,CSTP,lookahead_comparison.csv,late_attachment_rate_pct,Direct percentage
+4,Stall Hidden,3.976,0.0,s,H=4,CSTP,lookahead_comparison.csv,stall_hidden_ms,stall_hidden_ms / 1000.0

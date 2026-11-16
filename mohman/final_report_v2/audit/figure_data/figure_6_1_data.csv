@@ -1,0 +1,9 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+14,Standard LRU Execution Time,196.883,0.0,s,W3,LRU,plot_fig9_scaling.py,simulated_execution_time_s,Direct seconds
+14,FA-LRU Execution Time,196.89,0.0,s,W3,FA-LRU,plot_fig9_scaling.py,simulated_execution_time_s,Direct seconds
+14,Relative Latency Delta,-0.00337,0.0,%,W3,FA-LRU vs LRU,plot_fig9_scaling.py,improvement,Negative = FA-LRU slower
+14,Resident Hits Delta,-14,0.0,hits,W3,FA-LRU vs LRU,plot_fig9_scaling.py,resident_hits_delta,Delta count
+32,Standard LRU Execution Time,761.663,0.0,s,W4,LRU,plot_fig9_scaling.py,simulated_execution_time_s,Direct seconds
+32,FA-LRU Execution Time,761.631,0.0,s,W4,FA-LRU,plot_fig9_scaling.py,simulated_execution_time_s,Direct seconds
+32,Relative Latency Delta,0.0042,0.0,%,W4,FA-LRU vs LRU,plot_fig9_scaling.py,improvement,Positive = FA-LRU faster
+32,Resident Hits Delta,15,0.0,hits,W4,FA-LRU vs LRU,plot_fig9_scaling.py,resident_hits_delta,Delta count

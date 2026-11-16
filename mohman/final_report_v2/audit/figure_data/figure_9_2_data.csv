@@ -1,0 +1,57 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+767.27,A_Baseline Energy,9387.61,0.0,J,Anchor,A_Baseline,unified_energy_results.csv,system_total_j,Total Joules
+767.27,A_Baseline EDP,7202.85,0.0,kJ·s,Anchor,A_Baseline,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+767.27,B_Prediction_Only Energy,9387.61,0.0,J,Anchor,B_Prediction_Only,unified_energy_results.csv,system_total_j,Total Joules
+767.27,B_Prediction_Only EDP,7202.85,0.0,kJ·s,Anchor,B_Prediction_Only,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.66,C_Prefetch_LRU Energy,9416.98,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+761.66,C_Prefetch_LRU EDP,7172.53,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.63,D_Complete_FALRU Energy,9416.66,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+761.63,D_Complete_FALRU EDP,7171.98,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+187.76,A_Baseline Energy,2346.34,0.0,J,Anchor,A_Baseline,unified_energy_results.csv,system_total_j,Total Joules
+187.76,A_Baseline EDP,440.55,0.0,kJ·s,Anchor,A_Baseline,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+188.0,C_Prefetch_LRU Energy,2378.5,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+188.0,C_Prefetch_LRU EDP,447.17,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+188.01,D_Complete_FALRU Energy,2378.51,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+188.01,D_Complete_FALRU EDP,447.17,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+459.16,A_Baseline Energy,5633.94,0.0,J,Anchor,A_Baseline,unified_energy_results.csv,system_total_j,Total Joules
+459.16,A_Baseline EDP,2586.89,0.0,kJ·s,Anchor,A_Baseline,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+456.49,C_Prefetch_LRU Energy,5663.41,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+456.49,C_Prefetch_LRU EDP,2585.27,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+456.49,D_Complete_FALRU Energy,5663.39,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+456.49,D_Complete_FALRU EDP,2585.27,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+766.97,A_Baseline Energy,9353.27,0.0,J,Anchor,A_Baseline,unified_energy_results.csv,system_total_j,Total Joules
+766.97,A_Baseline EDP,7173.71,0.0,kJ·s,Anchor,A_Baseline,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+766.97,B_Prediction_Only Energy,9353.27,0.0,J,Anchor,B_Prediction_Only,unified_energy_results.csv,system_total_j,Total Joules
+766.97,B_Prediction_Only EDP,7173.71,0.0,kJ·s,Anchor,B_Prediction_Only,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.61,C_Prefetch_LRU Energy,9383.45,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+761.61,C_Prefetch_LRU EDP,7146.51,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.58,D_Complete_FALRU Energy,9383.12,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+761.58,D_Complete_FALRU EDP,7145.96,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+767.03,A_Baseline Energy,9360.18,0.0,J,Anchor,A_Baseline,unified_energy_results.csv,system_total_j,Total Joules
+767.03,A_Baseline EDP,7179.53,0.0,kJ·s,Anchor,A_Baseline,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.61,C_Prefetch_LRU Energy,9390.16,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+761.61,C_Prefetch_LRU EDP,7151.66,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.58,D_Complete_FALRU Energy,9389.86,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+761.58,D_Complete_FALRU EDP,7151.15,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+767.6,A_Baseline Energy,9424.46,0.0,J,Anchor,A_Baseline,unified_energy_results.csv,system_total_j,Total Joules
+767.6,A_Baseline EDP,7234.23,0.0,kJ·s,Anchor,A_Baseline,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.7,C_Prefetch_LRU Energy,9452.81,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+761.7,C_Prefetch_LRU EDP,7200.21,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.66,D_Complete_FALRU Energy,9452.43,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+761.66,D_Complete_FALRU EDP,7199.58,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+760.97,C_Prefetch_LRU Energy,9409.73,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+760.97,C_Prefetch_LRU EDP,7160.49,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+760.91,D_Complete_FALRU Energy,9409.14,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+760.91,D_Complete_FALRU EDP,7159.52,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+760.23,C_Prefetch_LRU Energy,9402.09,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+760.23,C_Prefetch_LRU EDP,7147.78,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+760.2,D_Complete_FALRU Energy,9401.78,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+760.2,D_Complete_FALRU EDP,7147.27,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+756.36,C_Prefetch_LRU Energy,9360.17,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+756.36,C_Prefetch_LRU EDP,7079.7,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+756.34,D_Complete_FALRU Energy,9359.93,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+756.34,D_Complete_FALRU EDP,7079.32,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.86,C_Prefetch_LRU Energy,9422.9,0.0,J,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_total_j,Total Joules
+761.86,C_Prefetch_LRU EDP,7178.9,0.0,kJ·s,Anchor,C_Prefetch_LRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s
+761.89,D_Complete_FALRU Energy,9423.21,0.0,J,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_total_j,Total Joules
+761.89,D_Complete_FALRU EDP,7179.41,0.0,kJ·s,Anchor,D_Complete_FALRU,unified_energy_results.csv,system_edp_j_s,EDP in kJ*s

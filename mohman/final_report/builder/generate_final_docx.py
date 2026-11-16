@@ -10,6 +10,7 @@ Enforces strict zero-ternary rule.
 
 import os
 import sys
+import shutil
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -461,13 +462,13 @@ def generate_docx():
     # ==========================================
     add_styled_heading(doc, "Chapter 1: Executive Summary", 1)
     add_body_p(doc, "Mixture-of-Experts (MoE) architectures, exemplified by state-of-the-art models such as DeepSeek-V3 and Mixtral-8x7B, have fundamentally decoupled model parameter capacity from per-token computational cost. By selectively routing each token to a small subset of specialized feed-forward expert networks (Top-K routing), MoE models scale total parameters into the hundreds of billions while maintaining compute budgets comparable to much smaller dense models.")
-    add_body_p(doc, "However, this parameter scaling introduces a catastrophic computer architecture bottleneck: the MoE Memory Wall. In offloaded inference systems where multi-hundred gigabyte expert weights cannot fit entirely within local accelerator High-Bandwidth Memory (HBM2e), expert tensors must reside in off-chip host DDR5 memory and be dynamically streamed across interconnect links (such as PCIe Gen4/Gen5) upon token demand. Because DDR5 transfer latency (3.720 ms per 84 MiB expert at 22.578 GB/s; 1.376 ms at 64 GB/s) dwarfs inter-layer GPU computation time (20 to 50 microseconds), unmitigated demand offloading causes the GPU to spend over 97% of its execution time idle, stalled waiting for off-chip memory fetches.")
+    add_body_p(doc, "However, this parameter scaling introduces a catastrophic computer architecture bottleneck: the MoE Memory Wall. In offloaded inference systems where multi-hundred gigabyte expert weights cannot fit entirely within local accelerator High-Bandwidth Memory (HBM2e), expert tensors must reside in off-chip host DDR5 memory and be dynamically streamed across interconnect links (such as PCIe Gen4/Gen5) upon token demand. Because DDR5 transfer latency (3.901 ms per 84 MiB / 88,080,384-byte expert at 22.578 GB/s; 1.376 ms at 64 GB/s) dwarfs inter-layer GPU computation time (20 to 50 microseconds), unmitigated demand offloading causes the GPU to spend over 97% of its execution time idle, stalled waiting for off-chip memory fetches.")
     add_body_p(doc, "The objective of this research project is to design, implement, and rigorously evaluate an end-to-end predictive prefetching and intelligent caching system within the cycle-approximate LLMSimulator framework. Our proposed system introduces the Correlation-based Spatio-Temporal Predictor (CSTP), an asynchronous DDR5 prefetch engine, and a Frequency-Aware Least Recently Used (FA-LRU) cache replacement policy.")
     
     add_styled_heading(doc, "1.1 Key Scientific and Architectural Findings", 2)
-    add_bullet_p(doc, "Training-Free Prediction Superiority:", "Our proposed CSTP predictor achieves an overall expert prediction hit rate of 82.02% across diverse benchmarks, decisively outperforming the literature-standard ST-MoE baseline (68.12%) by an absolute +13.90% margin while requiring zero neural network training.")
+    add_bullet_p(doc, "Training-Free Prediction Superiority:", "Our proposed CSTP predictor achieves an overall expert prediction recall of 82.02% across diverse benchmarks, decisively outperforming the literature-standard ST-MoE baseline (68.12%) by an absolute +13.90 percentage-point margin (+20.40% relative improvement) while requiring zero neural network training.")
     add_bullet_p(doc, "Resolution of Strict Timeliness vs. Late In-Flight Attachment:", "Empirical telemetry across 73 cycle-level simulations reveals that strict timely prefetching (transfers completing before demand) is physically impossible under standard interconnects (0.00% timely hits) because transfer latency exceeds compute windows by 39x. However, prefetching successfully achieves massive latency hiding via late in-flight attachment (up to 21.29% coverage), reducing exposed stall by up to 6.717 seconds in large workloads.")
-    add_bullet_p(doc, "End-to-End Latency Improvements:", "In heavy production workloads (Workload W7: B=128, T=16, DeepSeek-V3), CSTP eliminates 6,717.00 ms of exposed stall time, delivering an end-to-end wall-clock speedup of 4.91% and saving 104.95 ms per token generation step.")
+    add_bullet_p(doc, "End-to-End Latency Improvements:", "In heavy production workloads (Workload W7: B=70, T=64, DeepSeek-V3), CSTP eliminates 6,744.86 ms of exposed stall time, delivering 6.717 seconds of wall-clock time saved (104.95 ms per token generation step across 64 steps).")
     add_bullet_p(doc, "Protection Against Speculative Cache Pollution:", "Our FA-LRU cache replacement policy successfully protects 215,314 hot expert instances in Workload W3 and 431,909 instances in W4 from speculative prefetch eviction, providing 36 critical hot-expert reuses that would have suffered costly DDR5 reloads under standard LRU.")
     add_bullet_p(doc, "Hardware Energy Optimization Sweet Spot:", "Exhaustive energy modeling across 28 controlled simulations establishes that prefetching is not inherently energy-expensive. Under a calibrated conservative budget (K = 2, k2_c4), the system achieves a net total energy reduction of -27.68 Joules (-0.295% savings) and minimizes the Energy-Delay Product (EDP) by -1.72% (7,079.32 kJ·s vs 7,202.85 kJ·s), because the static DRAM leakage energy saved by faster execution outweighs the minor active DDR5 transfer overhead.")
 
@@ -479,7 +480,7 @@ def generate_docx():
     
     add_styled_heading(doc, "2.1 The Memory Wall in Offloaded MoE Inference", 2)
     add_body_p(doc, "Consider the DeepSeek-V3 architecture: the model incorporates 256 routed experts per MoE layer across 40 transformer stages, with Top-8 experts activated per token. Each expert parameter tensor occupies approximately 84 MiB (88,080,384 bytes, FP16/BF16). Storing the complete model on-chip would require over 640 GiB of high-speed memory—far exceeding the 40 GiB capacity of a standard NVIDIA A100 accelerator. Consequently, expert weights must be offloaded to host system memory (DDR5) and dynamically fetched on demand.")
-    add_body_p(doc, "Table 2.1 documents the calibrated physical memory hierarchy specifications governing our simulation infrastructure. The fundamental mismatch is glaring: transferring a single 84 MiB expert across a 22.578 GB/s link requires approximately 3.720 milliseconds (1.376 ms under peak 64 GB/s). Meanwhile, the GPU Tensor Cores execute the corresponding layer's attention and routing computation in a mere 20 to 50 microseconds. Without prefetching, the accelerator spends over 97% of its execution timeline completely stalled waiting on off-chip transfers.")
+    add_body_p(doc, "Table 2.1 documents the calibrated physical memory hierarchy specifications governing our simulation infrastructure. The fundamental mismatch is glaring: transferring a single 84 MiB expert (88,080,384 bytes) across a 22.578 GB/s link requires exactly 3.901 milliseconds (1.376 ms under peak 64 GB/s). Meanwhile, the GPU Tensor Cores execute the corresponding layer's attention and routing computation in a mere 20 to 50 microseconds. Without prefetching, the accelerator spends over 97% of its execution timeline completely stalled waiting on off-chip transfers.")
 
     add_native_table(doc, TABLES_CH1_CH3["table_2_1"])
 
@@ -723,6 +724,10 @@ def generate_docx():
     doc.save(docx_path)
     sz = os.path.getsize(docx_path)
     print(f"Successfully generated {docx_path} ({sz:,} bytes).")
+
+    v2_docx_path = os.path.join("mohman/final_report_v2", "MoE_Memory_Wall_Final_Report_CORRECTED.docx")
+    shutil.copy2(docx_path, v2_docx_path)
+    print(f"Mirrored to {v2_docx_path} ({os.path.getsize(v2_docx_path):,} bytes).")
 
 if __name__ == "__main__":
     generate_docx()

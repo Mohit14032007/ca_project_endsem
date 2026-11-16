@@ -1,0 +1,10 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+2,Demand DDR5 Traffic,42311.44,0.0,GB,K=2,CSTP,budget_comparison.csv,demand_ddr5_gb,Decimal GB
+2,Speculative DDR5 Traffic,6083.98,0.0,GB,K=2,CSTP,budget_comparison.csv,speculative_ddr5_gb,Decimal GB
+2,Total DDR5 Traffic,48395.41,0.0,GB,K=2,CSTP,budget_comparison.csv,total_ddr5_gb,Decimal GB
+4,Demand DDR5 Traffic,37792.12,0.0,GB,K=4,CSTP,budget_comparison.csv,demand_ddr5_gb,Decimal GB
+4,Speculative DDR5 Traffic,10949.01,0.0,GB,K=4,CSTP,budget_comparison.csv,speculative_ddr5_gb,Decimal GB
+4,Total DDR5 Traffic,48741.13,0.0,GB,K=4,CSTP,budget_comparison.csv,total_ddr5_gb,Decimal GB
+8,Demand DDR5 Traffic,30739.09,0.0,GB,K=8,CSTP,budget_comparison.csv,demand_ddr5_gb,Decimal GB
+8,Speculative DDR5 Traffic,18037.1,0.0,GB,K=8,CSTP,budget_comparison.csv,speculative_ddr5_gb,Decimal GB
+8,Total DDR5 Traffic,48776.19,0.0,GB,K=8,CSTP,budget_comparison.csv,total_ddr5_gb,Decimal GB

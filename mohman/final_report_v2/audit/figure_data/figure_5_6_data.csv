@@ -1,0 +1,29 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+W1,Baseline Execution Time,4.855,0.0,s,W1,baseline,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W1,CSTP Execution Time,4.853,0.0,s,W1,cstp,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W1,Baseline Exposed Stall,4.74,0.0,s,W1,baseline,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W1,CSTP Exposed Stall,4.737,0.0,s,W1,cstp,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W2,Baseline Execution Time,18.565,0.0,s,W2,baseline,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W2,CSTP Execution Time,18.504,0.0,s,W2,cstp,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W2,Baseline Exposed Stall,18.117,0.0,s,W2,baseline,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W2,CSTP Exposed Stall,18.055,0.0,s,W2,cstp,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W3,Baseline Execution Time,35.732,0.0,s,W3,baseline,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W3,CSTP Execution Time,35.567,0.0,s,W3,cstp,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W3,Baseline Exposed Stall,35.0,0.0,s,W3,baseline,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W3,CSTP Exposed Stall,34.834,0.0,s,W3,cstp,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W4,Baseline Execution Time,51.772,0.0,s,W4,baseline,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W4,CSTP Execution Time,51.57,0.0,s,W4,cstp,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W4,Baseline Exposed Stall,50.769,0.0,s,W4,baseline,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W4,CSTP Exposed Stall,50.566,0.0,s,W4,cstp,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W5,Baseline Execution Time,63.507,0.0,s,W5,baseline,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W5,CSTP Execution Time,62.999,0.0,s,W5,cstp,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W5,Baseline Exposed Stall,62.304,0.0,s,W5,baseline,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W5,CSTP Exposed Stall,61.795,0.0,s,W5,cstp,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W6,Baseline Execution Time,189.535,0.0,s,W6,baseline,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W6,CSTP Execution Time,187.382,0.0,s,W6,cstp,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W6,Baseline Exposed Stall,186.108,0.0,s,W6,baseline,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W6,CSTP Exposed Stall,183.947,0.0,s,W6,cstp,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W7,Baseline Execution Time,488.483,0.0,s,W7,baseline,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W7,CSTP Execution Time,481.766,0.0,s,W7,cstp,all_experiment_results.csv,total_simulated_time_s,Direct seconds
+W7,Baseline Exposed Stall,479.841,0.0,s,W7,baseline,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+W7,CSTP Exposed Stall,473.096,0.0,s,W7,cstp,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0

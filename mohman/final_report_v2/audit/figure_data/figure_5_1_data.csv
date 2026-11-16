@@ -1,0 +1,7 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+baseline,Total Simulated Time,4.855,0.0,s,W1,baseline,all_experiment_results.csv,total_simulated_time_s,Direct execution seconds
+baseline,Exposed Memory Stall,4.74,0.0,s,W1,baseline,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+stmoe,Total Simulated Time,4.853,0.0,s,W1,stmoe,all_experiment_results.csv,total_simulated_time_s,Direct execution seconds
+stmoe,Exposed Memory Stall,4.737,0.0,s,W1,stmoe,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0
+cstp,Total Simulated Time,4.853,0.0,s,W1,cstp,all_experiment_results.csv,total_simulated_time_s,Direct execution seconds
+cstp,Exposed Memory Stall,4.737,0.0,s,W1,cstp,all_experiment_results.csv,exposed_memory_stall_ms,exposed_stall_ms / 1000.0

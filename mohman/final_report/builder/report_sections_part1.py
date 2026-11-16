@@ -33,7 +33,7 @@ TABLES_CH1_CH3 = {
             ["DeepSeek-V3 MoE Architecture", "256 Routed Experts + 1 Shared", "Top-K = 8 Activated per Token", "250 MB per Expert Parameter Tensor"],
             ["Total Model Parameter Footprint", "671 Billion Total Parameters", "64.0 GiB Aggregated Expert Weights", "Exceeds 40 GiB HBM Budget (Offloading Required)"],
             ["HBM Expert Cache Capacity", "Partitioned Dynamic Allotment", "35 GiB Static Expert Cache", "Holds 140 of 256 Total Layer Experts (54.7%)"],
-            ["DRAM Transfer Latency", "Host Fetch Serialization", "84 MiB @ 22.578 GB/s", "3.720 ms per Expert Uncached Fetch"]
+            ["DRAM Transfer Latency", "Host Fetch Serialization", "84 MiB @ 22.578 GB/s", "3.901 ms per Expert Uncached Fetch (88,080,384 bytes / 22.578 GB/s)"]
         ]
     },
     "table_2_2": {
@@ -66,12 +66,12 @@ TABLES_CH1_CH3 = {
     "table_3_2": {
         "num": "Table 3.2",
         "title": "Offline Expert Prediction Accuracy across Benchmark Suites (Lookahead Horizon H=1)",
-        "headers": ["Benchmark Suite", "Total Prompts", "ST-MoE Baseline Recall (%)", "CSTP Proposed Recall (%)", "Absolute Gain (%)"],
+        "headers": ["Benchmark Suite", "Total Prompts", "ST-MoE Baseline Recall (%)", "CSTP Proposed Recall (%)", "Difference (pp)"],
         "rows": [
-            ["MoE-Anywhere e1-sage-a1.5", "74 Prompts", "68.42%", "82.65%", "+14.23%"],
-            ["MoE-Anywhere e2-mixtral", "64 Prompts", "71.15%", "84.30%", "+13.15%"],
-            ["MoE-Suite DeepSeek Traces", "50 Prompts", "64.80%", "79.12%", "+14.32%"],
-            ["Aggregated Evaluation", "188 Prompts", "68.12%", "82.02%", "+13.90%"]
+            ["MoE-Anywhere e1-sage-a1.5", "74 Prompts", "68.42%", "82.65%", "+14.23 pp"],
+            ["MoE-Anywhere e2-mixtral", "64 Prompts", "71.15%", "84.30%", "+13.15 pp"],
+            ["MoE-Suite DeepSeek Traces", "50 Prompts", "64.80%", "79.12%", "+14.32 pp"],
+            ["Aggregated Evaluation", "188 Prompts", "68.12%", "82.02%", "+13.90 pp (+20.4% rel)"]
         ]
     }
 }

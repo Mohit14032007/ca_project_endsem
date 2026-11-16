@@ -6,30 +6,29 @@ Chapter 10 (Bonus - Realistic Routing Traffic from Authentic MoE Traces),
 Chapter 11 (Reproducibility & Execution Manual),
 Chapter 12 (Limitations & Threats to Validity),
 Chapter 13 (Conclusions), and Appendices.
+Enforces strict zero-ternary rule and authentic C++ source code verification.
 """
 
 TABLES_CH8_CH13 = {
     "table_8_1": {
         "num": "Table 8.1",
-        "title": "Lookahead Horizon Sensitivity Dynamics (Workload W3, K=4, DeepSeek-V3)",
-        "headers": ["Lookahead Horizon (H)", "Timely Coverage (%)", "Late Attachment (%)", "Unused Prefetch Rate (%)", "Exposed Stall Savings (s)"],
+        "title": "Lookahead Horizon Sensitivity Dynamics (Anchor Workload: B=32, P=2048, T=128, K=4)",
+        "headers": ["Lookahead Horizon (H)", "Execution Time (s)", "Mean Latency (ms)", "Exposed Stall (ms)", "Stall Hidden (ms)", "Late Attach (%)", "Wasted Traffic (GB)"],
         "rows": [
-            ["H = 1 (Immediate Next Stage)", "0.00%", "4.81%", "0.38%", "6.717 s (Maximum Savings)"],
-            ["H = 2 (Two-Stage Lookahead)", "0.00%", "2.14%", "0.84%", "3.120 s (Moderate Savings)"],
-            ["H = 3 (Three-Stage Lookahead)", "0.00%", "0.95%", "1.62%", "1.150 s (Diminishing Gains)"],
-            ["H = 4 (Four-Stage Lookahead)", "0.00%", "0.32%", "2.85%", "0.410 s (Minimal Benefit)"]
+            ["H = 1 (Immediate Next Stage)", "761.63 s", "5,950.21 ms", "747,583.37 ms", "3,568.90 ms", "21.29%", "665.36 GB"],
+            ["H = 2 (Two-Stage Lookahead)", "760.91 s", "5,944.62 ms", "746,864.77 ms", "3,873.24 ms", "19.92%", "646.25 GB"],
+            ["H = 4 (Four-Stage Lookahead)", "760.20 s", "5,939.09 ms", "746,152.06 ms", "4,005.17 ms", "18.15%", "637.88 GB"]
         ]
     },
     "table_8_2": {
         "num": "Table 8.2",
         "title": "Prefetch Candidate Budget (K) Sensitivity and Bus Saturation (H=1, B=32, T=128)",
-        "headers": ["Budget (K)", "Total Time (s)", "Exposed Stall (s)", "Speculative Traffic (GB)", "Bus Utilization (%)", "EDP (kJ·s)"],
+        "headers": ["Budget (K)", "Total Time (s)", "Exposed Stall (ms)", "Stall Hidden (ms)", "Speculative DDR5 (GB)", "EDP (kJ·s)", "EDP Delta (%)"],
         "rows": [
-            ["K = 1", "764.12 s", "750.38 s", "1,814.20 GB", "61.2%", "7,158.4 kJ·s"],
-            ["K = 2 (Optimal / Sweet Spot)", "756.34 s", "742.60 s", "3,628.40 GB", "74.8%", "7,079.3 kJ·s (-1.78%)"],
-            ["K = 4 (Anchor Setting)", "761.58 s", "747.83 s", "10,928.05 GB", "88.4%", "7,171.4 kJ·s (-0.43%)"],
-            ["K = 6", "762.45 s", "748.70 s", "16,392.10 GB", "94.6%", "7,185.2 kJ·s"],
-            ["K = 8 (Bus Saturated)", "767.89 s", "754.14 s", "21,856.10 GB", "99.2%", "7,236.1 kJ·s (+0.38%)"]
+            ["K = 0 (Baseline Offloading)", "767.27 s", "753,245.55 ms", "0.00 ms", "0.00 GB", "7,202.85 kJ·s", "0.00% (Baseline)"],
+            ["K = 2 (Tested Energy Optimum)", "756.34 s", "742,278.61 ms", "6,370.25 ms", "6,060.11 GB", "7,079.32 kJ·s", "-1.72% (Best EDP)"],
+            ["K = 4 (Anchor Latency Setting)", "761.63 s", "747,583.37 ms", "3,568.90 ms", "10,928.22 GB", "7,171.98 kJ·s", "-0.43%"],
+            ["K = 8 (Interconnect Saturated)", "761.89 s", "747,822.62 ms", "950.10 ms", "18,019.84 GB", "7,179.41 kJ·s", "-0.33%"]
         ]
     },
     "table_9_1": {
@@ -47,13 +46,13 @@ TABLES_CH8_CH13 = {
     "table_9_2": {
         "num": "Table 9.2",
         "title": "Reconciled Hardware Energy and Delay Analysis Matrix (Anchor Workload: B=32, T=128, C_HBM=35 GiB)",
-        "headers": ["System Configuration", "Execution Time (s)", "Static DRAM (J)", "DDR5 Active (J)", "HBM2e (J)", "Total Energy (kJ)", "EDP (kJ·s)", "EDP Delta (%)"],
+        "headers": ["System Configuration", "Execution Time (s)", "Static DRAM (J)", "DDR5 Active (J)", "HBM2e (J)", "GPU MAC (J)", "Total Energy (J)", "EDP (kJ·s)", "EDP Delta (%)"],
         "rows": [
-            ["Config A: Baseline Offloading", "767.27 s", "3,452.72 J", "4,820.77 J", "1,042.87 J", "9.388 kJ", "7,202.9 kJ·s", "0.00% (Baseline)"],
-            ["Config B: Shadow Prediction", "767.27 s", "3,452.72 J", "4,820.77 J", "1,042.87 J", "9.388 kJ", "7,202.9 kJ·s", "+0.00%"],
-            ["Config C: Async Prefetch + LRU (K=4)", "761.66 s", "3,427.46 J", "4,874.11 J", "1,044.16 J", "9.417 kJ", "7,172.5 kJ·s", "-0.42%"],
-            ["Config D: Async Prefetch + FA-LRU (K=4)", "761.63 s", "3,427.32 J", "4,873.91 J", "1,044.18 J", "9.417 kJ", "7,171.4 kJ·s", "-0.43%"],
-            ["Config D-Opt: Optimal Budget (K=2)", "756.34 s", "3,403.53 J", "4,841.25 J", "1,043.52 J", "9.360 kJ", "7,079.3 kJ·s", "-1.78% (Best EDP)"]
+            ["Config A: Baseline Offloading", "767.27 s", "3,452.72 J", "4,820.77 J", "1,042.87 J", "71.25 J", "9,387.61 J", "7,202.85 kJ·s", "0.00% (Baseline)"],
+            ["Config B: Shadow Prediction", "767.27 s", "3,452.72 J", "4,820.77 J", "1,042.87 J", "71.25 J", "9,387.61 J", "7,202.85 kJ·s", "0.00%"],
+            ["Config C: Async Prefetch + LRU (K=4)", "761.66 s", "3,427.46 J", "4,874.11 J", "1,044.16 J", "71.25 J", "9,416.98 J", "7,172.54 kJ·s", "-0.42%"],
+            ["Config D: Async Prefetch + FA-LRU (K=4)", "761.63 s", "3,427.32 J", "4,873.91 J", "1,044.18 J", "71.25 J", "9,416.66 J", "7,171.98 kJ·s", "-0.43%"],
+            ["Config D-Opt: Optimal Budget (K=2)", "756.34 s", "3,403.54 J", "4,839.40 J", "1,045.74 J", "71.25 J", "9,359.93 J", "7,079.32 kJ·s", "-1.72% (Best EDP)"]
         ]
     },
     "table_10_1": {

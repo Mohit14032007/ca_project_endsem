@@ -1,0 +1,7 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+4,b4_c1,1466.88,0.0,ms,B=4,b4_c1,batch_size_comparison.csv,mean_token_latency_ms,Direct token latency
+4,b4_c3,1468.79,0.0,ms,B=4,b4_c3,batch_size_comparison.csv,mean_token_latency_ms,Direct token latency
+4,b4_c4,1468.8,0.0,ms,B=4,b4_c4,batch_size_comparison.csv,mean_token_latency_ms,Direct token latency
+32,anc_c1,5994.31,0.0,ms,B=32,anc_c1,batch_size_comparison.csv,mean_token_latency_ms,Direct token latency
+32,anc_c3,5950.46,0.0,ms,B=32,anc_c3,batch_size_comparison.csv,mean_token_latency_ms,Direct token latency
+32,anc_c4,5950.21,0.0,ms,B=32,anc_c4,batch_size_comparison.csv,mean_token_latency_ms,Direct token latency

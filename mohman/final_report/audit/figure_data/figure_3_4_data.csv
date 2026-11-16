@@ -1,0 +1,26 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+1,MoE Anywhere (Online Across),75.56,0.0,%,moe_anywhere,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+1,MoE Anywhere (Frozen),62.73,0.0,%,moe_anywhere,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+1,MoE Suite (Online Across),52.84,0.0,%,moe_suite,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+1,MoE Suite (Frozen),20.51,0.0,%,moe_suite,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+1,Paper Reported Anchor (~85%),85.0,0.0,%,all,baseline,fixed_budget_summary.csv,anchor_line,Constant reference line
+2,MoE Anywhere (Online Across),87.4,0.0,%,moe_anywhere,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+2,MoE Anywhere (Frozen),78.44,0.0,%,moe_anywhere,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+2,MoE Suite (Online Across),67.77,0.0,%,moe_suite,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+2,MoE Suite (Frozen),35.17,0.0,%,moe_suite,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+2,Paper Reported Anchor (~85%),85.0,0.0,%,all,baseline,fixed_budget_summary.csv,anchor_line,Constant reference line
+4,MoE Anywhere (Online Across),93.69,0.0,%,moe_anywhere,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+4,MoE Anywhere (Frozen),88.85,0.0,%,moe_anywhere,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+4,MoE Suite (Online Across),80.53,0.0,%,moe_suite,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+4,MoE Suite (Frozen),53.12,0.0,%,moe_suite,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+4,Paper Reported Anchor (~85%),85.0,0.0,%,all,baseline,fixed_budget_summary.csv,anchor_line,Constant reference line
+6,MoE Anywhere (Online Across),95.85,0.0,%,moe_anywhere,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+6,MoE Anywhere (Frozen),92.58,0.0,%,moe_anywhere,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+6,MoE Suite (Online Across),86.61,0.0,%,moe_suite,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+6,MoE Suite (Frozen),64.68,0.0,%,moe_suite,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+6,Paper Reported Anchor (~85%),85.0,0.0,%,all,baseline,fixed_budget_summary.csv,anchor_line,Constant reference line
+8,MoE Anywhere (Online Across),96.96,0.0,%,moe_anywhere,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+8,MoE Anywhere (Frozen),94.33,0.0,%,moe_anywhere,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+8,MoE Suite (Online Across),89.81,0.0,%,moe_suite,online_across_requests,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+8,MoE Suite (Frozen),72.08,0.0,%,moe_suite,frozen,fixed_budget_summary.csv,hit_rate,hit_rate * 100
+8,Paper Reported Anchor (~85%),85.0,0.0,%,all,baseline,fixed_budget_summary.csv,anchor_line,Constant reference line

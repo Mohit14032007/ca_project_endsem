@@ -1,0 +1,7 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+Frozen,Cold-Start (Tokens 0-4),31.85,0.0,%,moe_anywhere,Frozen,mohman/point_1/st_moe/results/csv/online_policy_comparison.csv,cold_recall,Tokens 0-4 recall * 100
+Frozen,Steady-State (Tokens 5+),42.75,0.0,%,moe_anywhere,Frozen,mohman/point_1/st_moe/results/csv/online_policy_comparison.csv,steady_recall,Tokens 5+ recall * 100
+Online (Within-Req),Cold-Start (Tokens 0-4),31.85,0.0,%,moe_anywhere,Online (Within-Req),mohman/point_1/st_moe/results/csv/online_policy_comparison.csv,cold_recall,Tokens 0-4 recall * 100
+Online (Within-Req),Steady-State (Tokens 5+),48.47,0.0,%,moe_anywhere,Online (Within-Req),mohman/point_1/st_moe/results/csv/online_policy_comparison.csv,steady_recall,Tokens 5+ recall * 100
+Online (Across-Req),Cold-Start (Tokens 0-4),33.17,0.0,%,moe_anywhere,Online (Across-Req),mohman/point_1/st_moe/results/csv/online_policy_comparison.csv,cold_recall,Tokens 0-4 recall * 100
+Online (Across-Req),Steady-State (Tokens 5+),50.01,0.0,%,moe_anywhere,Online (Across-Req),mohman/point_1/st_moe/results/csv/online_policy_comparison.csv,steady_recall,Tokens 5+ recall * 100

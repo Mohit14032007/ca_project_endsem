@@ -1,0 +1,8 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+4,CSTP Coverage (W1),0.0,0.0,%,W1,cstp,all_experiment_results.csv,prefetch_coverage_pct,Direct percentage
+16,CSTP Coverage (W2),0.0,0.0,%,W2,cstp,all_experiment_results.csv,prefetch_coverage_pct,Direct percentage
+16,CSTP Coverage (W3),0.0,0.0,%,W3,cstp,all_experiment_results.csv,prefetch_coverage_pct,Direct percentage
+16,CSTP Coverage (W4),0.0,0.0,%,W4,cstp,all_experiment_results.csv,prefetch_coverage_pct,Direct percentage
+16,CSTP Coverage (W5),0.0,0.0,%,W5,cstp,all_experiment_results.csv,prefetch_coverage_pct,Direct percentage
+32,CSTP Coverage (W6),0.0,0.0,%,W6,cstp,all_experiment_results.csv,prefetch_coverage_pct,Direct percentage
+64,CSTP Coverage (W7),0.0,0.0,%,W7,cstp,all_experiment_results.csv,prefetch_coverage_pct,Direct percentage

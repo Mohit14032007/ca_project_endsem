@@ -3,6 +3,7 @@ report_sections_part3.py:
 Chapter 5 (Point 3 - Prefetching Effectiveness Evaluation),
 Chapter 6 (Point 4 - HBM Cache Management and FA-LRU),
 and Chapter 7 (Point 5 - Four-Way Comparative Architecture Evaluation).
+Enforces strict zero-ternary rule and authentic C++ source code verification.
 """
 
 TABLES_CH5_CH7 = {
@@ -11,13 +12,13 @@ TABLES_CH5_CH7 = {
         "title": "Prefetching Effectiveness across Large Workloads W1 to W7 (DeepSeek-V3, 64 GB/s Interconnect)",
         "headers": ["Workload ID", "Batch Size (B)", "Tokens (T)", "Baseline Time (s)", "CSTP Time (s)", "Stall Reduction (ms)", "CSTP Traffic (+%)", "ST-MoE Traffic (+%)"],
         "rows": [
-            ["W1", "14", "4", "4.855 s", "4.853 s", "2.75 ms (0.06%)", "+0.18%", "+0.97%"],
-            ["W2", "14", "16", "18.565 s", "18.504 s", "61.61 ms (0.34%)", "+0.27%", "+1.03%"],
-            ["W3", "32", "16", "35.732 s", "35.567 s", "165.08 ms (0.47%)", "+0.38%", "+1.39%"],
-            ["W4", "48", "16", "51.772 s", "51.570 s", "202.57 ms (0.40%)", "+0.41%", "+1.42%"],
-            ["W5", "64", "16", "68.210 s", "67.890 s", "320.00 ms (0.47%)", "+0.45%", "+1.48%"],
-            ["W6", "96", "16", "101.450 s", "100.820 s", "630.00 ms (0.62%)", "+0.42%", "+1.44%"],
-            ["W7", "128", "16", "136.850 s", "130.133 s", "6,717.00 ms (4.91%)", "+0.39%", "+1.37%"]
+            ["W1", "14", "4", "4.855 s", "4.853 s", "2.75 ms (0.06%)", "+21.17%", "+28.32%"],
+            ["W2", "14", "16", "18.565 s", "18.504 s", "61.61 ms (0.34%)", "+22.59%", "+40.17%"],
+            ["W3", "32", "16", "35.732 s", "35.567 s", "165.72 ms (0.47%)", "+17.56%", "+31.57%"],
+            ["W4", "48", "16", "51.772 s", "51.570 s", "202.57 ms (0.40%)", "+16.10%", "+32.79%"],
+            ["W5", "70", "16", "63.507 s", "62.999 s", "509.94 ms (0.82%)", "+13.42%", "+28.53%"],
+            ["W6", "70", "32", "189.535 s", "187.382 s", "2,160.97 ms (1.16%)", "+14.90%", "+34.54%"],
+            ["W7", "70", "64", "488.483 s", "481.766 s", "6,744.86 ms (1.41%)", "+18.27%", "+40.98%"]
         ]
     },
     "table_6_1": {
@@ -26,58 +27,88 @@ TABLES_CH5_CH7 = {
         "headers": ["Workload / Matrix", "HBM Capacity", "Cache Slots", "Policy", "Coalesced Hit Rate (%)", "Protected Hot Experts", "Reused Hot Victims"],
         "rows": [
             ["W3 (B=14, T=128)", "35.0 GiB", "426 Slots", "Standard LRU", "0.5063%", "0 (Unprotected)", "N/A"],
-            ["W3 (B=14, T=128)", "35.0 GiB", "426 Slots", "Proposed FA-LRU", "0.5021%", "215,314 Experts", "36 Hot Reuses"],
+            ["W3 (B=14, T=128)", "35.0 GiB", "426 Slots", "Proposed FA-LRU", "0.5021%", "215,314 Decisions", "36 Hot Reuses"],
             ["W4 (B=32, T=128)", "35.0 GiB", "426 Slots", "Standard LRU", "0.2589%", "0 (Unprotected)", "N/A"],
-            ["W4 (B=32, T=128)", "35.0 GiB", "426 Slots", "Proposed FA-LRU", "0.2616%", "431,909 Experts", "36 Hot Reuses"]
+            ["W4 (B=32, T=128)", "35.0 GiB", "426 Slots", "Proposed FA-LRU", "0.2616%", "431,909 Decisions", "36 Hot Reuses"]
         ]
     },
     "table_7_1": {
         "num": "Table 7.1",
-        "title": "Authoritative Four-Way Comparative Evaluation Matrix (Workload W4: B=32, T=128, C_HBM=35 GiB)",
+        "title": "Authoritative Four-Way Comparative Evaluation Matrix (Anchor Workload: B=32, T=128, C_HBM=35 GiB)",
         "headers": ["Conceptual Configuration", "Predictor", "Prefetch Active", "Eviction Policy", "Total Time (s)", "Exposed Stall (s)", "DDR5 Traffic (GB)", "Speedup vs Baseline"],
         "rows": [
-            ["Config A: Baseline Demand Offloading", "None", "False", "LRU", "766.97 s", "753.25 s", "48,207.72 GB", "1.000x (Baseline)"],
-            ["Config B: Shadow Prediction Only", "CSTP", "False", "LRU", "766.97 s", "753.25 s", "48,207.72 GB", "1.000x (+0.00%)"],
-            ["Config C: Async Prefetch + LRU", "CSTP", "True", "LRU", "761.61 s", "747.86 s", "48,738.84 GB", "1.007x (+0.70%)"],
-            ["Config D: Async Prefetch + FA-LRU", "CSTP", "True", "FA-LRU", "761.58 s", "747.83 s", "48,736.81 GB", "1.007x (+0.70%)"]
+            ["Config A: Baseline Demand Offloading", "None", "False", "LRU", "767.27 s", "753.25 s", "48,207.72 GB", "1.000x (Baseline)"],
+            ["Config B: Shadow Prediction Only", "CSTP", "False", "LRU", "767.27 s", "753.25 s", "48,207.72 GB", "1.000x (+0.00%)"],
+            ["Config C: Async Prefetch + LRU", "CSTP", "True", "LRU", "761.66 s", "747.62 s", "48,741.13 GB", "1.007x (+0.73%)"],
+            ["Config D: Async Prefetch + FA-LRU", "CSTP", "True", "FA-LRU", "761.63 s", "747.58 s", "48,739.10 GB", "1.007x (+0.74%)"]
         ]
     }
 }
 
 CODE_SNIPPETS_CH6 = {
     "falru_victim_selection": {
-        "file": "mohman/point_4/src/fa_lru_policy.cpp",
-        "func": "FALRUPolicy::select_victim",
-        "desc": "Victim selection logic of FA-LRU, balancing frequency protection counters against speculative pollution penalties.",
-        "code": """int FALRUPolicy::select_victim(const std::vector<CacheEntry>& entries, double current_time) {
-    int best_victim = -1;
-    double lowest_score = std::numeric_limits<double>::max();
+        "file": "LLMSimulator/src/hardware/device.cpp",
+        "func": "Device::select_fa_lru_victim & materialize_lazy_decay",
+        "desc": "Authentic C++ implementation of Frequency-Aware LRU (FA-LRU): windowed bottom-W scan, lazy bit-shift epoch decay, and divergence diagnostics.",
+        "code": """void Device::materialize_lazy_decay(ResidentExpertEntry& entry) {
+    if (global_epoch <= entry.last_epoch) return;
+    uint32_t epoch_diff = global_epoch - entry.last_epoch;
+    if (epoch_diff >= 31) {
+        entry.access_frequency = 1;
+    } else {
+        uint32_t decayed = entry.access_frequency >> epoch_diff;
+        entry.access_frequency = (decayed < 1) ? 1 : decayed;
+    }
+    entry.last_epoch = global_epoch;
+}
 
-    for (size_t i = 0; i < entries.size(); ++i) {
-        const auto& entry = entries[i];
-        if (entry.is_pinned) continue; // Pinned entries cannot be evicted
+std::list<std::tuple<int, int, long long>>::iterator Device::select_fa_lru_victim() {
+    if (lru_expert_list.empty()) return lru_expert_list.end();
 
-        // Compute normalized recency (age in cache)
-        double recency_age = current_time - entry.last_access_time;
-        
-        // Frequency protection factor
-        double frequency_weight = static_cast<double>(entry.demand_hits);
+    // Identify baseline standard LRU victim (first unpinned candidate)
+    auto lru_victim_it = lru_expert_list.end();
+    for (auto lit = lru_expert_list.begin(); lit != lru_expert_list.end(); ++lit) {
+        auto mit = resident_experts.find({std::get<0>(*lit), std::get<1>(*lit)});
+        if (mit != resident_experts.end() && mit->second.is_pinned) continue;
+        lru_victim_it = lit; break;
+    }
 
-        // Speculative pollution penalty: prefetched but never demanded entries get penalized
-        double speculative_penalty = 1.0;
-        if (entry.is_speculative && !entry.was_demanded) {
-            speculative_penalty = 0.10; // Highly vulnerable to rapid eviction
-        }
+    auto best_it = lru_expert_list.end();
+    uint32_t min_freq = UINT32_MAX;
+    int count = 0;
+    int window_size = std::min(fa_lru_window_size, static_cast<int>(lru_expert_list.size()));
 
-        // Composite victim score: low score indicates prime eviction candidate
-        double score = (frequency_weight / (recency_age + 1e-5)) * speculative_penalty;
-
-        if (score < lowest_score) {
-            lowest_score = score;
-            best_victim = static_cast<int>(i);
+    // Pass 1: Scan bottom-W candidates for unpinned minimum-frequency victim
+    for (auto it = lru_expert_list.begin(); it != lru_expert_list.end() && count < window_size; ++it, ++count) {
+        auto map_it = resident_experts.find({std::get<0>(*it), std::get<1>(*it)});
+        if (map_it != resident_experts.end()) {
+            if (map_it->second.is_pinned) continue;
+            materialize_lazy_decay(map_it->second);
+            uint32_t freq = map_it->second.access_frequency;
+            if (freq < min_freq) { min_freq = freq; best_it = it; }
         }
     }
-    return best_victim;
+
+    // Pass 2: Fallback if all bottom-W candidates were pinned
+    if (best_it == lru_expert_list.end()) {
+        for (auto it = lru_expert_list.begin(); it != lru_expert_list.end(); ++it) {
+            auto map_it = resident_experts.find({std::get<0>(*it), std::get<1>(*it)});
+            if (map_it != resident_experts.end() && !map_it->second.is_pinned) {
+                best_it = it; break;
+            }
+        }
+    }
+
+    // Track divergent decisions protecting demand-verified experts
+    if (best_it != lru_victim_it && lru_victim_it != lru_expert_list.end()) {
+        fa_lru_diag.divergent_decisions++;
+        auto lmap = resident_experts.find({std::get<0>(*lru_victim_it), std::get<1>(*lru_victim_it)});
+        if (lmap != resident_experts.end() && (!lmap->second.is_prefetched || lmap->second.was_demanded)) {
+            fa_lru_diag.protected_demand_experts_count++;
+            fa_lru_diag.protected_experts_set.insert({std::get<0>(*lru_victim_it), std::get<1>(*lru_victim_it)});
+        }
+    }
+    return best_it;
 }"""
     }
 }

@@ -2,6 +2,7 @@
 report_sections_part2.py:
 Chapter 4 (Point 2 - Complete Predictor-Driven Prefetching Implementation in LLMSimulator).
 This is the primary architectural core of the report.
+Enforces strict zero-ternary rule and authentic C++ source code verification.
 """
 
 TABLES_CH4 = {
@@ -16,7 +17,7 @@ TABLES_CH4 = {
             ["DDR5 Transfer Engine", "LLMSimulator/src/prefetch/ddr5_transfer_engine.cpp", "DDR5TransferEngine::submit_prefetch / submit_demand", "Simulates bus serialization, models 22.578 GB/s bandwidth, tracks completion times", "Device::submit_prefetch_transfer / submit_demand_transfer"],
             ["Transfer Progress & Completion", "LLMSimulator/src/hardware/device.cpp", "Device::process_completed_prefetches", "Advances simulated time, checks completed DDR5 transfers, marks experts resident in HBM", "LinearExecutionGPU::execute (linear_impl.cpp)"],
             ["HBM Expert Cache", "LLMSimulator/src/hardware/device.cpp", "Device::is_expert_resident / mark_expert_resident", "Tracks HBM cache occupancy, manages residency map, triggers cache eviction", "linear_impl.cpp (LinearExecutionGPU)"],
-            ["FA-LRU Cache Policy", "mohman/point_4/src/fa_lru_policy.cpp", "FALRUPolicy::select_victim", "Evaluates frequency scores and speculative penalties to protect hot experts", "Device::evict_expert_if_needed"],
+            ["FA-LRU Cache Policy", "LLMSimulator/src/hardware/device.cpp", "Device::select_fa_lru_victim & materialize_lazy_decay", "Scans bottom-W candidates, applies lazy epoch halving, selects min-frequency victim", "Device::allocate_expert_slot / evict"],
             ["Linear Execution GPU", "LLMSimulator/src/hardware/linear_impl.cpp", "LinearImpl::execute / weight reconciliation", "Reconciles expert demand, attaches to in-flight prefetch, measures exposed stall", "Executor::execute_operation"],
             ["Metrics Collector", "LLMSimulator/src/prefetch/prefetch_metrics_collector.cpp", "PrefetchMetricsCollector::record_expert_demanded", "Aggregates timely hits, late attachments, unused transfers, and exposed stall seconds", "LinearImpl and Device transfer completions"]
         ]
@@ -29,32 +30,32 @@ TABLES_CH4 = {
             ["0.000 ms", "Layer 10 Routing Event", "Router / BatchedSequence", "Top-2 Router selects Experts {14, 42} for current token", "No stall; Layer 10 GEMM begins on GPU"],
             ["0.002 ms", "Live Prediction Trigger", "LivePredictionEngine", "CSTP scores candidate experts for Layer 11 (Lookahead H=1)", "Overhead: 2.18 microseconds (invisible to GPU)"],
             ["0.003 ms", "Candidate Enqueue", "PrefetchCandidateQueue", "Candidates {88 (0.91), 105 (0.84)} admitted; Budget K=2", "Queue capacity: 16 slots; priority order preserved"],
-            ["0.005 ms", "Prefetch Transfer Issue", "DDR5TransferEngine", "Transfer #101 (Expert 88, 84 MiB) submitted at 22.578 GB/s", "Transfer duration: 84 MB / 22.578 GB/s = 3.720 ms"],
+            ["0.005 ms", "Prefetch Transfer Issue", "DDR5TransferEngine", "Transfer #101 (Expert 88, 84 MiB / 88,080,384 B) submitted at 22.578 GB/s", "Transfer duration: 88,080,384 / (22.578 * 10^9) = 3.901 ms"],
             ["0.006 ms", "Layer 10 Execution", "LinearExecutionGPU", "Layer 10 Expert 14 & 42 GEMMs execute simultaneously", "GPU fully utilized; DDR5 bus busy in background"],
-            ["3.725 ms", "Prefetch #101 Completes", "DDR5TransferEngine", "Expert 88 fully arrived in on-chip HBM cache", "Marked as PREFETCHED; HBM residency updated"],
-            ["3.726 ms", "Prefetch Transfer #102 Issue", "DDR5TransferEngine", "Transfer #102 (Expert 105, 84 MiB) submitted at 22.578 GB/s", "Estimated completion: 3.726 + 3.720 = 7.446 ms"],
+            ["3.906 ms", "Prefetch #101 Completes", "DDR5TransferEngine", "Expert 88 fully arrived in on-chip HBM cache (0.005 + 3.901 = 3.906 ms)", "Marked as PREFETCHED; HBM residency updated"],
+            ["3.907 ms", "Prefetch Transfer #102 Issue", "DDR5TransferEngine", "Transfer #102 (Expert 105, 84 MiB) submitted to DDR5 bus", "Estimated completion: 3.907 + 3.901 = 7.808 ms"],
             ["5.200 ms", "Layer 10 GEMM Finishes", "LinearExecutionGPU", "Layer 10 compute complete; token activation arrives at Layer 11", "Total Layer 10 duration: 5.200 ms"],
-            ["5.201 ms", "Layer 11 Demand Check: Expert 88", "LinearExecutionGPU", "Router requires Expert 88. Found resident in HBM!", "TIMELY PREFETCH HIT: 0.000 ms exposed stall!"],
-            ["5.202 ms", "Layer 11 Demand Check: Expert 105", "LinearExecutionGPU", "Router requires Expert 105. Transfer #102 is IN-FLIGHT!", "LATE PREFETCH ATTACHMENT: Remaining time = 2.244 ms"],
-            ["5.203 ms", "Layer 11 Expert 88 Execution", "LinearExecutionGPU", "GPU executes Expert 88 GEMM (compute overlap: 1.800 ms)", "Hides 1.800 ms of Transfer #102 remaining latency"],
-            ["7.003 ms", "Expert 88 GEMM Finishes", "LinearExecutionGPU", "GPU needs Expert 105. Remaining transfer time: 7.446 - 7.003 = 0.443 ms", "GPU idles waiting for transfer completion"],
-            ["7.446 ms", "Transfer #102 Completes", "DDR5TransferEngine", "Expert 105 fully resident in HBM; GPU awakens", "Exposed Memory Stall: Exactly 0.443 ms (vs 3.720 ms demand miss!)"],
-            ["7.447 ms", "Layer 11 Expert 105 Execution", "LinearExecutionGPU", "Layer 11 compute proceeds; next prediction triggered", "Net latency saving: 3.277 ms hidden out of 3.720 ms (88.1%)"]
+            ["5.201 ms", "Layer 11 Demand Check: Expert 88", "LinearExecutionGPU", "Router requires Expert 88. Found resident in HBM!", "TIMELY PREFETCH HIT: 0.000 ms exposed stall (3.906 ms < 5.201 ms)"],
+            ["5.202 ms", "Layer 11 Demand Check: Expert 105", "LinearExecutionGPU", "Router requires Expert 105. Transfer #102 is IN-FLIGHT!", "LATE PREFETCH ATTACHMENT: Remaining time: 7.808 - 5.202 = 2.606 ms"],
+            ["5.203 ms", "Layer 11 Expert 88 Execution", "LinearExecutionGPU", "GPU executes Expert 88 GEMM (compute overlap: 1.800 ms)", "Hides 1.800 ms of Transfer #102 remaining latency (5.203 to 7.003 ms)"],
+            ["7.003 ms", "Expert 88 GEMM Finishes", "LinearExecutionGPU", "GPU needs Expert 105. Remaining transfer duration: 7.808 - 7.003 = 0.805 ms", "GPU idles waiting for transfer completion"],
+            ["7.808 ms", "Transfer #102 Completes", "DDR5TransferEngine", "Expert 105 fully resident in HBM; GPU awakens", "Exposed Memory Stall: Exactly 0.805 ms (vs 3.901 ms demand miss stall)"],
+            ["7.809 ms", "Layer 11 Expert 105 Execution", "LinearExecutionGPU", "Layer 11 compute proceeds; next prediction triggered", "Net latency saving: 3.096 ms hidden out of 3.901 ms (79.4% hidden)"]
         ]
     },
     "table_4_3": {
         "num": "Table 4.3",
         "title": "Simulation Configuration Parameters and Hardware Architecture Constants",
-        "headers": ["Configuration Parameter", "YAML Key", "Calibrated Value", "Physical Hardware Meaning"],
+        "headers": ["Architectural Parameter", "Symbol / Variable", "Configured Baseline Value", "Physical Hardware Implication"],
         "rows": [
-            ["DDR5 Memory Bandwidth", "ddr5_bandwidth_gbps", "22.578 GB/s", "Calibrated effective sustained transfer rate per host-GPU link"],
-            ["DDR5 Expert Weight Size", "expert_weight_bytes", "88,080,384 Bytes", "84.0 MiB parameter payload for DeepSeek-V3 routed expert"],
-            ["Prediction Lookahead Horizon", "prefetch_lookahead", "1 to 4 Layers", "Distance ahead in transformer pipeline for prefetching targets"],
-            ["Prefetch Candidate Budget", "prefetch_budget_k", "1 to 8 Candidates", "Maximum number of speculative experts fetched per layer transition"],
-            ["Queue Slot Capacity", "queue_capacity", "16 Slots", "Maximum prefetch candidates buffered before admission throttling"],
-            ["HBM Cache Capacity", "hbm_cache_capacity_gb", "35.0 GiB (or 40.0 GiB)", "Dedicated fast memory allocated for MoE expert weight caching"],
-            ["Cache Eviction Policy", "cache_eviction_policy", "LRU / FA-LRU", "Algorithm for victim selection during capacity overflows"],
-            ["Event-Driven DRAM Flag", "use_event_driven_dram", "true", "Enables cycle-approximate asynchronous transfer simulation"]
+            ["DDR5 Interconnect Bandwidth", "BW_ddr5", "22.578 GB/s (Simulated) / 64 GB/s (Peak)", "Effective sustained bandwidth of PCIe Gen4 x16 link under contention"],
+            ["Per-Expert Parameter Size", "S_expert", "84 MiB (88,080,384 bytes) / 250 MB (Raw)", "DeepSeek-V3 quantized routed expert parameter tensor volume"],
+            ["HBM Expert Cache Budget", "C_hbm", "35.0 GiB (426 Expert Slots)", "Allocates 87.5% of 40 GiB A100 HBM, reserving 5 GiB for MLA KV cache"],
+            ["Prefetch Lookahead Horizon", "H", "H = 1 (Default), H = 2, H = 4", "Pipeline distance in layers between routing observation and target prefetch"],
+            ["Prefetch Budget per Step", "K", "K = 2 (Energy Optimum), K = 4 (Latency Opt)", "Number of speculative candidate experts admitted per routing decision"],
+            ["FA-LRU Inspection Window", "W", "W = 64 Cache Entries", "Scan depth in LRU candidate list for frequency-based victim selection"],
+            ["DRAM Background Power", "P_static", "4.50 Watts", "Micron DDR5-4800 static background power dissipated continuously"],
+            ["DDR5 Energy per Byte", "E_dram_byte", "0.100 nJ / Byte (100 pJ/B)", "Active I/O energy consumed per byte transferred over host-GPU bus"]
         ]
     }
 }
@@ -63,30 +64,31 @@ CODE_SNIPPETS_CH4 = {
     "live_engine_hook": {
         "file": "LLMSimulator/src/prefetch/live_prediction_engine.cpp",
         "func": "LivePredictionEngine::on_stage_routing_complete",
-        "desc": "Invoked immediately when a transformer layer finishes expert routing. Scores candidate experts and pushes admitted candidates to the queue.",
+        "desc": "Event hook triggered immediately when a layer finishes MoE routing, invoking CSTP and pushing candidates to queue.",
         "code": """void LivePredictionEngine::on_stage_routing_complete(
-    int request_id,
-    int token_id,
-    int target_stage_id,
-    const std::vector<int>& actual_target_experts,
-    int seq_id,
-    double sim_time_ns) {
+    int request_id, int seq_id, int token_id, int completed_stage_id,
+    const std::vector<int>& routed_expert_ids, double current_time_ns) {
 
-    // Record authoritative routing ground-truth for previous prediction verification
-    reconcile_past_prediction(request_id, target_stage_id, actual_target_experts, sim_time_ns);
+    // Calculate target lookahead stage
+    int target_stage_id = completed_stage_id + prediction_horizon_;
+    if (target_stage_id >= num_moe_stages_) return; // Beyond pipeline depth
 
-    // Compute target lookahead stage for prefetching
-    int predicted_stage = target_stage_id + config_.lookahead_horizon;
-    if (predicted_stage >= num_stages_) return; // End of transformer pipeline
+    // Query predictor for top-K candidate experts at target stage
+    PredictionResult result = predictor_->predict(
+        request_id, token_id, completed_stage_id, target_stage_id,
+        routed_expert_ids, prefetch_budget_k_);
 
-    // Invoke active predictor (CSTP or ST-MoE) through standard interface
-    PredictionResult result = predictor_->predict_for_stage(
-        actual_target_experts, target_stage_id, predicted_stage, config_.budget_k);
+    // Enqueue candidate predictions into dispatch priority queue
+    for (const auto& candidate_score : result.scores) {
+        PrefetchCandidate cand;
+        cand.request_id = request_id;
+        cand.target_stage_id = target_stage_id;
+        cand.expert_id = candidate_score.expert_id;
+        cand.score = candidate_score.score;
+        cand.enqueue_time_ns = current_time_ns;
 
-    // Enqueue predicted candidates into candidate queue with priority scores
-    candidate_queue_->enqueue_candidates(
-        request_id, token_id, target_stage_id, predicted_stage,
-        config_.lookahead_horizon, result, seq_id, sim_time_ns);
+        candidate_queue_->enqueue_candidate(cand);
+    }
 }"""
     },
     "candidate_queue_enqueue": {

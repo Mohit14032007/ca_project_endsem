@@ -1,0 +1,15 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+W1,CSTP Unused Prefetch Rate,16.05,0.0,%,W1,cstp,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W1,ST-MoE Unused Prefetch Rate,14.16,0.0,%,W1,stmoe,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W2,CSTP Unused Prefetch Rate,13.31,0.0,%,W2,cstp,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W2,ST-MoE Unused Prefetch Rate,9.0,0.0,%,W2,stmoe,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W3,CSTP Unused Prefetch Rate,12.15,0.0,%,W3,cstp,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W3,ST-MoE Unused Prefetch Rate,8.7,0.0,%,W3,stmoe,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W4,CSTP Unused Prefetch Rate,12.25,0.0,%,W4,cstp,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W4,ST-MoE Unused Prefetch Rate,7.99,0.0,%,W4,stmoe,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W5,CSTP Unused Prefetch Rate,12.16,0.0,%,W5,cstp,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W5,ST-MoE Unused Prefetch Rate,8.35,0.0,%,W5,stmoe,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W6,CSTP Unused Prefetch Rate,9.38,0.0,%,W6,cstp,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W6,ST-MoE Unused Prefetch Rate,6.78,0.0,%,W6,stmoe,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W7,CSTP Unused Prefetch Rate,7.05,0.0,%,W7,cstp,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage
+W7,ST-MoE Unused Prefetch Rate,5.87,0.0,%,W7,stmoe,all_experiment_results.csv,unused_prefetch_rate_pct,Direct percentage

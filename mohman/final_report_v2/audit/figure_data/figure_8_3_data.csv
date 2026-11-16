@@ -1,0 +1,6 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+512,MLA Compressed KV Cache Footprint,0.536,0.0,GiB,P=512,DeepSeek-V3,context_length_comparison.csv,analytical_kv_footprint,B*P*61*576 bytes / 2^30
+1024,MLA Compressed KV Cache Footprint,1.072,0.0,GiB,P=1024,DeepSeek-V3,context_length_comparison.csv,analytical_kv_footprint,B*P*61*576 bytes / 2^30
+2048,MLA Compressed KV Cache Footprint,2.145,0.0,GiB,P=2048,DeepSeek-V3,context_length_comparison.csv,analytical_kv_footprint,B*P*61*576 bytes / 2^30
+4096,MLA Compressed KV Cache Footprint,4.289,0.0,GiB,P=4096,DeepSeek-V3,context_length_comparison.csv,analytical_kv_footprint,B*P*61*576 bytes / 2^30
+8192,MLA Compressed KV Cache Footprint,8.578,0.0,GiB,P=8192,DeepSeek-V3,context_length_comparison.csv,analytical_kv_footprint,B*P*61*576 bytes / 2^30

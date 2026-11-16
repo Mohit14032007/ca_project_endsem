@@ -1,0 +1,15 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+W1,Baseline Expert Load Latency,458.8,0.0,us,W1,baseline,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W1,CSTP Expert Load Latency,458.5,0.0,us,W1,cstp,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W2,Baseline Expert Load Latency,458.8,0.0,us,W2,baseline,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W2,CSTP Expert Load Latency,457.2,0.0,us,W2,cstp,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W3,Baseline Expert Load Latency,458.8,0.0,us,W3,baseline,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W3,CSTP Expert Load Latency,456.6,0.0,us,W3,cstp,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W4,Baseline Expert Load Latency,458.8,0.0,us,W4,baseline,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W4,CSTP Expert Load Latency,456.9,0.0,us,W4,cstp,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W5,Baseline Expert Load Latency,458.8,0.0,us,W5,baseline,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W5,CSTP Expert Load Latency,455.0,0.0,us,W5,cstp,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W6,Baseline Expert Load Latency,458.8,0.0,us,W6,baseline,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W6,CSTP Expert Load Latency,453.4,0.0,us,W6,cstp,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W7,Baseline Expert Load Latency,458.8,0.0,us,W7,baseline,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
+W7,CSTP Expert Load Latency,452.3,0.0,us,W7,cstp,all_experiment_results.csv,mean_expert_load_latency_us,Direct microseconds
