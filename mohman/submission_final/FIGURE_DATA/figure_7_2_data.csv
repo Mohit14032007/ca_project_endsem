@@ -1,0 +1,5 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+Config A: Baseline,Exposed Stall,753245.55,0.0,ms,Anchor (B=32),Config A,exposed_stall_comparison.csv,exposed_stall_ms,Direct milliseconds
+Config B: Shadow Pred,Exposed Stall,753245.55,0.0,ms,Anchor (B=32),Config B,exposed_stall_comparison.csv,exposed_stall_ms,Direct milliseconds
+Config C: Async + LRU,Exposed Stall,747615.37,0.0,ms,Anchor (B=32),Config C,exposed_stall_comparison.csv,exposed_stall_ms,Direct milliseconds
+Config D: Async + FA-LRU,Exposed Stall,747583.37,0.0,ms,Anchor (B=32),Config D,exposed_stall_comparison.csv,exposed_stall_ms,Direct milliseconds

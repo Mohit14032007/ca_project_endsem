@@ -1,0 +1,15 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+W1,CSTP Stall Reduction,0.06,0.0,%,W1,cstp,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W1,ST-MoE Stall Reduction,0.06,0.0,%,W1,stmoe,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W2,CSTP Stall Reduction,0.34,0.0,%,W2,cstp,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W2,ST-MoE Stall Reduction,0.22,0.0,%,W2,stmoe,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W3,CSTP Stall Reduction,0.47,0.0,%,W3,cstp,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W3,ST-MoE Stall Reduction,0.1,0.0,%,W3,stmoe,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W4,CSTP Stall Reduction,0.4,0.0,%,W4,cstp,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W4,ST-MoE Stall Reduction,0.2,0.0,%,W4,stmoe,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W5,CSTP Stall Reduction,0.82,0.0,%,W5,cstp,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W5,ST-MoE Stall Reduction,0.42,0.0,%,W5,stmoe,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W6,CSTP Stall Reduction,1.16,0.0,%,W6,cstp,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W6,ST-MoE Stall Reduction,0.29,0.0,%,W6,stmoe,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W7,CSTP Stall Reduction,1.41,0.0,%,W7,cstp,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction
+W7,ST-MoE Stall Reduction,0.48,0.0,%,W7,stmoe,all_experiment_results.csv,exposed_memory_stall_reduction_pct,Direct percentage reduction

@@ -1,0 +1,15 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+W1,Baseline Decode Step Latency,1213.84,0.0,ms,W1,baseline,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W1,CSTP Decode Step Latency,1213.16,0.0,ms,W1,cstp,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W2,Baseline Decode Step Latency,1160.33,0.0,ms,W2,baseline,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W2,CSTP Decode Step Latency,1156.51,0.0,ms,W2,cstp,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W3,Baseline Decode Step Latency,2233.26,0.0,ms,W3,baseline,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W3,CSTP Decode Step Latency,2222.94,0.0,ms,W3,cstp,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W4,Baseline Decode Step Latency,3235.72,0.0,ms,W4,baseline,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W4,CSTP Decode Step Latency,3223.1,0.0,ms,W4,cstp,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W5,Baseline Decode Step Latency,3969.18,0.0,ms,W5,baseline,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W5,CSTP Decode Step Latency,3937.42,0.0,ms,W5,cstp,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W6,Baseline Decode Step Latency,5922.97,0.0,ms,W6,baseline,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W6,CSTP Decode Step Latency,5855.7,0.0,ms,W6,cstp,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W7,Baseline Decode Step Latency,7632.55,0.0,ms,W7,baseline,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds
+W7,CSTP Decode Step Latency,7527.6,0.0,ms,W7,cstp,all_experiment_results.csv,mean_decode_step_latency_ms,Direct milliseconds

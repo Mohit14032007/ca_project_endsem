@@ -1,0 +1,13 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+Additive (Frozen),Mean Predicted Set Size,32.02,0.0,Experts,moe_anywhere,frozen,native_threshold_results.csv,mean_predicted_set_size,Mean set size count
+Additive (Frozen),Recall,76.02,0.0,%,moe_anywhere,frozen,native_threshold_results.csv,recall,recall * 100
+Additive (Frozen),Precision,20.73,0.0,%,moe_anywhere,frozen,native_threshold_results.csv,precision,precision * 100
+Additive (Online),Mean Predicted Set Size,20.88,0.0,Experts,moe_anywhere,online_across_requests,native_threshold_results.csv,mean_predicted_set_size,Mean set size count
+Additive (Online),Recall,72.7,0.0,%,moe_anywhere,online_across_requests,native_threshold_results.csv,recall,recall * 100
+Additive (Online),Precision,30.25,0.0,%,moe_anywhere,online_across_requests,native_threshold_results.csv,precision,precision * 100
+Intersection (Frozen),Mean Predicted Set Size,4.17,0.0,Experts,moe_anywhere,frozen,native_threshold_results.csv,mean_predicted_set_size,Mean set size count
+Intersection (Frozen),Recall,27.69,0.0,%,moe_anywhere,frozen,native_threshold_results.csv,recall,recall * 100
+Intersection (Frozen),Precision,46.02,0.0,%,moe_anywhere,frozen,native_threshold_results.csv,precision,precision * 100
+Intersection (Online),Mean Predicted Set Size,5.36,0.0,Experts,moe_anywhere,online_across_requests,native_threshold_results.csv,mean_predicted_set_size,Mean set size count
+Intersection (Online),Recall,31.06,0.0,%,moe_anywhere,online_across_requests,native_threshold_results.csv,recall,recall * 100
+Intersection (Online),Precision,40.3,0.0,%,moe_anywhere,online_across_requests,native_threshold_results.csv,precision,precision * 100

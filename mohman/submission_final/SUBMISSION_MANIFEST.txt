@@ -1,0 +1,65 @@
+================================================================================
+FINAL SUBMISSION MANIFEST — MoE MEMORY WALL RESEARCH PROJECT
+================================================================================
+Project: MoE Memory Wall: Predicting and Prefetching Experts for Faster LLM Inference
+Repository: https://github.com/Mohit14032007/ca_project_endsem
+Git Commit Hash: ccda325eb77f1adc030e779b4f01343ea6c62642
+Generated At: 2026-11-16T00:20:00Z
+Overall Status: SUBMISSION READY (100% Verified, 0 Unresolved Discrepancies)
+
+--------------------------------------------------------------------------------
+DOCUMENT METRICS & SUMMARY
+--------------------------------------------------------------------------------
+Report Chapters:       13 Chapters (Chapters 1 to 13)
+Verified Native Tables: 15 Tables (Table 2.1 to Table 11.1)
+Publication Figures:   32 Figures (Figure 3.1 to Figure 9.3)
+Figure Data CSVs:      32 Individual Series Exports (in FIGURE_DATA/)
+Reconciliation Ledger: 120 Fully Traced Claims & Equations (Status: MATCH)
+Automated Test Gates:  8 Mandatory Gates (63 / 63 Passed, 100% Consistent)
+Ternary Operators:     0 across all builder and audit source files
+
+--------------------------------------------------------------------------------
+CORE SUBMISSION ARTIFACTS
+--------------------------------------------------------------------------------
+MoE_Memory_Wall_Final_Report.docx      |  5,925,274 bytes | SHA-256: 0bc41a3db6d5608000c2699b3914070b6091af3913b9aeb87378c4677f0ea149
+MoE_Memory_Wall_Final_Report.pdf       |  7,293,777 bytes | SHA-256: 4b5f9ec1d867c98bb3d59e51ca37ce9cb44308cb402f274abfef781bb8738762
+REPORT_CONSISTENCY_VALIDATION.md       |      5,927 bytes | SHA-256: faaa7b632009e967c73ebcd16bfa72b0ea103f8512f53c85f38e5240076d809e
+NUMERICAL_RECONCILIATION_MATRIX.csv    |     46,831 bytes | SHA-256: 0f64c2c4fc62d1bae7b3bc79e29f3f28e11c61f6064b5c16f5f4b17cc68d2bd8
+FINAL_CORRECTION_SUMMARY.md            |     19,593 bytes | SHA-256: e048689da6ccdb4fb92f0597a48fdab764b969f94cb1e057b88e65ae83b186ba
+
+--------------------------------------------------------------------------------
+PER-FIGURE GRANULAR DATA EXPORTS (32 FIGURES)
+--------------------------------------------------------------------------------
+FIGURE_DATA/figure_3_1_data.csv            |      5,867 bytes | SHA-256: 73c0f6099418e161989dfb188473d1eac9cd2c72b1c9b58a897ac7d16e5ca3b0
+FIGURE_DATA/figure_3_2_data.csv            |      6,285 bytes | SHA-256: 962b90afd6624f4019e6c36c446f886ebf7b1f32d51e70d7f061d516934ca7ac
+FIGURE_DATA/figure_3_3_data.csv            |      1,200 bytes | SHA-256: 785d9889d316ce999d99ecb47e4b691a38a99f4a17e8f30ffe1f6e6bbe8248d0
+FIGURE_DATA/figure_3_4_data.csv            |      2,986 bytes | SHA-256: c2c86193843fb78215aa76562d750fd14c4fdf30d0bc896817b484d33001f83f
+FIGURE_DATA/figure_3_5_data.csv            |      1,736 bytes | SHA-256: e318b9be0ebd0e25641608a007f9afaad85d1009072a9d51ec47a40551c714cb
+FIGURE_DATA/figure_5_10_data.csv           |      1,980 bytes | SHA-256: 3e17e2c8754ff97fea979783a5e7a2761a58aadfb4c26dfecacbb97b5658cc6a
+FIGURE_DATA/figure_5_11_data.csv           |      4,078 bytes | SHA-256: 5d368114bf2e3929e3fdcacb9d577ca66d01ff4cfc014b8b86b510de3f5b6222
+FIGURE_DATA/figure_5_12_data.csv           |      2,006 bytes | SHA-256: c7da97d3824f599576b9c5952a3e1d9c1ba524f8e5123b85192fd6854c629178
+FIGURE_DATA/figure_5_13_data.csv           |      1,918 bytes | SHA-256: 31d62a9f373b616c30e7019c338dffbb131a9467543c2c68367a424fd0d255cb
+FIGURE_DATA/figure_5_14_data.csv           |      1,943 bytes | SHA-256: ec33ce3db1bc0d1fbef188e11a784386dc7edf6c786541b47571a50bb67f348a
+FIGURE_DATA/figure_5_1_data.csv            |        869 bytes | SHA-256: c29e2cfd23d86fb30dbf5ff96dbd048d442dd44f6f701eb319cd89c7d0fd75a9
+FIGURE_DATA/figure_5_2_data.csv            |        874 bytes | SHA-256: 529ee28b6ec17ca4ba189896c02eda6cc852fceedcb4ae15f946623ac460e9c8
+FIGURE_DATA/figure_5_3_data.csv            |        875 bytes | SHA-256: e1b021fef0873247a70b3eac1455da5d5cd055b41f0c05335ddab13590f35615
+FIGURE_DATA/figure_5_4_data.csv            |        876 bytes | SHA-256: 824c349eeb2a25128a1f050e7a95778c8dfbd8b18f08145d2c84095fd49ecc12
+FIGURE_DATA/figure_5_5_data.csv            |        881 bytes | SHA-256: 04a141f29c180fdf6042bdfb8af8b054e50a71b2268f94fe5465b043d04c498c
+FIGURE_DATA/figure_5_6_data.csv            |      3,458 bytes | SHA-256: 49e1d916eb02a50259e5f70015a1395be449e6aa0da595fe71e84a6d17674fcb
+FIGURE_DATA/figure_5_7_data.csv            |      1,059 bytes | SHA-256: 630b26ae703373dc80a46c22e95ba8ed78665212536c68ae0e7e09f05a10f43a
+FIGURE_DATA/figure_5_8_data.csv            |        867 bytes | SHA-256: 518d55d48b7e2ed91f187b6f40d15051cfc7ad974d92c36b3785ae60a7dcffd0
+FIGURE_DATA/figure_5_9_data.csv            |      1,803 bytes | SHA-256: 5064c3f7b872c71b98f46c65f9045bc6518b8ec05c6af9630adcf4ac5aa62311
+FIGURE_DATA/figure_6_1_data.csv            |      1,014 bytes | SHA-256: 0a4548ff4d039e6df7f62042065587c42d1878e699ea80e10cba8174a872e966
+FIGURE_DATA/figure_7_1_data.csv            |        970 bytes | SHA-256: 916cfa18caea7d3acfe4b5ccbd8a9d3b89da605fb070d1477baef6dcb9eb1357
+FIGURE_DATA/figure_7_2_data.csv            |        684 bytes | SHA-256: 8ac2f09c5bce2544277c036ca41ec37fb20981360bb1b57a268b229cb0251526
+FIGURE_DATA/figure_7_3_data.csv            |      1,236 bytes | SHA-256: c882049ade60d203fbb02c21882897f48f555e306ef6ea978a1c3e6e61e0838d
+FIGURE_DATA/figure_8_1_data.csv            |        730 bytes | SHA-256: 1cc624c73fda8ef80b10419bc2784f78f4735225d4ec87610774819af15d5d0f
+FIGURE_DATA/figure_8_2_data.csv            |        741 bytes | SHA-256: ebf80adf75fa4177e33fdc4903a58eb7d0f391a3a531ecc4a6448ec778fb9f5f
+FIGURE_DATA/figure_8_3_data.csv            |        865 bytes | SHA-256: 78ccb76234aea3be4853d2e078459d40e3358c6e29388884dd03356098d57763
+FIGURE_DATA/figure_8_4_data.csv            |      1,744 bytes | SHA-256: cf00ba31d937cc4310ba994eb62d31326b0119a099378aa6862ad955db9768ac
+FIGURE_DATA/figure_8_5_data.csv            |      1,093 bytes | SHA-256: fb24920610cbb2346b1714e6d5211d107c725b0e55389fca0d12dd8fbc9fceb4
+FIGURE_DATA/figure_8_6_data.csv            |        998 bytes | SHA-256: 91a4246520686f0c73ebe45f282595e059272fee2067ad95d241b8b7dec73f65
+FIGURE_DATA/figure_9_1_data.csv            |      1,369 bytes | SHA-256: 315eb45113569c1122771ed80cf6d5b970e8d43069d777131fd7ce432f6f6063
+FIGURE_DATA/figure_9_2_data.csv            |      6,881 bytes | SHA-256: b03d4191d4f4dcdb965f5c20eb9a6e16284071e671e872ce33edb0e271560702
+FIGURE_DATA/figure_9_3_data.csv            |      6,654 bytes | SHA-256: 222ae34b6cdb09badafab6c0053059bafd593f78cbf1f77d6b7c83ba7f5e97c3
+================================================================================

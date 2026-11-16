@@ -1,0 +1,13 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+2048,Token Generation Latency,5994.31,0.0,ms,P=2048,anc_c1,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+2048,Token Generation Latency,5950.46,0.0,ms,P=2048,anc_c3,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+2048,Token Generation Latency,5950.21,0.0,ms,P=2048,anc_c4,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+128,Token Generation Latency,5991.98,0.0,ms,P=128,p128_c1,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+128,Token Generation Latency,5950.06,0.0,ms,P=128,p128_c3,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+128,Token Generation Latency,5949.81,0.0,ms,P=128,p128_c4,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+512,Token Generation Latency,5992.41,0.0,ms,P=512,p512_c1,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+512,Token Generation Latency,5950.09,0.0,ms,P=512,p512_c3,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+512,Token Generation Latency,5949.87,0.0,ms,P=512,p512_c4,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+4096,Token Generation Latency,5996.88,0.0,ms,P=4096,p4096_c1,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+4096,Token Generation Latency,5950.78,0.0,ms,P=4096,p4096_c3,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms
+4096,Token Generation Latency,5950.51,0.0,ms,P=4096,p4096_c4,context_length_comparison.csv,mean_token_latency_ms,Direct token latency ms

@@ -1,0 +1,9 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+Config A: Baseline,Demand Traffic,48.21,0.0,GB,Anchor (B=32),Config A,ddr5_traffic_composition.csv,demand_gb,"Decimal GB (48,207.74 MB)"
+Config A: Baseline,Speculative Traffic,0.0,0.0,GB,Anchor (B=32),Config A,ddr5_traffic_composition.csv,speculative_gb,0.00 MB
+Config B: Shadow Pred,Demand Traffic,48.21,0.0,GB,Anchor (B=32),Config B,ddr5_traffic_composition.csv,demand_gb,"Decimal GB (48,207.74 MB)"
+Config B: Shadow Pred,Speculative Traffic,0.0,0.0,GB,Anchor (B=32),Config B,ddr5_traffic_composition.csv,speculative_gb,0.00 MB
+Config C: Async + LRU,Demand Traffic,37.81,0.0,GB,Anchor (B=32),Config C,ddr5_traffic_composition.csv,demand_gb,"Decimal GB (37,812.89 MB)"
+Config C: Async + LRU,Speculative Traffic,10.93,0.0,GB,Anchor (B=32),Config C,ddr5_traffic_composition.csv,speculative_gb,"Decimal GB (10,928.22 MB)"
+Config D: Async + FA-LRU,Demand Traffic,37.81,0.0,GB,Anchor (B=32),Config D,ddr5_traffic_composition.csv,demand_gb,"Decimal GB (37,810.89 MB)"
+Config D: Async + FA-LRU,Speculative Traffic,10.93,0.0,GB,Anchor (B=32),Config D,ddr5_traffic_composition.csv,speculative_gb,"Decimal GB (10,928.22 MB)"

@@ -1,0 +1,11 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+Baseline (Config A),Static DRAM,3452.72,0.0,J,Anchor,Config A,energy_component_breakdown.csv,static_dram_j,36.78% share
+Baseline (Config A),DDR5 Active,4820.77,0.0,J,Anchor,Config A,energy_component_breakdown.csv,ddr5_total_j,51.35% share
+Baseline (Config A),HBM2e,1042.87,0.0,J,Anchor,Config A,energy_component_breakdown.csv,hbm_total_j,11.11% share
+Baseline (Config A),GPU MAC,71.25,0.0,J,Anchor,Config A,energy_component_breakdown.csv,gpu_mac_j,0.76% share
+Baseline (Config A),Total System Energy,9387.61,0.0,J,Anchor,Config A,energy_component_breakdown.csv,system_total_j,Sum = 9387.61 J
+Optimal (Config D-Opt K=2),Static DRAM,3403.54,0.0,J,Anchor,Config D-Opt,energy_component_breakdown.csv,static_dram_j,36.36% share
+Optimal (Config D-Opt K=2),DDR5 Active,4839.4,0.0,J,Anchor,Config D-Opt,energy_component_breakdown.csv,ddr5_total_j,51.70% share
+Optimal (Config D-Opt K=2),HBM2e,1045.74,0.0,J,Anchor,Config D-Opt,energy_component_breakdown.csv,hbm_total_j,11.17% share
+Optimal (Config D-Opt K=2),GPU MAC,71.25,0.0,J,Anchor,Config D-Opt,energy_component_breakdown.csv,gpu_mac_j,0.76% share
+Optimal (Config D-Opt K=2),Total System Energy,9359.93,0.0,J,Anchor,Config D-Opt,energy_component_breakdown.csv,system_total_j,Sum = 9359.93 J (-0.29%)

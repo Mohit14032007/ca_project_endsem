@@ -1,0 +1,7 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+4,b4_c1,183.51,0.0,s,B=4,b4_c1,batch_size_comparison.csv,exposed_stall_ms,exposed_stall_ms / 1000.0
+4,b4_c3,183.76,0.0,s,B=4,b4_c3,batch_size_comparison.csv,exposed_stall_ms,exposed_stall_ms / 1000.0
+4,b4_c4,183.76,0.0,s,B=4,b4_c4,batch_size_comparison.csv,exposed_stall_ms,exposed_stall_ms / 1000.0
+32,anc_c1,753.25,0.0,s,B=32,anc_c1,batch_size_comparison.csv,exposed_stall_ms,exposed_stall_ms / 1000.0
+32,anc_c3,747.62,0.0,s,B=32,anc_c3,batch_size_comparison.csv,exposed_stall_ms,exposed_stall_ms / 1000.0
+32,anc_c4,747.58,0.0,s,B=32,anc_c4,batch_size_comparison.csv,exposed_stall_ms,exposed_stall_ms / 1000.0

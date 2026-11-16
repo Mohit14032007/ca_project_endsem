@@ -1,0 +1,8 @@
+x_value,series_name,y_value,error_bar,unit,workload_id,configuration,source_csv,source_column,aggregation_rule
+W3 (B=14),Standard LRU Resident Hits,1657,0.0,hits,W3,LRU,falru_incremental_comparison.csv,resident_hits,Direct count
+W3 (B=14),FA-LRU Resident Hits,1643,0.0,hits,W3,FA-LRU,falru_incremental_comparison.csv,resident_hits,Direct count
+W4 (B=32),Standard LRU Resident Hits,1417,0.0,hits,W4,LRU,falru_incremental_comparison.csv,resident_hits,Direct count
+W4 (B=32),FA-LRU Resident Hits,1432,0.0,hits,W4,FA-LRU,falru_incremental_comparison.csv,resident_hits,Direct count
+W4 Physical Savings,Avoided Reloads,15,0.0,reloads,W4,FA-LRU,falru_incremental_comparison.csv,avoided_reloads,1432 - 1417 hits
+W4 Physical Savings,DDR5 Traffic Saved,1.26,0.0,GB,W4,FA-LRU,falru_incremental_comparison.csv,traffic_saved_gb,15 * 84 MiB
+W4 Physical Savings,Exposed Stall Hidden,32.0,0.0,ms,W4,FA-LRU,falru_incremental_comparison.csv,stall_hidden_ms,"761,663 - 761,631 ms"
