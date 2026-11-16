@@ -1,0 +1,19 @@
+{
+  "config_id": "FWD-C-H2",
+  "config_name": "CSTP Forward Lookahead H=2",
+  "start_time_iso": "2026-11-03T09:52:04Z",
+  "end_time_iso": "2026-11-03T09:52:14Z",
+  "host_runtime_sec": 9.187392643001658,
+  "git_baseline_anchor": "d5bf61ff0c066c06f72173189f9924329f613a88",
+  "executable": "/home/mohman/ca_project/LLMSimulator/build/run_deepseekv3_mixtral_style",
+  "yaml_path": "/home/mohman/ca_project/results/final_comparative_campaign/smoke_phase2e/configs/FWD-C-H2.yaml",
+  "predictor": "cstp",
+  "scheduling_mode": "forward_lookahead",
+  "horizon": 2,
+  "budget": 4,
+  "eviction": "pabi",
+  "quarantine": true,
+  "pinning": true,
+  "exit_code": 0,
+  "validation_status": "PASSED"
+}

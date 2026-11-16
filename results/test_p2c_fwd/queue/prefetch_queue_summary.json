@@ -1,0 +1,19 @@
+{
+  "queue_capacity": 1024,
+  "priority_policy": "deadline_score_rank",
+  "duplicate_policy": "retain_highest_priority",
+  "overflow_policy": "reject_lowest_priority",
+  "total_candidates_received": 8,
+  "candidates_admitted": 8,
+  "duplicates_suppressed": 0,
+  "invalid_rejected": 0,
+  "capacity_rejected": 0,
+  "overflow_evicted": 0,
+  "reconciled_hits": 1,
+  "expired_misses": 7,
+  "candidates_cancelled": 0,
+  "candidates_selected": 0,
+  "queue_high_water_mark": 8,
+  "mean_queue_occupancy": 4,
+  "mean_selection_latency_ns": 0
+}

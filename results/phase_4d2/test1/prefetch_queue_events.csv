@@ -1,0 +1,9 @@
+candidate_id,request_id,token_id,source_stage_id,target_stage_id,expert_id,prediction_rank,prediction_score,horizon,insertion_seq,event_type,state
+1,1,0,0,1,10,1,0.900000,1,1,ADMIT,ADMITTED
+2,1,0,0,1,11,2,0.800000,1,2,ADMIT,ADMITTED
+3,1,0,0,1,12,3,0.700000,1,3,ADMIT,ADMITTED
+4,1,0,0,1,13,4,0.600000,1,4,ADMIT,ADMITTED
+1,1,0,0,1,10,1,0.900000,1,1,DISPATCHED,READY
+2,1,0,0,1,11,2,0.800000,1,2,DISPATCHED,READY
+3,1,0,0,1,12,3,0.700000,1,3,DISPATCHED,READY
+4,1,0,0,1,13,4,0.600000,1,4,DISPATCHED,READY

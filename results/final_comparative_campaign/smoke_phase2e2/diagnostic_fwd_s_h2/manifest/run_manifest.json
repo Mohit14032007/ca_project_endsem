@@ -1,0 +1,20 @@
+{
+  "config_id": "FWD-S-H2",
+  "config_name": "ST-MoE Forward Lookahead H=2",
+  "iterations": 1,
+  "start_time_iso": "2026-11-03T10:49:32Z",
+  "end_time_iso": "2026-11-03T10:49:36Z",
+  "host_runtime_sec": 4.439128497000638,
+  "git_baseline_anchor": "d5bf61ff0c066c06f72173189f9924329f613a88",
+  "executable": "/home/mohman/ca_project/LLMSimulator/build/run_deepseekv3_mixtral_style",
+  "yaml_path": "/home/mohman/ca_project/results/final_comparative_campaign/smoke_phase2e2/configs/FWD-S-H2.yaml",
+  "predictor": "st_moe",
+  "scheduling_mode": "forward_lookahead",
+  "horizon": 2,
+  "budget": 4,
+  "eviction": "pabi",
+  "quarantine": true,
+  "pinning": true,
+  "exit_code": 0,
+  "validation_status": "PASSED"
+}

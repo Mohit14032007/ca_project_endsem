@@ -1,0 +1,2 @@
+event_type,transfer_id,candidate_id,request_id,token_id,source_stage,target_stage,expert_id,predict_ts,dispatch_ts,transfer_start_ts,transfer_complete_ts,actual_demand_ts,remaining_transfer_ns,demand_arrival_to_ready_ns,outcome
+SPECULATIVE_TRANSFER,1,0,0,0,-1,1,3,0.00,0.00,0.00,1562.50,0.00,0.00,0.00,UNUSED

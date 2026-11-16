@@ -45,8 +45,10 @@ LLMSimulator/expert_cache.csv
 LLMSimulator/expert_load.csv
 LLMSimulator/expert_routing.csv
 
-# Large raw simulation results directories (multi-GB tick-by-tick outputs)
-results/
+# Large raw simulation campaigns (multi-GB raw tick-by-tick outputs)
+/results/final_comparative_campaign/tier1/
+/results/final_comparative_campaign/ablation/
+/results/final_comparative_campaign/phase2e3_warm_diagnostic/runs/
 LLMSimulator/results/
 
 # Raw event trace directories everywhere in the repository
@@ -54,8 +56,8 @@ traces/
 raw_results/
 raw/
 
-# Specific large trace paths
-mohman/point_4/big_exp/results/
+# Specific large raw simulation run directories
+mohman/point_4/big_exp/results/runs/
 mohman/point_4/big_exp/traces/
 
 # Giant per-event metric CSVs (>100MB)

@@ -1,0 +1,17 @@
+run_id,workload,repetition,batch_size,tokens,stages,capacity_gib,config_id,config_desc,eviction_policy,window_size,prefetch_enabled,trace_file,seed
+w3_c1_r1,w3,1,14,128,40,35.0,c1,Baseline Standard LRU (No Prefetch),lru,64,False,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w3_b14_t128.csv,42
+w3_c1_r2,w3,2,14,128,40,35.0,c1,Baseline Standard LRU (No Prefetch),lru,64,False,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w3_b14_t128.csv,42
+w3_c2_r1,w3,1,14,128,40,35.0,c2,"Baseline FA-LRU (W=64, No Prefetch)",fa_lru,64,False,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w3_b14_t128.csv,42
+w3_c2_r2,w3,2,14,128,40,35.0,c2,"Baseline FA-LRU (W=64, No Prefetch)",fa_lru,64,False,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w3_b14_t128.csv,42
+w3_c3_r1,w3,1,14,128,40,35.0,c3,CSTP Prefetch + Standard LRU,lru,64,True,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w3_b14_t128.csv,42
+w3_c3_r2,w3,2,14,128,40,35.0,c3,CSTP Prefetch + Standard LRU,lru,64,True,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w3_b14_t128.csv,42
+w3_c4_r1,w3,1,14,128,40,35.0,c4,CSTP Prefetch + FA-LRU (W=64),fa_lru,64,True,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w3_b14_t128.csv,42
+w3_c4_r2,w3,2,14,128,40,35.0,c4,CSTP Prefetch + FA-LRU (W=64),fa_lru,64,True,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w3_b14_t128.csv,42
+w4_c1_r1,w4,1,32,128,40,35.0,c1,Baseline Standard LRU (No Prefetch),lru,64,False,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w4_b32_t128.csv,42
+w4_c1_r2,w4,2,32,128,40,35.0,c1,Baseline Standard LRU (No Prefetch),lru,64,False,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w4_b32_t128.csv,42
+w4_c2_r1,w4,1,32,128,40,35.0,c2,"Baseline FA-LRU (W=64, No Prefetch)",fa_lru,64,False,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w4_b32_t128.csv,42
+w4_c2_r2,w4,2,32,128,40,35.0,c2,"Baseline FA-LRU (W=64, No Prefetch)",fa_lru,64,False,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w4_b32_t128.csv,42
+w4_c3_r1,w4,1,32,128,40,35.0,c3,CSTP Prefetch + Standard LRU,lru,64,True,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w4_b32_t128.csv,42
+w4_c3_r2,w4,2,32,128,40,35.0,c3,CSTP Prefetch + Standard LRU,lru,64,True,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w4_b32_t128.csv,42
+w4_c4_r1,w4,1,32,128,40,35.0,c4,CSTP Prefetch + FA-LRU (W=64),fa_lru,64,True,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w4_b32_t128.csv,42
+w4_c4_r2,w4,2,32,128,40,35.0,c4,CSTP Prefetch + FA-LRU (W=64),fa_lru,64,True,/home/mohman/ca_project/mohman/point_4/big_exp/traces/w4_b32_t128.csv,42

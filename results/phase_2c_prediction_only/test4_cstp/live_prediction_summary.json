@@ -1,0 +1,39 @@
+{
+  "predictor": "cstp",
+  "budget": 4,
+  "horizon": 1,
+  "total_prediction_events": 16,
+  "total_update_events": 16,
+  "invalid_events": 0,
+  "total_host_seconds": 0.05,
+  "prediction_overhead_percent": 0.18692,
+  "overall": {
+    "events": 16,
+    "precision": 0.28125,
+    "recall": 0.5625,
+    "f1": 0.375,
+    "hit_rate": 0.875,
+    "mrr": 0.447917,
+    "ndcg": 0.418952,
+    "mean_pred_latency_ns": 5542.69,
+    "mean_upd_latency_ns": 298.562
+  },
+  "cold_start": {
+    "events": 4,
+    "precision": 0.25,
+    "recall": 0.5,
+    "f1": 0.333333,
+    "hit_rate": 0.5,
+    "mrr": 0.333333,
+    "ndcg": 0.39266
+  },
+  "steady_state": {
+    "events": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "hit_rate": 0,
+    "mrr": 0,
+    "ndcg": 0
+  }
+}

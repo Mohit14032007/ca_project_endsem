@@ -1,0 +1,7 @@
+dataset_id,classification,horizon,top_k,test_requests,test_opportunities,frozen_recall,frozen_precision,frozen_hit_rate,within_request_recall,within_request_precision,within_request_hit_rate,within_request_cold_recall,within_request_steady_recall,across_requests_recall,across_requests_precision,across_requests_hit_rate,across_requests_cold_recall,across_requests_steady_recall,delta_recall_pp,delta_hit_rate_pp
+moe_anywhere,authoritative,1,8,14,16800,0.4239,0.4239,0.9433,0.4791,0.4791,0.9694,0.3185,0.4847,0.4945,0.4945,0.9696,0.3317,0.5001,1.54,0.02
+moe_anywhere,authoritative,2,8,14,16800,0.3978,0.3978,0.9168,0.462,0.462,0.9585,0.3201,0.4669,0.4783,0.4783,0.9585,0.3145,0.484,1.63,-0.01
+moe_suite,authoritative,2,8,2,7500,0.1535,0.1535,0.7123,0.259,0.259,0.8895,0.2967,0.2582,0.2608,0.2608,0.8909,0.2925,0.2602,0.18,0.15
+moe_suite,authoritative,1,8,2,7500,0.1585,0.1585,0.7208,0.2653,0.2653,0.8984,0.3,0.2646,0.2674,0.2674,0.8981,0.2975,0.2668,0.21,-0.03
+duplex_a100,diagnostic,1,2,8,1280,0.2551,0.2551,0.4648,0.252,0.252,0.4633,0.2461,0.2534,0.252,0.252,0.4672,0.2363,0.2559,0.0,0.39
+correlated_synthetic,diagnostic,1,8,4,1140,0.14,0.14,0.7465,0.4969,0.4969,0.9456,0.1458,0.5847,0.4963,0.4963,0.9456,0.1393,0.5855,-0.07,0.0

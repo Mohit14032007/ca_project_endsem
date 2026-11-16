@@ -1,0 +1,14 @@
+{
+  "dataset_id": "correlated_synthetic",
+  "classification": "diagnostic",
+  "num_moe_stages": 57,
+  "num_routed_experts": 256,
+  "top_k": 8,
+  "horizon": 1,
+  "train_units": 12,
+  "test_units": 4,
+  "total_train_tokens": 60,
+  "total_eval_tokens": 20,
+  "total_test_opportunities": 1140,
+  "experiment_isolation_policy": "fresh_instance_per_experiment"
+}

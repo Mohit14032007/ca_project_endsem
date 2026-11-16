@@ -1,0 +1,12 @@
+{
+  "dataset_id": "deepseek_random",
+  "num_moe_stages": 57,
+  "num_routed_experts": 256,
+  "top_k": 8,
+  "horizon": 1,
+  "train_units": 1,
+  "test_units": 1,
+  "total_train_tokens": 5,
+  "total_eval_tokens": 5,
+  "total_test_opportunities": 285
+}

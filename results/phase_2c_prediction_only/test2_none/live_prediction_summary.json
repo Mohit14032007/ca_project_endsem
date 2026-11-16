@@ -1,0 +1,39 @@
+{
+  "predictor": "none",
+  "budget": 4,
+  "horizon": 1,
+  "total_prediction_events": 2,
+  "total_update_events": 2,
+  "invalid_events": 0,
+  "total_host_seconds": 0.01,
+  "prediction_overhead_percent": 0.00921,
+  "overall": {
+    "events": 2,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "hit_rate": 0,
+    "mrr": 0,
+    "ndcg": 0,
+    "mean_pred_latency_ns": 415.5,
+    "mean_upd_latency_ns": 45
+  },
+  "cold_start": {
+    "events": 2,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "hit_rate": 0,
+    "mrr": 0,
+    "ndcg": 0
+  },
+  "steady_state": {
+    "events": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "hit_rate": 0,
+    "mrr": 0,
+    "ndcg": 0
+  }
+}

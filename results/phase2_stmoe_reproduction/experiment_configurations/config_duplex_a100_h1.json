@@ -1,0 +1,12 @@
+{
+  "dataset_id": "duplex_a100",
+  "num_moe_stages": 32,
+  "num_routed_experts": 8,
+  "top_k": 2,
+  "horizon": 1,
+  "train_units": 24,
+  "test_units": 8,
+  "total_train_tokens": 120,
+  "total_eval_tokens": 40,
+  "total_test_opportunities": 1280
+}

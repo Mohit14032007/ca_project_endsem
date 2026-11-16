@@ -1,0 +1,39 @@
+{
+  "predictor": "st_moe",
+  "budget": 4,
+  "horizon": 2,
+  "total_prediction_events": 73,
+  "total_update_events": 73,
+  "invalid_events": 0,
+  "total_host_seconds": 3.72872,
+  "prediction_overhead_percent": 0.0882874,
+  "overall": {
+    "events": 73,
+    "precision": 0.0445205,
+    "recall": 0.0222603,
+    "f1": 0.0296804,
+    "hit_rate": 0.164384,
+    "mrr": 0.0730594,
+    "ndcg": 0.0399837,
+    "mean_pred_latency_ns": 36838.7,
+    "mean_upd_latency_ns": 8257.14
+  },
+  "cold_start": {
+    "events": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "hit_rate": 0,
+    "mrr": 0,
+    "ndcg": 0
+  },
+  "steady_state": {
+    "events": 73,
+    "precision": 0.0445205,
+    "recall": 0.0222603,
+    "f1": 0.0296804,
+    "hit_rate": 0.164384,
+    "mrr": 0.0730594,
+    "ndcg": 0.0399837
+  }
+}

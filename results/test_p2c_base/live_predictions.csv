@@ -1,0 +1,5 @@
+event_id,request_id,token_id,source_stage_id,target_stage_id,horizon,predictor_type,budget,candidate_rank,predicted_expert_id,predicted_score,actual_target_experts,is_hit,prediction_latency_ns,update_latency_ns
+0,700,0,-1,0,1,none,4,0,-1,0,"3;8",0,61.00,48.00
+1,700,0,0,1,1,none,4,0,-1,0.00,"1;12",0,24.00,23.00
+2,700,0,1,2,1,none,4,0,-1,0.00,"7;14",0,25.00,23.00
+3,700,0,2,3,1,none,4,0,-1,0.00,"0;5",0,28.00,23.00

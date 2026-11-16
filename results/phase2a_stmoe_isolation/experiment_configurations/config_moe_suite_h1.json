@@ -1,0 +1,14 @@
+{
+  "dataset_id": "moe_suite",
+  "classification": "authoritative",
+  "num_moe_stages": 75,
+  "num_routed_experts": 256,
+  "top_k": 8,
+  "horizon": 1,
+  "train_units": 8,
+  "test_units": 2,
+  "total_train_tokens": 65528,
+  "total_eval_tokens": 100,
+  "total_test_opportunities": 7500,
+  "experiment_isolation_policy": "fresh_instance_per_experiment"
+}

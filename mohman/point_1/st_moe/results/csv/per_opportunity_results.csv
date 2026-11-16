@@ -1,0 +1,6 @@
+dataset_id,request_id,token_idx,target_layer_id,source_layer_id,horizon,ground_truth_count,ground_truth_experts,predicted_count,predicted_experts,hits,recall,precision,hit
+moe_anywhere,req_0000,0,layer_01,None,1,8,12;45;67;89;102;155;190;212,8,12;45;70;89;110;155;190;230,5,0.625,0.625,1
+moe_anywhere,req_0000,1,layer_02,layer_01,1,8,14;48;67;91;105;155;192;215,8,14;48;67;91;105;155;192;215,8,1.000,1.000,1
+moe_anywhere,req_0000,2,layer_03,layer_02,1,8,15;50;68;92;106;158;195;218,8,15;50;68;92;100;158;190;218,6,0.750,0.750,1
+moe_suite,task_01,0,layer_01,None,1,8,3;17;42;77;120;144;188;222,8,3;17;40;75;120;140;185;220,3,0.375,0.375,1
+moe_suite,task_01,1,layer_02,layer_01,1,8,5;19;45;80;122;148;190;225,8,5;19;45;80;110;140;190;225,6,0.750,0.750,1

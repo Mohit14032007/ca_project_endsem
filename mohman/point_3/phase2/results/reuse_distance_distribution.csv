@@ -1,0 +1,3 @@
+batch_size,total_demand_events,total_reuse_events,intra_step_sister_reuse_count,inter_token_reuse_count,all_reuse_p50,all_reuse_mean,all_reuse_p95,all_reuse_max,inter_token_p50,inter_token_mean,inter_token_p95,inter_token_max
+1,61440,56886,40960,15926,1.0,1499.9504799071829,8635.0,60487,1921.0,5355.0937460755995,24006.25,60487
+8,491520,483255,327822,155433,1.0,4503.148164012789,23035.0,483835,7582.0,13998.578448591998,61447.0,483835

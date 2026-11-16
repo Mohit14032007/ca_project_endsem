@@ -1,0 +1,14 @@
+{
+  "dataset_id": "moe_anywhere",
+  "classification": "authoritative",
+  "num_moe_stages": 40,
+  "num_routed_experts": 256,
+  "top_k": 8,
+  "horizon": 2,
+  "train_units": 52,
+  "test_units": 14,
+  "total_train_tokens": 13364,
+  "total_eval_tokens": 420,
+  "total_test_opportunities": 16800,
+  "experiment_isolation_policy": "fresh_instance_per_experiment"
+}
