@@ -3,7 +3,7 @@ FINAL SUBMISSION MANIFEST — MoE MEMORY WALL RESEARCH PROJECT
 ================================================================================
 Project: MoE Memory Wall: Predicting and Prefetching Experts for Faster LLM Inference
 Repository: https://github.com/Mohit14032007/ca_project_endsem
-Git Commit Hash: ccda325eb77f1adc030e779b4f01343ea6c62642
+Git Commit Hash: 935a2a472cb9a6064f20387bfe7c9d7dbe7cf825
 Generated At: 2026-11-16T00:20:00Z
 Overall Status: SUBMISSION READY (100% Verified, 0 Unresolved Discrepancies)
 
