@@ -206,15 +206,14 @@ def export_all():
         rows_5_6.append([wid, "CSTP Exposed Stall", round(float(r_cstp["exposed_memory_stall_ms"]) / 1000.0, 3), 0.0, "s", wid, "cstp", "all_experiment_results.csv", "exposed_memory_stall_ms", "exposed_stall_ms / 1000.0"])
     save_fig_csv("figure_5_6_data.csv", rows_5_6)
 
-    # Figure 5.7: Coverage vs Batch Size
+    # Figure 5.7: Coverage vs Batch Size (T=16: W2, W3, W4, W5)
     rows_5_7 = []
-    for wid, b_sz in [("W1", 14), ("W3", 32), ("W4", 48), ("W5", 64), ("W6", 70), ("W7", 128)]:
+    for wid, b_sz in [("W2", 14), ("W3", 32), ("W4", 48), ("W5", 70)]:
         df_w = df_lw[df_lw["workload_id"] == wid]
         r_cstp = df_w[(df_w["predictor"] == "cstp") & (df_w["lookahead_H"] == 2)].iloc[0]
         r_stmoe = df_w[(df_w["predictor"] == "stmoe") & (df_w["lookahead_H"] == 2)].iloc[0]
-        rows_5_7.append([b_sz, "CSTP Timely Coverage", round(float(r_cstp["strict_timely_coverage_pct"]), 2), 0.0, "%", wid, "cstp", "all_experiment_results.csv", "strict_timely_coverage_pct", "Direct percentage"])
         rows_5_7.append([b_sz, "CSTP Associated Coverage", round(float(r_cstp["associated_coverage_pct"]), 2), 0.0, "%", wid, "cstp", "all_experiment_results.csv", "associated_coverage_pct", "Direct percentage"])
-        rows_5_7.append([b_sz, "ST-MoE Timely Coverage", round(float(r_stmoe["strict_timely_coverage_pct"]), 2), 0.0, "%", wid, "stmoe", "all_experiment_results.csv", "strict_timely_coverage_pct", "Direct percentage"])
+        rows_5_7.append([b_sz, "ST-MoE Associated Coverage", round(float(r_stmoe["associated_coverage_pct"]), 2), 0.0, "%", wid, "stmoe", "all_experiment_results.csv", "associated_coverage_pct", "Direct percentage"])
     save_fig_csv("figure_5_7_data.csv", rows_5_7)
 
     # Figure 5.8: Coverage vs Sequence Length

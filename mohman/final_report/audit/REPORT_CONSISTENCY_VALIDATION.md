@@ -1,8 +1,8 @@
 # REPORT CONSISTENCY VALIDATION REPORT
 
 **Project:** MoE Memory Wall: Predicting and Prefetching Experts for Faster LLM Inference
-**Total Automated Checks:** 53
-**Passed Checks:** 53
+**Total Automated Checks:** 63
+**Passed Checks:** 63
 **Failed Checks:** 0
 **Overall Test Suite Status:** PASS (100% Consistent)
 
@@ -46,10 +46,13 @@
   - [PASS] Data provenance: figure_9_3_data.csv
 
 ### Gate 2: Graph vs Table
-- **Passed:** 3 | **Failed:** 0
+- **Passed:** 6 | **Failed:** 0
   - [PASS] Fig 7.2 vs Table 7.1 Config A to D stall reduction
   - [PASS] Fig 7.3 DDR5 traffic sum for Config C (37.81 + 10.93 = 48.74 GB)
   - [PASS] Fig 9.1 vs Table 9.2 Baseline energy components sum to 9387.61 J
+  - [PASS] Fig 5.2 vs Table 5.1 Workload W3 runtime (35.732 s base, 35.567 s CSTP)
+  - [PASS] Fig 5.5 vs Table 5.1 Workload W7 runtime (488.483 s base, 481.766 s CSTP)
+  - [PASS] Fig 5.7 batch sizes match Table 5.1 at T=16 (B=14, 32, 48, 70)
 
 ### Gate 3: Derived Mathematical Calculations
 - **Passed:** 5 | **Failed:** 0
@@ -60,27 +63,34 @@
   - [PASS] DeepSeek MLA KV Cache footprint at P=2048 matches formula
 
 ### Gate 4: Experiment Campaign Separation
-- **Passed:** 3 | **Failed:** 0
+- **Passed:** 4 | **Failed:** 0
   - [PASS] Table 8.1 excludes Point 3 W7 6.717s value
   - [PASS] Table 8.1 includes authoritative Point 6 H=1 hidden stall (3,568.90 ms)
   - [PASS] Table 5.1 retains W7 authoritative large-workload values
+  - [PASS] Workload W7 strictly distinguishes 6.745 s stall reduction from 6.717 s total runtime saving (104.95 ms/step)
 
 ### Gate 5: Metric Naming & Definitions
-- **Passed:** 3 | **Failed:** 0
+- **Passed:** 6 | **Failed:** 0
   - [PASS] Table 3.2 uses percentage points (pp) for gain column
   - [PASS] Figure 3.3 accurately reflects 3 adaptation policies
   - [PASS] Figure 3.5 removes stale threshold sweep description
+  - [PASS] Figure 5.2 interpretation matches authoritative W3 data (35.732 s base, 35.567 s CSTP, 165.72 ms stall)
+  - [PASS] Figure 5.6 describes actual batch size range (B=14 to B=70) and excludes B=128
+  - [PASS] Figure 5.12 interpretation uses exact stall reductions (0.06% to 1.41%)
 
 ### Gate 6: Unit Consistency
-- **Passed:** 3 | **Failed:** 0
+- **Passed:** 4 | **Failed:** 0
   - [PASS] Table 4.3 states exact 88,080,384 bytes for 84 MiB expert
   - [PASS] Figure 7.3 DDR5 traffic consistently labeled in GB
   - [PASS] Table 9.2 EDP column labeled in kJ·s
+  - [PASS] Point 7 Table 9.2 energy, delay, and EDP values reconciled to authoritative CSVs
 
 ### Gate 7: Report Claims Verification
-- **Passed:** 2 | **Failed:** 0
+- **Passed:** 4 | **Failed:** 0
   - [PASS] All executive summary claims match authoritative datasets
   - [PASS] Reconciliation matrix comprehensive (120 items >= 100)
+  - [PASS] Final generated DOCX report exists and size > 5 MB
+  - [PASS] Final generated PDF report exists and size > 7 MB
 
 ### Gate 8: 32-Figure Graph Inventory
 - **Passed:** 2 | **Failed:** 0

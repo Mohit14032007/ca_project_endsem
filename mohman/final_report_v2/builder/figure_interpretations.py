@@ -73,62 +73,60 @@ The physical reason for the modest latency hiding in W1 is the brief execution w
     "fig_01a_w3_total_time_vs_stall": {
         "num": "Figure 5.2",
         "title": "Total Execution Time vs. Exposed Memory Stall for Workload W3 (B = 32, T = 16)",
-        "caption": "Figure 5.2: Total execution time and exposed stall breakdown for Workload W3, illustrating significant stall latency hiding under CSTP.",
-        "interp": """Figure 5.2 evaluates Workload W3 (Batch Size B = 32, Sequence Length T = 16 tokens). The X-axis presents Baseline, ST-MoE, and CSTP configurations, while the Y-axis measures execution time in seconds.
+        "caption": "Figure 5.2: Total simulated execution time and exposed memory-stall reduction for Workload W3 (B = 32, T = 16), illustrating significant stall latency hiding under CSTP.",
+        "interp": """Figure 5.2 evaluates Workload W3 (Batch Size B = 32, Sequence Length T = 16 tokens, 40 MoE stages). The X-axis presents Baseline, ST-MoE, and CSTP configurations, while the Y-axis charts total simulated execution time in seconds (left) and exposed memory-stall reduction in milliseconds (right).
 
-Baseline demand offloading consumes 34.197 seconds, dominated by 33.649 seconds of exposed memory stalls. Under CSTP prefetching, execution time drops to 33.649 seconds, hiding 548.24 ms of exposed stall (a 1.60% stall reduction). ST-MoE achieves a lesser reduction, finishing in 33.821 seconds (saving 376.12 ms of stall).
+Baseline demand offloading consumes 35.732 seconds, dominated by 34,999.57 ms of exposed memory stalls. Under CSTP prefetching (H = 2), total execution time drops to 35.567 seconds, saving 0.165 seconds of total runtime and reducing exposed memory stall by 165.72 ms (a 0.47% stall reduction). ST-MoE achieves a lesser reduction, finishing in 35.699 seconds (saving 0.033 seconds of runtime and 33.47 ms of stall).
 
 The physical mechanism enabling this speedup is late in-flight attachment: while DDR5 transfer latency exceeds inter-stage GPU compute time, initiating speculative transfers one to two layers in advance ensures that when demand arrives, the transfer is already largely completed. This truncates exposed stall to only the tail completion latency, directly reducing decode step times."""
     },
     "fig_01a_w4_total_time_vs_stall": {
         "num": "Figure 5.3",
         "title": "Total Execution Time vs. Exposed Memory Stall for Workload W4 (B = 48, T = 16)",
-        "caption": "Figure 5.3: Execution time and memory stall comparison for Workload W4, showing expanding latency-hiding opportunities at increased batch sizes.",
-        "interp": """Figure 5.3 examines Workload W4 (Batch Size B = 48, Sequence Length T = 16 tokens). The X-axis contrasts Baseline, ST-MoE, and CSTP, and the Y-axis charts total execution time in seconds.
+        "caption": "Figure 5.3: Total simulated execution time and exposed memory-stall reduction for Workload W4 (B = 48, T = 16), showing expanding latency-hiding opportunities at increased batch sizes.",
+        "interp": """Figure 5.3 examines Workload W4 (Batch Size B = 48, Sequence Length T = 16 tokens, 40 MoE stages). The X-axis contrasts Baseline, ST-MoE, and CSTP, and the Y-axis charts total execution time in seconds and exposed stall reduction in milliseconds.
 
-Baseline execution requires 51.493 seconds, dominated by 50.769 seconds of memory stalls. CSTP prefetching lowers execution time to 50.485 seconds, eliminating 1,008.12 ms of stall time (1.96% stall reduction). ST-MoE reduces execution time to 50.812 seconds (saving 681.34 ms).
+Baseline execution requires 51.772 seconds, dominated by 50,768.71 ms of exposed memory stalls. CSTP prefetching (H = 2) lowers total execution time to 51.570 seconds, saving 0.202 seconds of runtime and eliminating 202.57 ms of exposed memory stall (a 0.40% stall reduction). ST-MoE reduces execution time to 51.672 seconds (saving 0.100 seconds of runtime and 100.55 ms of stall).
 
 As batch size scales from B = 32 to B = 48, GPU compute duration per MoE layer expands proportionally due to larger matrix dimensions in GEMM kernels. This wider compute window provides greater opportunity to overlap background DDR5 transfers with tensor core execution, enhancing the effectiveness of speculative prefetching."""
     },
     "fig_01a_w5_total_time_vs_stall": {
         "num": "Figure 5.4",
-        "title": "Total Execution Time vs. Exposed Memory Stall for Workload W5 (B = 64, T = 16)",
-        "caption": "Figure 5.4: Execution time and exposed stall profile for Workload W5, showing 1,485.45 ms of stall latency eliminated by CSTP.",
-        "interp": """Figure 5.4 illustrates the performance profile for Workload W5 (Batch Size B = 64, Sequence Length T = 16 tokens). The X-axis displays the three evaluated architectures, and the Y-axis quantifies execution duration in seconds.
+        "title": "Total Execution Time vs. Exposed Memory Stall for Workload W5 (B = 70, T = 16)",
+        "caption": "Figure 5.4: Total simulated execution time and exposed memory-stall reduction for Workload W5 (B = 70, T = 16), showing 509.94 ms of stall latency eliminated by CSTP.",
+        "interp": """Figure 5.4 illustrates the performance profile for Workload W5 (Batch Size B = 70, Sequence Length T = 16 tokens, 40 MoE stages). The X-axis displays Baseline, ST-MoE, and CSTP, while the Y-axis quantifies execution duration in seconds and exposed stall reduction in milliseconds.
 
-Baseline execution consumes 68.804 seconds. CSTP prefetching successfully accelerates execution to 67.319 seconds, eliminating 1,485.45 ms of exposed memory stalls (2.16% stall reduction). ST-MoE achieves a 982.15 ms stall reduction.
+Baseline execution consumes 63.507 seconds, dominated by 62,304.49 ms of exposed memory stalls. CSTP prefetching (H = 2) successfully accelerates execution to 62.999 seconds, saving 0.508 seconds of total runtime and eliminating 509.94 ms of exposed memory stalls (a 0.82% stall reduction). ST-MoE achieves a 260.57 ms stall reduction and saves 0.259 seconds of runtime.
 
 In this high-batch regime, token routing diversity increases, activating a broader set of experts across the 256 available candidates. CSTP's superior spatial correlation tracking ensures that the most frequently co-activated experts are prioritized in the DMA transfer queue, preventing queue overflow and head-of-line blocking."""
     },
     "fig_01a_w7_total_time_vs_stall": {
         "num": "Figure 5.5",
-        "title": "Total Execution Time vs. Exposed Memory Stall for Workload W7 (B = 128, T = 16)",
-        "caption": "Figure 5.5: Total execution time and dramatic stall reduction for Workload W7, demonstrating 6.717 seconds of wall-clock time saved under CSTP.",
-        "interp": """Figure 5.5 presents the most demanding workload in the Point 3 evaluation: Workload W7 (Batch Size B = 128, T = 16 tokens, DeepSeek-V3). The X-axis contrasts Baseline, ST-MoE, and CSTP, with the Y-axis showing execution time in seconds.
+        "title": "Total Execution Time vs. Exposed Memory Stall for Workload W7 (B = 70, T = 64)",
+        "caption": "Figure 5.5: Total simulated execution time and exposed memory-stall reduction for Workload W7 (B = 70, T = 64), showing 6.745 seconds of exposed stall reduction and 6.717 seconds of wall-clock runtime saved under CSTP.",
+        "interp": """Figure 5.5 presents the most demanding workload in the Point 3 evaluation: Workload W7 (Batch Size B = 70, Sequence Length T = 64 tokens, DeepSeek-V3, 40 MoE stages). The X-axis contrasts Baseline, ST-MoE, and CSTP configurations, with the left Y-axis showing total simulated execution time in seconds and the right Y-axis showing exposed memory stall reduction in milliseconds.
 
-Under Baseline offloading, total execution time reaches 136.850 seconds, with exposed stall consuming 136,838.74 ms. CSTP prefetching achieves an extraordinary performance breakthrough, reducing execution time to 130.133 seconds—a net saving of 6.717 seconds (6,717.37 ms of exposed memory stall eliminated, representing a 4.91% end-to-end wall-clock speedup). ST-MoE achieves a 2.289-second saving.
+Under Baseline offloading, total simulated execution time reaches 488.483 seconds, dominated by 479,841.29 ms of exposed memory stalls. CSTP prefetching achieves an extraordinary performance breakthrough, reducing total execution time to 481.766 seconds—a net saving of 6.717 seconds (corresponding to approximately 104.95 ms of runtime saving per decode step across 64 steps) and reducing exposed memory stall by 6,744.86 ms (6.745 seconds, a 1.41% stall reduction). ST-MoE achieves a lesser reduction, finishing in 486.210 seconds (saving 2.273 seconds of runtime and reducing exposed stall by 2,289.03 ms).
 
-This massive latency hiding is driven by high batch concurrency: at B = 128, inter-layer compute time widens sufficiently to allow speculative transfers to complete entirely or near-entirely before demand, unlocking true computation-transfer overlap at scale. This result is strictly specific to Point 3 W7 and is never conflated with Point 6 lookahead sweeps."""
+This substantial latency hiding is driven by high decode concurrency: across 64 decode steps with batch size B = 70, inter-layer compute windows provide repeated opportunities for asynchronous DDR5 transfers to overlap with tensor core execution via late in-flight attachment. This result is strictly specific to Point 3 W7 and is never conflated with Point 6 lookahead sweeps."""
     },
     "fig_01b_all_workloads_time_and_stall_overview": {
         "num": "Figure 5.6",
         "title": "Comprehensive Overview of Execution Time and Stall Reduction across All Workloads (W1–W7)",
         "caption": "Figure 5.6: Aggregated performance scaling and cumulative stall reduction across all seven large workloads (W1 to W7) comparing Baseline, ST-MoE, and CSTP.",
-        "interp": """Figure 5.6 synthesizes the entire Point 3 effectiveness campaign across all seven workloads (W1 through W7, scaling batch size from B = 14 to B = 128). The X-axis enumerates the workloads, while the dual Y-axes display total execution time (left, in seconds) and percentage stall reduction achieved (right, in %).
+        "interp": """Figure 5.6 synthesizes the entire Point 3 effectiveness campaign across all seven large workloads (W1 through W7, scaling batch sizes from B = 14 to B = 70 and sequence lengths from T = 4 to T = 64). The left panel plots total simulated execution time across Baseline, ST-MoE (H = 2), and CSTP (H = 2), while the right panel charts exposed memory-stall reduction in milliseconds.
 
-The macroscopic trend demonstrates that prefetching effectiveness scales with workload intensity. At low batch sizes (W1–W2), stall savings remain below 0.1%, constrained by narrow compute windows. Beyond B = 32 (W3–W7), stall reduction accelerates rapidly, reaching 1.60% in W3, 1.96% in W4, 2.16% in W5, and 4.91% in W7. 
+The macroscopic trend demonstrates that prefetching effectiveness scales directly with workload intensity. At low batch sizes and short generation sequences (W1: B = 14, T = 4), stall reduction is 2.75 ms (0.06%), constrained by brief execution windows. As batch size and sequence length scale up through W2 (B = 14, T = 16: 61.61 ms), W3 (B = 32, T = 16: 165.72 ms), W4 (B = 48, T = 16: 202.57 ms), W5 (B = 70, T = 16: 509.94 ms), and W6 (B = 70, T = 32: 2,160.97 ms), stall reduction accelerates rapidly, culminating in W7 (B = 70, T = 64) where CSTP eliminates 6,744.86 ms of exposed stall (6.745 seconds) and saves 6.717 seconds of simulated runtime (104.95 ms/step).
 
 Across every single workload, CSTP maintains strict performance dominance over ST-MoE, delivering greater stall elimination. This establishes that accurate, training-free expert prediction combined with asynchronous DMA scheduling provides robust, scalable memory wall mitigation across realistic production batch sizes."""
     },
     "fig_02b_coverage_vs_batch_size": {
         "num": "Figure 5.7",
-        "title": "Prefetch Coverage Scaling vs. Batch Size (B = 14 to 128)",
-        "caption": "Figure 5.7: Total prefetch coverage percentage as a function of inference batch size across large workloads W1–W7, showing coverage expansion up to 9.8%.",
-        "interp": """This figure plots prefetch coverage percentage against batch size scaling from B = 14 to B = 128 across Workloads W1–W7. The X-axis represents batch size, and the Y-axis indicates prefetch coverage, partitioned into strict timely coverage and late-attached coverage.
+        "title": "Associated Demand Coverage vs. Serving Batch Size (T = 16)",
+        "caption": "Figure 5.7: Associated demand coverage percentage as a function of serving batch size across workloads W2, W3, W4, and W5 (B = 14, 32, 48, 70) at fixed sequence length T = 16.",
+        "interp": """Figure 5.7 isolates the effect of serving batch size on prefetch demand coverage under a fixed generation sequence length of T = 16 tokens (Workloads W2, W3, W4, and W5, spanning batch sizes B = 14, 32, 48, and 70). The X-axis represents serving batch size, and the Y-axis charts associated demand coverage percentage (the proportion of demanded experts that attached to an in-flight speculative prefetch transfer).
 
-Coverage scales steadily from 1.2% at B = 14 to 4.81% at B = 32, reaching 9.8% at B = 128. As batch size expands, multiple concurrent tokens request identical experts within the same layer, enabling prefetch transfers to satisfy multiple demands simultaneously (demand coalescing). 
-
-This demonstrates that memory wall pressure in batched inference can be progressively amortized: larger batches not only provide more computation to hide transfer latency, but also exhibit higher expert reuse density, amplifying prefetch coverage."""
+For CSTP, associated coverage transitions from 5.31% at B = 14 to 4.42% at B = 32, 4.09% at B = 48, and 3.50% at B = 70. ST-MoE exhibits a similar downward trajectory (8.27% at B = 14, 7.15% at B = 32, 6.48% at B = 48, and 5.50% at B = 70). As batch size scales, total demanded experts expand across concurrent requests, slightly diluting the relative coverage percentage of a fixed-budget prefetcher (K = 4) while total absolute hidden stall latency increases substantially."""
     },
     "fig_02c_coverage_vs_sequence_length": {
         "num": "Figure 5.8",
@@ -176,7 +174,7 @@ This demonstrates that CSTP achieves substantial memory stall hiding without per
         "caption": "Figure 5.12: Net percentage reduction in exposed memory stall time achieved by CSTP and ST-MoE relative to baseline GPU offloading across W1–W7.",
         "interp": """Figure 5.12 isolates the core efficiency metric of prefetching: the percentage reduction in exposed memory stall time relative to baseline offloading. The X-axis categorizes Workloads W1 to W7, and the Y-axis plots the stall reduction percentage.
 
-CSTP achieves a consistent and widening margin of superiority over ST-MoE. In W2, CSTP reduces stalls by 0.05%; in W3, CSTP saves 1.60%; in W4, 1.96%; in W5, 2.16%; and in W7, CSTP eliminates 4.91% of total stall time (saving 6.717 seconds).
+CSTP achieves a consistent and widening margin of superiority over ST-MoE across all evaluated configurations. In W1, CSTP achieves a 0.06% stall reduction; in W2, 0.34%; in W3, 0.47% (saving 165.72 ms of stall); in W4, 0.40% (saving 202.57 ms); in W5, 0.82% (saving 509.94 ms); in W6, 1.16% (saving 2,160.97 ms); and in W7, CSTP eliminates 1.41% of total stall time (reducing exposed stall by 6,744.86 ms or 6.745 seconds, delivering 6.717 seconds of wall-clock time saved).
 
 This proves that CSTP's contextual filtering produces high-utility speculative transfers that directly intersect with immediate GPU execution demands, maximizing stall reduction per byte transferred."""
     },

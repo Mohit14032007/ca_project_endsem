@@ -134,6 +134,27 @@ class ConsistencyValidator:
         is_energy_sum_match = abs(sum_j - tot_rep) < 0.01
         self.record_check(gate, "Fig 9.1 vs Table 9.2 Baseline energy components sum to 9387.61 J", is_energy_sum_match, f"Sum: {sum_j:.2f} J, Reported: {tot_rep:.2f} J")
 
+        # 4. Figure 5.2 vs Table 5.1 (Workload W3 Execution Time and Stall)
+        fig_5_2 = pd.read_csv(os.path.join(FIG_DATA_DIR, "figure_5_2_data.csv"))
+        w3_base_time = float(fig_5_2[(fig_5_2["configuration"] == "baseline") & (fig_5_2["series_name"] == "Total Simulated Time")]["y_value"].iloc[0])
+        w3_cstp_time = float(fig_5_2[(fig_5_2["configuration"] == "cstp") & (fig_5_2["series_name"] == "Total Simulated Time")]["y_value"].iloc[0])
+        w3_time_match = (abs(w3_base_time - 35.732) < 0.005) and (abs(w3_cstp_time - 35.567) < 0.005)
+        self.record_check(gate, "Fig 5.2 vs Table 5.1 Workload W3 runtime (35.732 s base, 35.567 s CSTP)", w3_time_match, f"Base: {w3_base_time:.3f} s, CSTP: {w3_cstp_time:.3f} s")
+
+        # 5. Figure 5.5 vs Table 5.1 (Workload W7 Execution Time and Stall)
+        fig_5_5 = pd.read_csv(os.path.join(FIG_DATA_DIR, "figure_5_5_data.csv"))
+        w7_base_time = float(fig_5_5[(fig_5_5["configuration"] == "baseline") & (fig_5_5["series_name"] == "Total Simulated Time")]["y_value"].iloc[0])
+        w7_cstp_time = float(fig_5_5[(fig_5_5["configuration"] == "cstp") & (fig_5_5["series_name"] == "Total Simulated Time")]["y_value"].iloc[0])
+        w7_time_match = (abs(w7_base_time - 488.483) < 0.005) and (abs(w7_cstp_time - 481.766) < 0.005)
+        self.record_check(gate, "Fig 5.5 vs Table 5.1 Workload W7 runtime (488.483 s base, 481.766 s CSTP)", w7_time_match, f"Base: {w7_base_time:.3f} s, CSTP: {w7_cstp_time:.3f} s")
+
+        # 6. Figure 5.7 Batch Sizes vs Table 5.1 (T=16: B=14, 32, 48, 70)
+        fig_5_7 = pd.read_csv(os.path.join(FIG_DATA_DIR, "figure_5_7_data.csv"))
+        x_vals_57 = sorted(list(fig_5_7["x_value"].unique()))
+        expected_x_57 = [14, 32, 48, 70]
+        x_57_match = x_vals_57 == expected_x_57
+        self.record_check(gate, "Fig 5.7 batch sizes match Table 5.1 at T=16 (B=14, 32, 48, 70)", x_57_match, f"Found x-values: {x_vals_57}")
+
     # -------------------------------------------------------------
     # Test 3: Derived mathematical calculations
     # -------------------------------------------------------------
@@ -201,6 +222,11 @@ class ConsistencyValidator:
         contains_w7_6717 = "6,744.86 ms" in t51_text or "488.483 s" in t51_text
         self.record_check(gate, "Table 5.1 retains W7 authoritative large-workload values", contains_w7_6717, "Missing W7 values in Table 5.1")
 
+        # Check W7 terminology: exposed memory stall reduction (6.745 s / 6,744.86 ms) vs total runtime reduction (6.717 s)
+        f55_interp = FIGURE_EXPLANATIONS["fig_01a_w7_total_time_vs_stall"]["interp"]
+        has_w7_distinction = ("6.717 seconds" in f55_interp) and ("6,744.86 ms" in f55_interp or "6.745 seconds" in f55_interp) and ("104.95 ms" in f55_interp)
+        self.record_check(gate, "Workload W7 strictly distinguishes 6.745 s stall reduction from 6.717 s total runtime saving (104.95 ms/step)", has_w7_distinction, "W7 conflates stall reduction with runtime saving")
+
     # -------------------------------------------------------------
     # Test 5: Metric naming and definitions
     # -------------------------------------------------------------
@@ -224,6 +250,25 @@ class ConsistencyValidator:
         not_sweep = "threshold setting" not in caption_35.lower() and "sweeps the integer" not in f35["interp"].lower()
         self.record_check(gate, "Figure 3.5 removes stale threshold sweep description", not_sweep, "Still describes Figure 3.5 as a threshold sweep")
 
+        # 4. Check Figure 5.2 interpretation text matches figure_5_2_data.csv and Table 5.1
+        f52_interp = FIGURE_EXPLANATIONS["fig_01a_w3_total_time_vs_stall"]["interp"]
+        has_35732 = "35.732" in f52_interp and "35.567" in f52_interp and "165.72" in f52_interp
+        no_stale_34197 = "34.197" not in f52_interp and "548.24" not in f52_interp
+        w3_interp_match = has_35732 and no_stale_34197
+        self.record_check(gate, "Figure 5.2 interpretation matches authoritative W3 data (35.732 s base, 35.567 s CSTP, 165.72 ms stall)", w3_interp_match, "Figure 5.2 still contains stale unverified numbers")
+
+        # 5. Check Figure 5.6 interpretation describes batch sizes up to B = 70 without B = 128
+        f56_interp = FIGURE_EXPLANATIONS["fig_01b_all_workloads_time_and_stall_overview"]["interp"]
+        has_b70 = "B = 70" in f56_interp or "B = 14 to B = 70" in f56_interp
+        no_b128 = "B = 128" not in f56_interp
+        b_range_match = has_b70 and no_b128
+        self.record_check(gate, "Figure 5.6 describes actual batch size range (B=14 to B=70) and excludes B=128", b_range_match, "Figure 5.6 still claims batch size reaches 128")
+
+        # 6. Check Figure 5.12 interpretation uses exact stall reductions (0.06% to 1.41%)
+        f512_interp = FIGURE_EXPLANATIONS["fig_07c_stall_reduction_percentage"]["interp"]
+        has_exact_stalls = "1.41%" in f512_interp and "0.06%" in f512_interp and "4.91%" not in f512_interp
+        self.record_check(gate, "Figure 5.12 interpretation uses exact stall reductions (0.06% to 1.41%)", has_exact_stalls, "Figure 5.12 still contains stale stall percentages")
+
     # -------------------------------------------------------------
     # Test 6: Unit consistency
     # -------------------------------------------------------------
@@ -246,6 +291,12 @@ class ConsistencyValidator:
         has_kjs = "kJ·s" in str(t92["headers"])
         self.record_check(gate, "Table 9.2 EDP column labeled in kJ·s", has_kjs, f"Headers: {t92['headers']}")
 
+        # 4. Point 7 Energy, Delay, and EDP Reconciliation
+        # Check Table 9.2 rows: Baseline (767.27 s, 9387.61 J, 7202.85 kJ·s) and K=2 (756.34 s, 9359.93 J, 7079.32 kJ·s, -1.72%)
+        t92_str = str(t92["rows"])
+        has_p7_reconciled = ("767.27 s" in t92_str) and ("756.34 s" in t92_str) and ("9,387.61 J" in t92_str) and ("9,359.93 J" in t92_str) and ("7,202.85 kJ·s" in t92_str) and ("7,079.32 kJ·s" in t92_str) and ("-1.72%" in t92_str)
+        self.record_check(gate, "Point 7 Table 9.2 energy, delay, and EDP values reconciled to authoritative CSVs", has_p7_reconciled, "Table 9.2 contains conflicting energy or EDP values")
+
     # -------------------------------------------------------------
     # Test 7: Report claims vs authoritative data
     # -------------------------------------------------------------
@@ -264,6 +315,14 @@ class ConsistencyValidator:
         total_items = len(df_recon)
         has_comprehensive_matrix = total_items >= 100
         self.record_check(gate, f"Reconciliation matrix comprehensive ({total_items} items >= 100)", has_comprehensive_matrix, f"Count: {total_items}")
+
+        # Check final generated DOCX and PDF file existence and size
+        docx_path = os.path.join(WORKSPACE, "mohman/final_report_v2/MoE_Memory_Wall_Final_Report_CORRECTED.docx")
+        pdf_path = os.path.join(WORKSPACE, "mohman/final_report_v2/MoE_Memory_Wall_Final_Report_CORRECTED.pdf")
+        docx_ok = os.path.exists(docx_path) and os.path.getsize(docx_path) > 5000000
+        pdf_ok = os.path.exists(pdf_path) and os.path.getsize(pdf_path) > 7000000
+        self.record_check(gate, "Final generated DOCX report exists and size > 5 MB", docx_ok, f"DOCX path: {docx_path}")
+        self.record_check(gate, "Final generated PDF report exists and size > 7 MB", pdf_ok, f"PDF path: {pdf_path}")
 
     # -------------------------------------------------------------
     # Test 8: Full 32-figure graph inventory

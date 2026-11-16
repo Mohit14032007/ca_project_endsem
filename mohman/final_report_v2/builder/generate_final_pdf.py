@@ -186,18 +186,18 @@ def create_report_pdf():
     story.append(Paragraph("List of Figures (All 32 Verified Artifacts)", h2_style))
     fig_summary_list = [
         ("Figure 3.1", "Certified Frozen Recall vs. Profiling Percentage for CSTP Predictor"),
-        ("Figure 3.2", "Offline Hit Rate vs. Profiling Percentage across Prediction Horizons (H=1, 2, 4)"),
-        ("Figure 3.3", "ST-MoE Cold-Start vs. Warm-State Prediction Recall across Model Layers"),
-        ("Figure 3.4", "End-to-End Prediction Hit Rate Comparison: CSTP vs. ST-MoE Baseline"),
-        ("Figure 3.5", "ST-MoE Native Confidence Threshold vs. Candidate Recall Trade-Off"),
+        ("Figure 3.2", "Offline Hit Rate vs. Profiling Percentage across Prediction Horizons (H=1, 2)"),
+        ("Figure 3.3", "Cold-Start vs. Steady-State Recall across Online Adaptation Policies"),
+        ("Figure 3.4", "End-to-End Prediction Hit Rate vs. Prefetch Budget across Benchmarks"),
+        ("Figure 3.5", "ST-MoE Scoring Mode Trade-off: Additive vs. Intersection Set Size and Precision"),
         ("Figure 5.1", "Total Execution Time vs. Exposed Memory Stall for Workload W1 (B=14, T=4)"),
-        ("Figure 5.2", "Total Execution Time vs. Exposed Memory Stall for Workload W3 (B=14, T=128)"),
-        ("Figure 5.3", "Total Execution Time vs. Exposed Memory Stall for Workload W4 (B=16, T=64)"),
-        ("Figure 5.4", "Total Execution Time vs. Exposed Memory Stall for Workload W5 (B=32, T=32)"),
-        ("Figure 5.5", "Total Execution Time vs. Exposed Memory Stall for Workload W7 (B=128, T=16)"),
+        ("Figure 5.2", "Total Execution Time vs. Exposed Memory Stall for Workload W3 (B=32, T=16)"),
+        ("Figure 5.3", "Total Execution Time vs. Exposed Memory Stall for Workload W4 (B=48, T=16)"),
+        ("Figure 5.4", "Total Execution Time vs. Exposed Memory Stall for Workload W5 (B=70, T=16)"),
+        ("Figure 5.5", "Total Execution Time vs. Exposed Memory Stall for Workload W7 (B=70, T=64)"),
         ("Figure 5.6", "Comprehensive Overview of Execution Time and Stall Reduction across All Workloads"),
-        ("Figure 5.7", "Prefetch Coverage Scaling vs. Batch Size (B=1 to 128)"),
-        ("Figure 5.8", "Prefetch Coverage vs. Sequence Generation Length (T=32 to 512 Tokens)"),
+        ("Figure 5.7", "Associated Demand Coverage vs. Serving Batch Size (T=16)"),
+        ("Figure 5.8", "Associated Demand Coverage vs. Generation Sequence Length (B=70)"),
         ("Figure 5.9", "Unused Prefetch Rate (%) across Workloads W1–W7"),
         ("Figure 5.10", "Wasted Speculative DDR5 Memory Traffic Volume (GiB)"),
         ("Figure 5.11", "DDR5 Memory Traffic Composition: Demand Misses vs. Speculative Prefetches"),
@@ -323,8 +323,8 @@ def create_report_pdf():
     
     story.append(Paragraph("1.1 Key Scientific and Architectural Findings", h2_style))
     story.append(Paragraph("• <b>Training-Free Prediction Superiority:</b> Our proposed CSTP predictor achieves an overall expert prediction recall of 82.02% across diverse benchmarks, decisively outperforming the literature-standard ST-MoE baseline (68.12%) by an absolute +13.90 percentage-point margin (+20.40% relative improvement) while requiring zero neural network training.", bullet_style))
-    story.append(Paragraph("• <b>Resolution of Strict Timeliness vs. Late In-Flight Attachment:</b> Empirical telemetry across 73 cycle-level simulations reveals that strict timely prefetching (transfers completing before demand) is physically impossible under standard interconnects (0.00% timely hits) because transfer latency exceeds compute windows by 39x. However, prefetching successfully achieves massive latency hiding via late in-flight attachment (up to 21.29% coverage), reducing exposed stall by up to 6.717 seconds in large workloads.", bullet_style))
-    story.append(Paragraph("• <b>End-to-End Latency Improvements:</b> In heavy production workloads (Workload W7: B=70, T=64, DeepSeek-V3), CSTP eliminates 6,744.86 ms of exposed stall time, delivering 6.717 seconds of wall-clock time saved (104.95 ms per token generation step across 64 steps).", bullet_style))
+    story.append(Paragraph("• <b>Resolution of Strict Timeliness vs. Late In-Flight Attachment:</b> Empirical telemetry across 73 cycle-level simulations reveals that strict timely prefetching (transfers completing before demand) is physically impossible under standard interconnects (0.00% timely hits) because transfer latency exceeds compute windows by 39x. However, prefetching successfully achieves massive latency hiding via late in-flight attachment (up to 21.29% coverage), reducing exposed stall by up to 6.745 seconds and saving 6.717 seconds of wall-clock execution time in large workloads.", bullet_style))
+    story.append(Paragraph("• <b>End-to-End Latency Improvements:</b> In heavy production workloads (Workload W7: B=70, T=64, DeepSeek-V3), CSTP reduces exposed memory stall by 6.745 seconds (6,744.86 ms) and reduces total simulated execution time by 6.717 seconds, corresponding to approximately 104.95 ms of runtime saving per decode step across 64 steps.", bullet_style))
     story.append(Paragraph("• <b>Protection Against Speculative Cache Pollution:</b> Our FA-LRU cache replacement policy successfully protects 215,314 hot expert instances in Workload W3 and 431,909 instances in W4 from speculative prefetch eviction, providing 36 critical hot-expert reuses that would have suffered costly DDR5 reloads under standard LRU.", bullet_style))
     story.append(Paragraph("• <b>Hardware Energy Optimization Sweet Spot:</b> Exhaustive energy modeling across 28 controlled simulations establishes that prefetching is not inherently energy-expensive. Under a calibrated conservative budget (K = 2, k2_c4), the system achieves a net total energy reduction of -27.68 Joules (-0.295% savings) and minimizes the Energy-Delay Product (EDP) by -1.72% (7,079.32 kJ·s vs 7,202.85 kJ·s), because the static DRAM leakage energy saved by faster execution outweighs the minor active DDR5 transfer overhead.", bullet_style))
 
@@ -430,7 +430,7 @@ def create_report_pdf():
     story.append(Paragraph("Point 3 evaluates how predictor accuracy translates into actual memory-system performance across 73 cycle-level simulations spanning Workloads W1 through W7. The investigation resolves the central architectural question: under physical interconnect constraints, does prefetching genuinely hide memory stall latency?", body_style))
 
     story.append(Paragraph("5.1 Large Workload Performance Matrix (W1–W7)", h2_style))
-    story.append(Paragraph("Table 5.1 provides the comprehensive performance telemetry for Workloads W1 through W7 under DeepSeek-V3 on a calibrated 64 GB/s interconnect. The empirical data highlights a dramatic scaling effect: as batch size increases from B = 14 to B = 128, stall reduction expands from 2.75 ms to 6,717.00 ms (saving 6.717 seconds of wall-clock time in W7).", body_style))
+    story.append(Paragraph("Table 5.1 provides the comprehensive performance telemetry for Workloads W1 through W7 under DeepSeek-V3 on a calibrated 64 GB/s interconnect. The empirical data highlights a dramatic scaling effect: as serving batch size scales from B = 14 to B = 70 and sequence generation length scales from T = 4 to T = 64 tokens, exposed stall reduction expands from 2.75 ms (0.06%) to 6,744.86 ms (1.41%, or 6.745 seconds of exposed stall eliminated), saving 6.717 seconds of total simulated execution time in W7 (corresponding to 104.95 ms of runtime saving per decode step across 64 steps).", body_style))
 
     render_pdf_table(TABLES_CH5_CH7["table_5_1"])
 
@@ -539,7 +539,7 @@ def create_report_pdf():
     # ==========================================
     story.append(Paragraph("Chapter 13: Conclusion and Research Insights", h1_style))
     story.append(Paragraph("The MoE Memory Wall poses one of the most critical challenges facing next-generation LLM serving infrastructure. This project has comprehensively demonstrated that training-free predictive prefetching (CSTP) coupled with frequency-aware caching (FA-LRU) provides a mathematically principled, hardware-viable solution.", body_style))
-    story.append(Paragraph("By achieving 82.02% prediction recall, eliminating up to 6.717 seconds of exposed stall time, and lowering total system Energy-Delay Product by -1.72% under a calibrated K = 2 budget, this work proves that asynchronous prefetching can effectively bridge the memory wall for large-scale MoE inference.", body_style))
+    story.append(Paragraph("By achieving 82.02% prediction recall, reducing exposed memory stall by 6.745 seconds and saving 6.717 seconds of total simulated execution time (104.95 ms per token generation step across 64 steps in W7), and lowering total system Energy-Delay Product by -1.72% under a calibrated K = 2 budget, this work proves that asynchronous prefetching can effectively bridge the memory wall for large-scale MoE inference.", body_style))
 
     # Build PDF with NumberedCanvas
     doc.build(story, canvasmaker=NumberedCanvas)
