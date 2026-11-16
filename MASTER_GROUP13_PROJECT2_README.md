@@ -15,7 +15,7 @@
 **Primary Documentation File:** `MASTER_GROUP13_PROJECT2_README.md`  
 **Authoritative Final Report Deliverables:**
 - Word Document: `mohman/submission_final/MoE_Memory_Wall_Final_Report.docx`
-- Complete 56-Page PDF: `mohman/submission_final/MoE_Memory_Wall_Final_Report.pdf` (also at repository root as `Group13_Project2_Report.pdf`)
+- Complete PDF Report: `mohman/submission_final/MoE_Memory_Wall_Final_Report.pdf` (also at repository root as `Group13_Project2_Report_Final.pdf`)
 - Numerical Reconciliation Matrix: `mohman/submission_final/NUMERICAL_RECONCILIATION_MATRIX.csv` (120 audited claims)
 - Consistency Validation Report: `mohman/submission_final/REPORT_CONSISTENCY_VALIDATION.md` (63/63 checks passed)
 - Figure Source Data: `mohman/submission_final/FIGURE_DATA/` (32 figures: Figure 3.1 through Figure 9.3)
@@ -31,6 +31,7 @@
    - [3.1 Repository Layout](#31-repository-layout)
    - [3.2 Point-Wise Result Mapping Table](#32-point-wise-result-mapping-table)
    - [3.3 Authoritative Result Files and Artifact Types](#33-authoritative-result-files-and-artifact-types)
+   - [3.4 GitHub Artifact Contents and External Dataset Requirements](#34-github-artifact-contents-and-external-dataset-requirements)
 4. [System Requirements and Hardware Requirements](#4-system-requirements-and-hardware-requirements)
 5. [Fresh Laptop Setup — Step by Step](#5-fresh-laptop-setup--step-by-step)
    - [5.1 Repository Cloning and Verification](#51-repository-cloning-and-verification)
@@ -258,6 +259,29 @@ To eliminate any ambiguity between raw traces, intermediate telemetry, and certi
    - 32 CSV exports directly matching report plots: `mohman/submission_final/FIGURE_DATA/figure_*_data.csv`
    - Complete 120-claim verification ledger: `mohman/submission_final/NUMERICAL_RECONCILIATION_MATRIX.csv`
    - 63-check automated audit pass: `mohman/submission_final/REPORT_CONSISTENCY_VALIDATION.md`
+
+## 3.4 GitHub Artifact Contents and External Dataset Requirements
+
+### Committed Artifacts
+The GitHub repository commit contains the complete, self-contained implementation, configuration suite, processed result tables, and publication-quality figures:
+1. **Source Code & Modified Simulator Files:** Full C++17 simulator engine (`LLMSimulator/src/`), CSTP spatio-temporal predictor (`LLMSimulator/src/predictor/`), ST-MoE baseline, asynchronous DDR5 prefetch engine (`LLMSimulator/src/prefetch/`), FA-LRU eviction controller (`LLMSimulator/src/cache/`), and test harnesses (`LLMSimulator/eval/`).
+2. **Configuration Files:** All YAML architectural and experiment configuration files for every implemented point (`LLMSimulator/configs/`, `mohman/point_*/`).
+3. **Execution & Processing Scripts:** All Python orchestration scripts, pipeline runners, result processors, and automated plotting scripts across Points 1 through 7 (`mohman/point_*/scripts/`, `mohman/point_*/generate_plots.py`).
+4. **Authoritative Processed Results:** Small processed CSV and JSON result tables required to reproduce all report tables and figures (located in `mohman/point_*/final_results/`, `mohman/submission_final/FIGURE_DATA/`, and `NUMERICAL_RECONCILIATION_MATRIX.csv`).
+5. **Publication Figures & Visualizations:** All 32 final report figures in PNG and PDF formats (`mohman/point_*/plots/`, `mohman/final_report/figures/`).
+6. **Final Report Deliverables & Master README:** The comprehensive report PDF (`Group13_Project2_Report_Final.pdf`), final submission package (`mohman/submission_final/`), and this master technical reproduction manual (`MASTER_GROUP13_PROJECT2_README.md`).
+
+### Intentionally Excluded Datasets & Raw Logs
+To comply with standard repository size limits and ensure clean, fast cloning:
+- **Full Raw Simulation Logs & Tick-by-Tick Dumps:** Multi-gigabyte per-tick channel logs, per-event DMA trace CSVs (`*corrected_per_event_metrics.csv`, `raw_results/`, `traces/`), and root CSV dumps (`expert_cache.csv`, `expert_load.csv`, `expert_routing.csv`) are excluded.
+- **Build Directories & Compiled Binaries:** `LLMSimulator/build/`, `*.o`, `*.so`, `*.a`, and Python `__pycache__` directories are excluded.
+- **Large External Routing Traces:** The bundled repository already includes representative authentic traces in `LLMSimulator/data/downloads/moe_anywhere/` (15.4 MB) and `LLMSimulator/data/downloads/moe_suite/` (12 files, ~7 MB each). If full multi-billion token raw traces are desired:
+  - **Dataset Source:** HuggingFace Datasets / DeepSeek-V3 routing traces repository.
+  - **Expected Placement:** Place downloaded Parquet traces in `LLMSimulator/data/downloads/moe_anywhere/` or `mohman/point_3/traces/`.
+  - **Execution After Downloading:** Once downloaded, run the conversion scripts in `mohman/point_3/scripts/` to generate trace CSVs, then launch simulations using the step-by-step commands in [Section 10](#10-point-wise-implementation-and-reproduction-commands).
+
+### Zero Simulation Barrier for TA Verification
+**Crucial Note for Evaluators:** The repository does *not* require the TA to download multi-gigabyte traces or run multi-hour simulation campaigns to verify results. All authoritative processed result tables (`mohman/point_*/final_results/` and `mohman/submission_final/FIGURE_DATA/`) and publication figures are pre-computed, verified against 120 numerical reconciliation points, and committed directly in GitHub. The TA can inspect the reported results immediately and regenerate every plot within seconds using `python3 generate_plots.py`.
 
 ---
 
